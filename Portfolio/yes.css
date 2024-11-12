@@ -129,14 +129,14 @@ body,
     display: none;
 }
 .second-container{
-    height: 100vh; 
+    min-height: 100vh; 
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .aboutme h1{
     color: black;
-    font-size: 50px;
+    font-size: 45px;
 }
 .aboutme p{
     text-align: center;
@@ -166,7 +166,36 @@ body,
 }
 .third-container{
     height: 100vh;
-    background-color: aqua;
+    background-color: white;
+}
+.skills{
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+}
+.skills h1{
+    font-size: 45px;
+}
+.card1{
+    height: 250px;
+    width: 250px;
+    background-color: grey;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2em;
+}
+.card1 h1{
+    color: white;
+    font-size: 25px;
+}
+.cards{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
 }
 @media screen and (max-width:925px){
     .section{
@@ -195,26 +224,23 @@ body,
         transform: scale(0.9);
     }
     #menav{
-        display: block;
+        display: none;
         margin-top: 4.9em;
         gap: 4em;
         background-color: gray;
-        height: 400px;
+        height: 350px;
     }
     .cvbtn1{
         width: 100%;
         display: flex;
         justify-content: center;
-    }
-    hr{
-        width: 80%;
-        height: 0;
-        margin-left: 50px;
+        margin-top: 1em;
     }
     .menu-nav li{
+        display: flex;
+        justify-content: center;
         list-style: none;
         position: relative;
-        text-align: center;
         line-height: 60px;
         
     }
@@ -239,12 +265,20 @@ body,
         margin-top: 50px;
     }
     .intro{
-        margin-top: 8em;
+        margin-top: 7em;
     }
     .icon{
     }
     .aboutme{
-        margin-top: 10em;
+        margin-top: 3em;
     }
 
+}
+@media screen and (max-width:506px){
+    .menu-nav li{
+        margin-right: 2em;
+    }
+    .cv{
+        margin-right:2em;
+    }
 }
