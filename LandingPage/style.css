@@ -1,0 +1,66 @@
+html{
+    scroll-behavior: smooth;
+}
+body{
+    background: rgba(0, 0, 0, 0.4) url("images/sunrise-bali-jungle.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: darken;
+    margin: 0;
+    top: 0;
+}
+.container{
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, 0);
+    text-align: center;
+}
+.container h1{
+    color: rgb(246, 245, 242);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 55px;
+    margin-bottom: 10px;
+    filter: brightness(1);
+}
+.container p{
+    color: white;
+    font-size: 25px;
+    margin-bottom: 35px;
+}
+#explore{
+    font-family: Arial;
+    font-size: 25px;
+    width: 140px;
+    padding: 13px;
+    border-radius: 50px;
+    background-color: transparent;
+    color: white;
+    border: solid white;
+    border-width: 2px;
+    transition: background-color .5s, color .5s;
+    font-style: italic;
+    filter: brightness(.9);
+    cursor: pointer;
+}
+#explore:hover{
+    background-color: white;
+    color: black;
+}
+#explore:active{
+    opacity: .8;
+}
+@media screen and (max-width:700px){
+    body::-webkit-scrollbar{
+        display: none;
+    }
+    .natures{
+        top: 5%;
+    }
+    .nature2{
+        top: 5%;
+    }
+    .container{
+        top: 15%;
+    }
+}

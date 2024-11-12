@@ -1,0 +1,250 @@
+html{
+    scroll-behavior: smooth;
+}
+body, 
+.container{
+    min-height: 100vh;
+    margin: 0;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+.header{
+    flex: 0;
+    display: flex;
+    background-color: black;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+.header ul{
+    display: flex;
+    margin-right: 4em;
+    gap: 4em;
+    align-items: center;
+}
+.header li{
+    list-style: none;
+}
+.header a{
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: color 0.5s;
+}
+.header a:hover{
+    color: aqua;
+}
+.icon{
+    display: none;
+    align-items: center;
+    margin: 0 2em;
+}
+#menu{
+    height: 30px;
+}
+.log{
+    margin-left: 4em;
+}
+.log h1{
+    color: aqua;
+    font-size: 2em;
+    font-family: Arial, Helvetica, sans-serif;
+    flex-shrink: 0;
+}
+.section{
+    flex: 4;
+    display: flex;
+}
+.intro{
+    flex: 1.5;
+    margin: 0 2em;
+}
+.intro h1, p, button{
+    position: relative;
+    top: 35%;
+    z-index: 1;
+}
+.intro h1{
+    font-size: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.intro p{
+    font-size: 20px;
+}
+.intro span{
+    color: aqua;
+}
+.pic{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pic img{
+    width: 70%;
+    max-width: 450px;
+    border-radius: 50%;
+    border: 5px solid aqua;
+    transition: border 0.5s;
+}
+.pic img:hover{
+    border: 10px solid aqua;
+}
+.cv{
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: aqua;
+    width: 150px;
+    height: 50px;
+    font-weight: bold;
+    transition: opacity 0.5s;
+}
+.cv:hover{
+    opacity: 0.9;
+}
+.hm{
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: aqua;
+    width: 180px;
+    height: 60px;
+    font-weight: bold;
+    margin-top: 10px;
+    gap: 2em;
+}
+.pic{
+    flex: 1.5;
+}
+#menav{
+    display: none;
+}
+.cvbtn1{
+    display: none;
+}
+.second-container{
+    height: 100vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.aboutme h1{
+    color: black;
+    font-size: 50px;
+}
+.aboutme p{
+    text-align: center;
+    border: 3px solid black;
+    padding: 80px 50px;
+    border-radius: 50px;
+    font-size: 30px;
+    width: 70%;
+    transition: all 0.5s;
+    box-shadow: 1px 1px 20px -1px rgba(96,96,96);
+    -webkit-box-shadow: 1px 1px 20px -1px rgba(96,96,96);
+    -moz-box-shadow: 1px 1px 20px -1px rgba(96,96,96    );
+}
+.aboutme p:hover{
+    box-shadow: 1px 1px 62px -5px rgba(0,255,255,0.79);
+    -webkit-box-shadow: 1px 1px 62px -5px rgba(0,255,255,0.79);
+    -moz-box-shadow: 1px 1px 62px -5px rgba(0,255,255,0.79);
+}
+.aboutme{
+    font-family: Arial, Helvetica, sans-serif;
+    width: 80%;
+    text-align: center;
+}
+.aboutp{
+    display: flex;
+    justify-content: center;
+}
+.third-container{
+    height: 100vh;
+    background-color: aqua;
+}
+@media screen and (max-width:925px){
+    .section{
+        flex-direction: column;
+    }
+    .header ul{
+        display: none;
+    }
+    .header ul li a:hover{
+        color: aqua;
+    }
+    .intro{
+        text-align: center;
+        margin-top: 8em;
+    }
+    .intro button{
+        margin: 1em;
+    }
+    .pic img{
+        margin-top: 50px;
+    }
+    .icon{
+        display: flex;
+    }
+    .icon img:active{
+        transform: scale(0.9);
+    }
+    #menav{
+        display: block;
+        margin-top: 4.9em;
+        gap: 4em;
+        background-color: gray;
+        height: 400px;
+    }
+    .cvbtn1{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    hr{
+        width: 80%;
+        height: 0;
+        margin-left: 50px;
+    }
+    .menu-nav li{
+        list-style: none;
+        position: relative;
+        text-align: center;
+        line-height: 60px;
+        
+    }
+    .menu-nav a{
+        font-family: Arial, Helvetica, sans-serif;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        transition: color 0.5s;
+        
+    }
+    .menu-nav a:hover{
+        color: aqua;
+    }
+    .showmenu{
+        display: block;
+    }
+}
+@media screen and (max-width:506px){
+    .pic img{
+        margin-top: 50px;
+    }
+    .intro{
+        margin-top: 8em;
+    }
+    .icon{
+    }
+    .aboutme{
+        margin-top: 10em;
+    }
+
+}
