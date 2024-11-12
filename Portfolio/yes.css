@@ -165,8 +165,7 @@ body,
     justify-content: center;
 }
 .third-container{
-    height: 100vh;
-    background-color: white;
+    min-height: 100vh;
 }
 .skills{
     font-family: Arial, Helvetica, sans-serif;
@@ -229,6 +228,9 @@ body,
         gap: 4em;
         background-color: gray;
         height: 350px;
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
     }
     .cvbtn1{
         width: 100%;
@@ -270,15 +272,18 @@ body,
     .icon{
     }
     .aboutme{
-        margin-top: 3em;
+        margin-top: 5em;
     }
+   .skills h1{
+        margin-top: 2.5em;
+   }
 
 }
 @media screen and (max-width:506px){
     .menu-nav li{
-        margin-right: 2em;
+        margin-right: 4em;
     }
     .cv{
-        margin-right:2em;
+        margin-right:3.5em;
     }
 }
