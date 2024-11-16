@@ -7,7 +7,7 @@ guesBtn.addEventListener('click', function(){
     let output = document.getElementById('result');
     let attempt = document.getElementById('attempt');
     let x = 0;
-
+  
     if (guessInput > randomNum){
 
         output.style.color = 'yellow';
