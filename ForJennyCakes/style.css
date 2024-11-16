@@ -270,7 +270,7 @@
     color: white;
     width: 80%;
     position: absolute;    
-    top: 73%;
+    top: 85%;
 }
 #letter-form button:hover{
     transform: scale(1.1);
