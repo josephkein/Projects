@@ -224,7 +224,7 @@
     align-items: center;
     flex-direction: column;
     position: absolute;
-    top: 20%;
+    top: 13%;
     animation: fadeIn 2s
 
 }
@@ -270,7 +270,7 @@
     color: white;
     width: 80%;
     position: absolute;    
-    top: 92%;
+    top: 90%;
 }
 #letter-form button:hover{
     transform: scale(1.1);
