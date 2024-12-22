@@ -1,11 +1,11 @@
 body{
     background-color: rgb(94, 193, 160);
 }
-
+.group{
+    display: flex;
+    justify-content: center;
+}
 .container{
-    position: absolute;
-    top: 15%;
-    left: 38%;
     background-color: aquamarine;
     width: 325px;
     height: auto;
@@ -59,19 +59,8 @@ h2{
 label{
     font-weight: bold;
 }
-@media screen and (max-width:600px){
-    .container{
-        left: 20%;
-    }
-}
 @media screen and (max-width:500px){
-    .container{
-        left: 10%;
-    }
-}
-@media screen and (max-width:400px){
-    .container{
-        left: 5%;
-        width: 300px;
+    .group{
+        margin-top: 40%;
     }
 }
