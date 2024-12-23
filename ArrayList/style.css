@@ -20,7 +20,7 @@ body{
     margin-top: 20px;
     gap: 10px;
     padding: 30px;
-    width: 65%;
+    width: auto;
     border-radius: 10px;
     box-shadow: 5px 5px 15px hsla(0, 0%, 0%, 0.3);
     background-color: white;
@@ -35,7 +35,7 @@ body{
     border: 1px solid gray;
     font-size: 20px;
     outline: none;
-    width: 100%;
+    width: auto;
     background-color: rgb(228, 228, 228);
 }
 .addInput button{
@@ -45,7 +45,7 @@ body{
     background-color: #A294F9;
     border-radius: 10px;
     padding: 13px;
-    width: 100px;
+    width: auto;
     border: 1px solid gray;
     font-size: 20px;
     outline: none;
@@ -102,19 +102,20 @@ ul li span:hover{
 }
 
 @media screen and (max-width:1000px){
-    .addInput{
-        width: 80%;
-    }
     .container{
         width: 85%;
     }
 }
 @media screen and (max-width:800px){
     .addInput{
+        width: 90%;
+        flex-direction: column;
+    }
+    button{
         width: 100%;
     }
     .container{
-        width: 80%;
+        width: 90%;
     }
 }
 @keyframes fadeIn{
