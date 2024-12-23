@@ -4,6 +4,8 @@ body{
 .group{
     display: flex;
     justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 .container{
     background-color: aquamarine;
@@ -58,9 +60,4 @@ h2{
 }
 label{
     font-weight: bold;
-}
-@media screen and (max-width:500px){
-    .group{
-        margin-top: 28%;
-    }
 }
