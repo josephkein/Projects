@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Bangers&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Permanent+Marker&family=Roboto&family=Schoolbell&display=swap');
+
 html{
     scroll-behavior: smooth;
+}
+body{
+    background-color: #3B3939;
 }
 body, 
 .container{
@@ -14,16 +19,16 @@ body,
 .header{
     flex: 0;
     display: flex;
-    background-color: black;
     justify-content: space-between;
     position: fixed;
     width: 100%;
+    backdrop-filter: blur(10px);
     z-index: 1000;
 }
 .header ul{
     display: flex;
     margin-right: 4em;
-    gap: 4em;
+    gap: 6em;
     align-items: center;
 }
 .header li{
@@ -33,12 +38,11 @@ body,
     font-family: Arial, Helvetica, sans-serif;
     text-decoration: none;
     color: white;
-    font-weight: bold;
-    font-size: 18px;
+    font-size: 20px;
     transition: color 0.5s;
 }
 .header a:hover{
-    color: aqua;
+    color: #5988FF;
 }
 .icon{
     display: none;
@@ -52,35 +56,65 @@ body,
     margin-left: 4em;
 }
 .log h1{
-    color: aqua;
+    color: white;
     font-size: 2em;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Audiowide", serif;
+    font-weight: 400;
+    font-style: normal;
     flex-shrink: 0;
+}
+.log h1 span{
+    color: #5988FF;
 }
 .section{
     flex: 4;
     display: flex;
+    flex-direction: row-reverse;
+
 }
 .intro{
     flex: 1.5;
-    margin: 0 2em;
-}
-.intro h1, p, button{
-    position: relative;
-    top: 35%;
-    z-index: 1;
-}
-.intro h1{
-    font-size: 50px;
-    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #3B3939;
+    line-height: 5px;
+    animation: slide2 1.5s linear;
 }
 .intro p{
-    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    color: white;
+    width: 75%;
 }
-.intro span{
-    color: aqua;
+#int{
+    line-height: 30px;
+}
+.intro h1{
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-size: 45px;
+}
+.intro h1 span{
+    font-family: "Audiowide", serif;
+    color: #5988FF;
+}
+.icons{
+    display: flex;
+    margin-top: 15px;
+    gap: 40px;
+}
+.icons img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    transition: transform 0.5s;
+}
+.icons img:hover{
+    transform: scale(1.2);
 }
 .pic{
+    background-color: #3B3939;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -89,35 +123,12 @@ body,
     width: 70%;
     max-width: 450px;
     border-radius: 50%;
-    border: 5px solid aqua;
-    transition: border 0.5s;
+    border: 5px solid #5988FF;
+    transition: transform 0.5s;
+    animation: slide 1.5s linear;
 }
 .pic img:hover{
-    border: 10px solid aqua;
-}
-.cv{
-    font-size: 18px;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: aqua;
-    width: 150px;
-    height: 50px;
-    font-weight: bold;
-    transition: opacity 0.5s;
-}
-.cv:hover{
-    opacity: 0.9;
-}
-.hm{
-    font-size: 20px;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: aqua;
-    width: 180px;
-    height: 60px;
-    font-weight: bold;
-    margin-top: 10px;
-    gap: 2em;
+    transform: scale(1.05);
 }
 .pic{
     flex: 1.5;
@@ -125,92 +136,191 @@ body,
 #menav{
     display: none;
 }
-.cvbtn1{
-    display: none;
-}
 .second-container{
     min-height: 100vh; 
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 20px;
 }
-.aboutme h1{
-    color: black;
-    font-size: 45px;
+.aboutT{
+    font-family: "Audiowide", serif;
+    color: #5988FF;
+    animation: slideDown 1.5s linear
 }
-.aboutme p{
-    text-align: center;
-    border: 3px solid black;
-    padding: 80px 50px;
-    border-radius: 50px;
-    font-size: 30px;
-    width: 70%;
-    transition: all 0.5s;
-    box-shadow: 1px 1px 20px -1px rgba(96,96,96);
-    -webkit-box-shadow: 1px 1px 20px -1px rgba(96,96,96);
-    -moz-box-shadow: 1px 1px 20px -1px rgba(96,96,96    );
-}
-.aboutme p:hover{
-    box-shadow: 1px 1px 62px -5px rgba(0,255,255,0.79);
-    -webkit-box-shadow: 1px 1px 62px -5px rgba(0,255,255,0.79);
-    -moz-box-shadow: 1px 1px 62px -5px rgba(0,255,255,0.79);
+.groupAbout{
+    display: flex;
+    width: 80%;
 }
 .aboutme{
-    font-family: Arial, Helvetica, sans-serif;
-    width: 80%;
-    text-align: center;
+    animation: slide 1.5s linear;
+
 }
-.aboutp{
-    display: flex;
-    justify-content: center;
+.aboutme p{
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-size: 2em;
+    text-align: justify;
+    word-spacing: 2px;
+    line-height: 40px;
+}
+.aboutme span{
+    font-family: "Audiowide", serif;
+    color: #5988FF;
+}
+.pic2 img{
+    height: 450px;
+    margin: 0 5em;
+    border-radius: 10px;
+    border: 5px solid #5988FF;
+    transition: transform 0.5s;
+    animation: slide2 1.5s linear;
+
+}
+.pic2 img:hover{
+    transform: scale(1.05);
 }
 .third-container{
     min-height: 100vh;
-}
-.skills{
-    font-family: Arial, Helvetica, sans-serif;
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
 }
-.skills h1{
-    font-size: 45px;
-    margin-top: 2.5em;
+.skillsCon{
+    background-color: #777272;
+    height: 400px;
+    width: 900px;
+    border-radius: 10px;
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    animation: slideUp 1.5s linear;
 }
-.card1{
-    height: 250px;
-    width: 250px;
-    background-color: white;
+.skillT{
+    font-family: "Audiowide", serif;
+    color: #5988FF;
+    animation: slideDown 1.5s linear
+
+}
+.skill{
+    background-color:  #695c5c;
+    height: 155px;
+    width: 150px;
     border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 1em;
-    transition: all 0.5s;
-    box-shadow: 1px 1px 20px -1px rgba(96,96,96);
-    -webkit-box-shadow: 1px 1px 20px -1px rgba(96,96,96);
-    -moz-box-shadow: 1px 1px 20px -1px rgba(96,96,96);
-    border: 3px solid black;
-
+    flex-direction: column;
 }
-.card1:hover{
-    box-shadow: 1px 1px 62px -5px rgba(0,255,255,0.79);
-    -webkit-box-shadow: 1px 1px 62px -5px rgba(0,255,255,0.79);
-    -moz-box-shadow: 1px 1px 62px -5px rgba(0,255,255,0.79);
+.skill img{
+    height: 100px;
 }
-.card1 h1{
-    color: black;
-    font-size: 25px;
+.skill h1{
+    color: white;
+    font-size: 20px;
+    font-weight: 100;
 }
-.cards{
+.fourth-container{
+    min-height: 100vh;
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+.contactT{
+    font-family: "Audiowide", serif;
+    color: #5988FF;
+    animation: slideDown 1.5s linear
+}
+.contactSec{
+    height: 510px;
+    width: 600px;
+    background-color: #796565;
+    border-radius: 150px 20px 150px; 
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 35px;
+    animation: slideUp 1.5s linear;
+
+}
+.contactSec input{
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 20px;
+    width: 70%;
+    border: none;
+}
+#message{
+    width: 70%;
+    padding: 10px;
+    border-radius: 5px;
+    height: 225px;
+    font-size: 20px;
+}
+#submit{
+    padding: 15px;
+    border-radius: 8px;
+    width: 73%;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: #5988FF;
+    outline: none;
+    border: none;
+    transition: transform 0.5s;
+}
+#submit:hover{
+    transform: scale(1.02);
+}
+#submit:active{
+    transform: scale(0.9);
+}
+footer{
+    min-height: 20vh;
+    background-color: #828282;
+}
+.fifth-container{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.projectT{
+    font-family: "Audiowide", serif;
+    color: #5988FF;
+    animation: slideDown 1.5s linear
+}
+.projectSec{
+    display: flex;
     flex-wrap: wrap;
-    gap: 0px 60px;
-    font-family: Arial, Helvetica, sans-serif;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+.projectSec img{
+    height: 200px;
+    border-radius: 10px;
+    transition: transform 0.5s ease;
+}
+.projectSec img:hover{
+    transform: scale(1.1);
 }
 @media screen and (max-width:925px){
     .section{
         flex-direction: column;
+    }
+    .groupAbout{
+        flex-direction: column;
+        text-align: center;
     }
     .header ul{
         display: none;
@@ -220,10 +330,12 @@ body,
     }
     .intro{
         text-align: center;
+        align-items: center;
         margin-top: 8em;
+        line-height: 10px;
     }
-    .intro button{
-        margin: 1em;
+    .intro h1{
+        line-height:50px;
     }
     .pic img{
         margin-top: 50px;
@@ -276,6 +388,7 @@ body,
     .log{
         margin-left: 3em;
     }
+
 }
 @media screen and (max-width:506px){
     .pic img{
@@ -305,10 +418,47 @@ body,
     .menu-nav li{
         margin-right: 4.5em;
     }
-    .cv{
-        margin-right:4em;
-    }
     .log{
         margin-left: 1.5em;
+    }
+}
+@keyframes slide{
+    from{
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes slide2{
+    from{
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes slideDown{
+    from{
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes slideUp{
+    from{
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0);
     }
 }

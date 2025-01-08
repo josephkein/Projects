@@ -5,6 +5,8 @@ body{
     background: rgba(0, 0, 0, 0.4) url("images/sunrise-bali-jungle.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
     background-blend-mode: darken;
     margin: 0;
     top: 0;
