@@ -15,6 +15,7 @@ body,
     display: flex;
     flex-direction: column;
     border-radius: 10px;
+
 }
 .header{
     flex: 0;
@@ -70,7 +71,7 @@ body,
     flex: 4;
     display: flex;
     flex-direction: row-reverse;
-
+    justify-content: center;
 }
 .intro{
     flex: 1.5;
@@ -151,7 +152,7 @@ body,
 }
 .groupAbout{
     display: flex;
-    width: 80%;
+    margin: 0 100px;
 }
 .aboutme{
     animation: slide 1.5s linear;
@@ -162,8 +163,9 @@ body,
     color: white;
     font-size: 2em;
     text-align: justify;
-    word-spacing: 2px;
-    line-height: 40px;
+    word-spacing: 0.5rem;
+    line-height: 2.5rem;
+
 }
 .aboutme span{
     font-family: "Audiowide", serif;
@@ -241,13 +243,13 @@ body,
 .contactSec{
     height: 510px;
     width: 600px;
-    background-color: #796565;
-    border-radius: 150px 20px 150px; 
+    background-color: #5988ff5a;
     display: flex;
     align-items: center;
     flex-direction: column;
     gap: 10px;
     padding-top: 35px;
+    border-radius: 10px;
     animation: slideUp 1.5s linear;
 
 }
@@ -284,8 +286,29 @@ body,
     transform: scale(0.9);
 }
 footer{
-    min-height: 20vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    min-height: 15vh;
     background-color: #828282;
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+footer button{
+    border-radius: 50%;
+    padding: 10px 20px;
+    font-size: 30px;
+    border: 1px solid white;
+    background-color: #5988FF;
+    transition: transform 0.5s;
+    margin: 0 5em;
+}
+footer button:hover{
+    transform: scale(1.1);
+}
+footer p{
+    margin: 0 5em;
 }
 .fifth-container{
     min-height: 100vh;
@@ -314,7 +337,8 @@ footer{
 .projectSec img:hover{
     transform: scale(1.1);
 }
-@media screen and (max-width:925px){
+
+@media screen and (max-width:768px){
     .section{
         flex-direction: column;
     }
@@ -388,9 +412,22 @@ footer{
     .log{
         margin-left: 3em;
     }
+    .skillsCon{
+        width: auto;
+        flex-wrap: wrap;
+        height: auto;
+        padding: 20px;
+        margin: 0 69px;
+    }
+    .skill{
+        width: 100%;
+    }
+    .contactSec{
+        width: auto;
+    }
 
 }
-@media screen and (max-width:506px){
+@media screen and (max-width:480px){
     .pic img{
         margin-top: 50px;
     }
@@ -401,6 +438,9 @@ footer{
     }
     .aboutme{
         margin-top: 5em;
+    }
+    .aboutme p{
+        padding: 0 30px;
     }
    .skills h1{
         margin-top: 2.5em;
@@ -425,7 +465,8 @@ footer{
 @keyframes slide{
     from{
         opacity: 0;
-        transform: translateX(-100px);
+        transform: translateX(-5]
+    0px);
     }
     to{
         opacity: 1;
@@ -435,7 +476,7 @@ footer{
 @keyframes slide2{
     from{
         opacity: 0;
-        transform: translateX(100px);
+        transform: translateX(50px);
     }
     to{
         opacity: 1;
@@ -445,7 +486,7 @@ footer{
 @keyframes slideDown{
     from{
         opacity: 0;
-        transform: translateY(-100px);
+        transform: translateY(-50px);
     }
     to{
         opacity: 1;
@@ -455,7 +496,7 @@ footer{
 @keyframes slideUp{
     from{
         opacity: 0;
-        transform: translateY(100px);
+        transform: translateY(50px);
     }
     to{
         opacity: 1;
