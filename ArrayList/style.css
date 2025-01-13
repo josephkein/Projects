@@ -117,6 +117,9 @@ ul li span:hover{
     .container{
         width: 90%;
     }
+    .box{
+        width: 108%;
+    }
 }
 @keyframes fadeIn{
     0% {
