@@ -26,8 +26,8 @@ btn.addEventListener('click', function(){
         aboutlifeQuotes();
     } else if (categ.textContent == love.textContent)
     {
-        alert("We apologize for the inconvenience!\n\nThe Love category is currently unavailable. We're working on it and appreciate your patience as we continue to improve and add more categories!");
-    }
+        lovelifeQuotes();
+    }   
      else {
         p.textContent = "Please select a category before submitting!";
      }
@@ -87,7 +87,7 @@ function motivationalQuotes(){
 
 function aboutlifeQuotes(){
 
-    let motivateQuotes = ["\"In the middle of every difficulty lies opportunity.\"", //Albert Einstein
+    let lifeQuotes = ["\"In the middle of every difficulty lies opportunity.\"", //Albert Einstein
         "\"Happiness is not something ready made. It comes from your own actions.\"" , //Dalai Lama
         "\"Knowing yourself is the beginning of all wisdom.\"", //Aristotle
         "\"Be the change that you wish to see in the world.\"", //Mahatma Gandhi    
@@ -99,7 +99,7 @@ function aboutlifeQuotes(){
         "\"The greatest glory in living lies not in never falling, but in rising every time we fall.\"", //Nelson Mandela
         ];
     
-    let motivateAuthors = ["Albert Einstein",
+    let lifeAuthors = ["Albert Einstein",
         "Dalai Lama",
         "Aristotle",
         "Mahatma Gandhi",
@@ -117,15 +117,15 @@ function aboutlifeQuotes(){
     let randomQuotes = "";
     let authors = "- ";
     
-    let randomQuote = Math.floor(Math.random() * motivateQuotes.length);
-    randomQuotes += motivateQuotes[randomQuote];
+    let randomQuote = Math.floor(Math.random() * lifeQuotes.length);
+    randomQuotes += lifeQuotes[randomQuote];
     
-    for (let i = 1; i <= motivateAuthors.length; i++)
+    for (let i = 1; i <= lifeAuthors.length; i++)
     {
         switch (randomQuote)
         {
             case i:
-            authors += motivateAuthors[i];
+            authors += lifeAuthors[i];
             spn1.textContent = authors;
             break;    
         }
@@ -138,28 +138,28 @@ function aboutlifeQuotes(){
     
 function lovelifeQuotes(){
 
-    let motivateQuotes = ["\"In the middle of every difficulty lies opportunity.\"", //Albert Einstein
-        "\"Happiness is not something ready made. It comes from your own actions.\"" , //Dalai Lama
-        "\"Knowing yourself is the beginning of all wisdom.\"", //Aristotle
-        "\"Be the change that you wish to see in the world.\"", //Mahatma Gandhi    
-        "\"Life is what happens when you’re busy making other plans.\"", //John Lennon
-        "\"In three words I can sum up everything I’ve learned about life: it goes on.\"", //Robert Frost
-        "\"Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment.\"", //Buddha
-        "\"Life isn’t about finding yourself. It’s about creating yourself.\"", //George Bernard Shaw
-        "\"The purpose of life is not to be happy. It is to be useful, to be honorable, to be compassionate, to have it make some difference that you have lived and lived well.\"", //Ralph Waldo Emerson
-        "\"The greatest glory in living lies not in never falling, but in rising every time we fall.\"", //Nelson Mandela
+    let loveQuotes = ["\"Love is composed of a single soul inhabiting two bodies.\"", //Aristotle
+        "\"When I saw you I fell in love, and you smiled because you knew.\"" , //Arrigo Boito
+        "\"A friend is someone who knows all about you and still loves you.\"", //Elbert Hubbard
+        "\"Love is an endless act of forgiveness. Forgiveness is the key to action and freedom.\"", //Maya Angelou
+        "\"Friendship is born at that moment when one person says to another, 'What! You too? I thought I was the only one.'\"", //C.S. Lewis
+        "\"A true friend is somebody who can make us feel better no matter how bad things may be.\"", //Ralph Waldo Emerson
+        "\"Family means no one gets left behind or forgotten.\"", //David Ogden Stiers
+        "\"Family is not an important thing. It’s everything.\"", //Michael J. Fox
+        "\"To love oneself is the beginning of a lifelong romance.\"", //Oscar Wilde
+        "\"Self-love is not selfish; you cannot truly love another until you know how to love yourself.\"", //RuPaul
         ];
     
-    let motivateAuthors = ["Albert Einstein",
-        "Dalai Lama",
-        "Aristotle",
-        "Mahatma Gandhi",
-        "John Lennon",
-        "Robert Frost",
-        "Buddha",
-        "George Bernard Shaw",
+    let loveAuthors = ["Aristotle",
+        "Arrigo Boito",
+        "Elbert Hubbard",
+        "Maya Angelou",
+        "C.S. Lewis",
         "Ralph Waldo Emerson",
-        "Nelson Mandela"
+        "David Ogden Stiers",
+        "Michael J. Fox",
+        "Oscar Wilde",
+        "RuPaul"
     ];
     
     let spn = document.getElementById("quotes");
@@ -168,15 +168,15 @@ function lovelifeQuotes(){
     let randomQuotes = "";
     let authors = "- ";
     
-    let randomQuote = Math.floor(Math.random() * motivateQuotes.length);
-    randomQuotes += motivateQuotes[randomQuote];
+    let randomQuote = Math.floor(Math.random() * loveQuotes.length);
+    randomQuotes += loveQuotes[randomQuote];
     
-    for (let i = 1; i <= motivateAuthors.length; i++)
+    for (let i = 1; i <= loveAuthors.length; i++)
     {
         switch (randomQuote)
         {
             case i:
-            authors += motivateAuthors[i];
+            authors += loveAuthors[i];
             spn1.textContent = authors;
             break;    
         }
