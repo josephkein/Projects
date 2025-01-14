@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piso Wifi Ni Jkeinskie</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+#btnR{
+    width: 180px;
+    margin: 10px 10px;
+}
+#btn-group{
+    text-align: center;
+}
+#pagination{
+    display: flex;
+    justify-content: center;
+}
+#ado{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 71%;
+}
+#aic{
+    font-size: 24px;
+    margin: 0px 0px 12px;
+}
+#int{
+    margin: 15px 0px 15px;
+}
+#imgwifi{
+    width: 17px;
+    margin: 0px 2px 5px;
+}
+#vc{
+    margin: 5px 0px;
+}
+@media screen and (max-width:600px) {
+    #btnR{
+        margin: 0px 0px 20px;
+    }
+    #ado{
+        width: 100%;
+    }
+}
+  </style>
+</head>
+<body>
+<audio loop>
+    <source src="audio/PISO WIFI Insert coin sound effects_dR3-Q_o71xw.mp3">
+</audio>
+<div class="container"><div class="text-center" style="margin: 5px 0px 2px;">2h:22m:12s <img src="images/wifi.png" id="imgwifi"></div></div>
+<img src="images/JKEINWIFI.png" class="img-responsive img-full" id="ado"><br>
+    <div class="container">
+    <div class="text-center text-success" id="aic"><strong>Affordable internet connectivity</strong></div>
+    <div class="text-center">MAC: <code>90:09:DF:83:02:43</code><span class="glyphicon glyphicon-minus"></span> IP: <code>10.0.13.127</code></div>
+    <br>
+    <div class="btn-group-padded btn-group-lg" id="btn-group">
+        <button class="btn btn-primary" id="btnR" onclick="playMusic()"><strong> Insert Coin</strong></button>
+        <button class="btn btn-success" id="btnR" onclick="playMusic()"><strong> E-Load</strong></button>
+        <button class="btn btn-info" id="btnR" onclick="playMusic()"><strong> Voucher</strong></button>
+        <button class="btn btn-warning" id="btnR" onclick="playMusic()"><span class="glyphicon glyphicon-pause"></span><strong> Pause</strong></button>
+    <div class="btn-group">
+        <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown" style="width: 180px; margin: 0px 5px;"><strong>More </strong><span class="glyphicon glyphicon-menu-down"></span></button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">My Account</a></li>
+              <li class="divider"></li>
+              <li><a href="#">View Vouchers</a></li>
+              <li class="divider"></li>
+              <li><a href="#">View Rates</a></li>
+            </ul>
+    </div>
+    </div><br>
+    <div class="row">
+        <div class="col-md-4 col-sm-offset-4">
+    <div class="input-group" id="vc">
+        <input type="text" class="form-control input-lg" placeholder="Voucher Code">
+        <span class="input-group-btn">
+            <button class="btn btn-lg btn-primary" id="act" onclick="playMusic()"><strong>Activate</strong></button>
+        </span>
+    </div>
+        </div>
+    </div>
+    <div class="text-center" id="int">Internet is: <span class="text-success"><strong>Up</strong></span></div>
+    <div class="panel panel-primary">
+        <div class="panel-heading text-center">Available Sessions</div>
+        <table class="table">
+            <thead>
+              <tr>
+                <th class="text-center">Credits</th>
+                <th class="text-center">Expiry</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-center">2h:22m:12s</td>
+                <td class="text-center">8/7/2024 4:32PM</td>
+                <td class="text-center"><button class="btn btn-warning"><span class="glyphicon glyphicon-pause"></span></button></td>
+              </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3"><div class="text-center text-muted" style="margin: 4px 0px;">Expiry date format is Month/Date/Year.</div></td>
+                </tr>
+                <tr>
+                    <td colspan="3"><div class="text-center text-info" style="margin: 4px 0px;"><strong>Made by Jkeinskie</strong></div></td>
+                </tr>
+            </tfoot>
+        </div>
+    </div>
+    </div> 
+    <script>
+        function playMusic() {
+                const audio = new Audio("UNGOL PRANK SOUND.mp3");
+                audio.play();
+            }
+    </script>
+</body>
+</html>
