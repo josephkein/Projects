@@ -5,6 +5,22 @@ let life = document.getElementById("life");
 let love = document.getElementById("love");
 let categ = document.getElementById("categ");
 let p = document.getElementById("quotes");
+let addmotiv = document.getElementById("addmotiv");
+let addlife = document.getElementById("addlife");
+let addlove = document.getElementById("addlove");
+let addcateg = document.getElementById("addCategs");
+
+//Chamged the text content of the category
+
+addmotiv.addEventListener('click', function(){
+    addcateg.textContent = addmotiv.textContent;
+});
+addlife.addEventListener('click', function(){
+    addcateg.textContent = addlife.textContent;
+});
+addlove.addEventListener('click', function(){
+    addcateg.textContent = addlove.textContent;
+});
 
 motiv.addEventListener('click', function(){
     categ.textContent = motiv.textContent;
@@ -16,6 +32,7 @@ love.addEventListener('click', function(){
     categ.textContent = love.textContent;
 });
 
+//Call the function of the category selected
 
 btn.addEventListener('click', function(){
     if (categ.textContent == motiv.textContent)
@@ -33,8 +50,11 @@ btn.addEventListener('click', function(){
      }
 });
 
+//funtion for motivational quotes category
+
 function motivationalQuotes(){
 
+    //storing motivational quotes
     let motivateQuotes = ["\"Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful.\"", //Albert Schweitzer
         "\"There are no secrets to success. It is the result of preparation, hard work, and learning from failure.\"" , //Colin Powell
         "\"The future belongs to those who believe in the beauty of their dreams.\"", //Eleanor Roosevelt
@@ -46,7 +66,7 @@ function motivationalQuotes(){
         "\"Start where you are. Use what you have. Do what you can.\"", //Arthur Ashe
         "\"Do not wait to strike till the iron is hot, but make it hot by striking.\"", //William Butler Yeats
         ];
-
+    //storing its authors
     let motivateAuthors = ["Albert Schweitzer",
         "Colin Powell",
         "Eleanor Roosevelt",
@@ -64,10 +84,11 @@ function motivationalQuotes(){
 
     let randomQuotes = "";
     let authors = "- ";
-
+    //using random math library to have random quotes
+    //using its length
     let randomQuote = Math.floor(Math.random() * motivateQuotes.length);
     randomQuotes += motivateQuotes[randomQuote];
-
+    //using for loop to match the index of quote and authors when returning
     for (let i = 1; i <= motivateAuthors.length; i++)
     {
         switch (randomQuote)
@@ -97,6 +118,7 @@ function aboutlifeQuotes(){
         "\"Life isn’t about finding yourself. It’s about creating yourself.\"", //George Bernard Shaw
         "\"The purpose of life is not to be happy. It is to be useful, to be honorable, to be compassionate, to have it make some difference that you have lived and lived well.\"", //Ralph Waldo Emerson
         "\"The greatest glory in living lies not in never falling, but in rising every time we fall.\"", //Nelson Mandela
+        "\"Hindi mahalaga ang mag wagi, ang mahalaga ikaw ay nakibahagi\""
         ];
     
     let lifeAuthors = ["Albert Einstein",
@@ -108,7 +130,8 @@ function aboutlifeQuotes(){
         "Buddha",
         "George Bernard Shaw",
         "Ralph Waldo Emerson",
-        "Nelson Mandela"
+        "Nelson Mandela",
+        "Urada"
     ];
     
     let spn = document.getElementById("quotes");
@@ -186,10 +209,6 @@ function lovelifeQuotes(){
     spn.textContent = randomQuotes;
     
 }
-
-add.addEventListener('click', function(){
-    alert("We apologize for the inconvenience!\n\nThank you for exploring our feature! We're currently working hard to add functionality to this section. We appreciate your patience and support as we continue improving. Please stay tuned for updates!");
-});
 
 
 
