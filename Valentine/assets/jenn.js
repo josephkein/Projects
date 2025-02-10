@@ -111,7 +111,7 @@ sfBtn.addEventListener('click', function(){
 });
 let sbBtn = document.getElementById("sb");
 
-sfBtn.addEventListener('click', function(){
+sbBtn.addEventListener('click', function(){
     for (let card of cards)
         {
             card.style.display = "none";
