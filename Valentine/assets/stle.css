@@ -1,0 +1,28 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    gap: 50px;
+    background-color: white;
+}
+#btg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+#yes{
+    font-size: 2em;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+#no{
+    font-size: 2em;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+img{
+    height: 300px;
+}

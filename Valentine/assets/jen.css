@@ -1,0 +1,56 @@
+#bck{
+    font-size: 3em; 
+    border-radius: 50%; 
+    font-weight: bold; 
+    padding: 0px 25px;
+    transition: all 0.5s;
+    background-color: transparent;
+    border-color: black;
+    opacity: 1;
+    margin-top: 20px;
+}
+#bck:hover{
+    transform: scale(1.1);
+    background-color: rgb(223, 93, 93);
+}
+#bck:active{
+    opacity: 0.8;
+}
+.card{
+    display: none;
+}
+#tf{
+    display: none;
+}
+.bruh{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+}
+#gif1{
+    height: 350px;
+    width: auto;
+}
+#lst{
+    display: none;
+    font-size: 1.8rem;
+    justify-content: center;
+}
+#food{
+    font-size: 1.8rem;
+}
+#bruh{
+    display: none;
+    font-size: 1.8rem;
+    justify-content: center;
+}
+#cat{
+    display: none;
+}
+#ano{
+    display: none;
+    font-size: 1.8rem;
+    justify-content: center;
+}
