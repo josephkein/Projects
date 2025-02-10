@@ -105,7 +105,7 @@ sfBtn.addEventListener('click', function(){
         bruh.style.display = "flex";
         cat.style.display = "flex";
         yum.style.display = "flex";
-        fd.textContent = "SEAFOOD BOIL";
+        fd.textContent = "STREET FOODS";
         var audio1 = new Audio('mmm.mp3');
         audio1.play();
 });
