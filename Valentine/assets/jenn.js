@@ -109,3 +109,19 @@ sfBtn.addEventListener('click', function(){
         var audio1 = new Audio('mmm.mp3');
         audio1.play();
 });
+let sbBtn = document.getElementById("sb");
+
+sfBtn.addEventListener('click', function(){
+    for (let card of cards)
+        {
+            card.style.display = "none";
+        }
+        tf.style.display = "none";
+        lst.style.display = "flex";
+        bruh.style.display = "flex";
+        cat.style.display = "flex";
+        yum.style.display = "flex";
+        fd.textContent = "SEAFOOD BOIL";
+        var audio1 = new Audio('mmm.mp3');
+        audio1.play();
+});
