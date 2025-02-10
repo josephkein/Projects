@@ -14,7 +14,7 @@ bck.addEventListener('click', function(){
         tf.style.display = "flex";
         anm.style.display = "flex";
 });
-
+//dsd
 let card1 = document.getElementById("card1");
 let card2 = document.getElementById("card2");
 let card3 = document.getElementById("card3");
@@ -41,7 +41,7 @@ sgBtn.addEventListener('click', function(){
         cat.style.display = "flex";
         yum.style.display = "flex";
         fd.textContent = "PORK SISIG";
-        var audio1 = new Audio('mm.mp3');
+        var audio1 = new Audio('mmm.mp3');
         audio1.play();
         
 });
@@ -58,7 +58,7 @@ pcBtn.addEventListener('click', function(){
         cat.style.display = "flex";
         yum.style.display = "flex";
         fd.textContent = "PORK CHOP";
-        var audio1 = new Audio('mm.mp3');
+        var audio1 = new Audio('mmm.mp3');
         audio1.play();
 });
 let bfBtn = document.getElementById("bf");
@@ -74,7 +74,7 @@ bfBtn.addEventListener('click', function(){
         cat.style.display = "flex";
         yum.style.display = "flex";
         fd.textContent = "BUFFALO WINGS";
-        var audio1 = new Audio('mm.mp3');
+        var audio1 = new Audio('mmm.mp3');
         audio1.play();
 });
 let bqBtn = document.getElementById("bq");
@@ -90,7 +90,7 @@ bqBtn.addEventListener('click', function(){
         cat.style.display = "flex";
         yum.style.display = "flex";
         fd.textContent = "BARBECUE";
-        var audio1 = new Audio('mm.mp3');
+        var audio1 = new Audio('mmm.mp3');
         audio1.play();
 });
 let sfBtn = document.getElementById("sf");
@@ -106,6 +106,6 @@ sfBtn.addEventListener('click', function(){
         cat.style.display = "flex";
         yum.style.display = "flex";
         fd.textContent = "SEAFOOD BOIL";
-        var audio1 = new Audio('mm.mp3');
+        var audio1 = new Audio('mmm.mp3');
         audio1.play();
 });
