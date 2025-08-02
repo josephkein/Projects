@@ -10,16 +10,20 @@ document.getElementById('add-student').addEventListener('click', function(){
         alert("Limit to 100 only");
         return;
     }
-    let fn = prompt("Enter First Name").toUpperCase();
-    let mn = prompt("Enter Middle Name").toUpperCase();
-    let ln = prompt("Enter Last Name").toUpperCase();
-    let sx = "";
+    let fn = "", mn = "", ln = "", sx = "";
+    do{
+        fn = prompt("Enter First Name").toUpperCase();
+    } while (!fn);
+    do{
+        mn = prompt("Enter Middle Name").toUpperCase();
+    } while (!mn);
+    do{
+        ln = prompt("Enter Last Name").toUpperCase();
+    } while (!ln);
     do{
         sx = prompt("Enter Sex [M/F]").toUpperCase();
     } while (sx != "M" && sx != "F");
-    if (fn == "" || mn == "" || ln == "" || sx == ""){
-        return;
-    }
+
     let ran;
     
     do{
@@ -111,11 +115,17 @@ tb.addEventListener('click', function(e){
         const prevG = tds[4].textContent;
         studentList.forEach((stud) => {
             if (stud.ID == tarId){
-                stud.firstN = prompt("Update first name").toUpperCase();
+                do{
+                    stud.firstN = prompt("Update first name").toUpperCase();
+                } while (!stud.firstN);
                 tds[1].textContent = stud.firstN;
-                stud.MiddleN = prompt("Update middle name").toUpperCase();
+                do{
+                    stud.MiddleN = prompt("Update middle name").toUpperCase();
+                } while (!stud.MiddleN);
                 tds[2].textContent = stud.MiddleN;
-                stud.LastN = prompt("Update last name").toUpperCase();
+                do{
+                    stud.LastN = prompt("Update last name").toUpperCase();
+                } while (!stud.LastN);
                 tds[3].textContent = stud.LastN;
 
                 do{
@@ -126,8 +136,8 @@ tb.addEventListener('click', function(e){
         });
         localStorage.setItem("studentList", JSON.stringify(studentList));
         const sx = tds[4].textContent.trim();
-        if (sx == "M" && prevM == "F"){ female++; male--;}
-        else if (sx == "F" && prevM == "M"){ male++; female--;}
+        if (sx == "M" && prevG == "F"){ female--; male++; }
+        else if (sx == "F" && prevG == "M"){ male--; female++;}
         numberM.textContent = male;
         numberF.textContent = female;
     }
