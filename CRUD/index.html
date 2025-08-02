@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Student Management</title>
+</head>
+<body>
+    <div class="container">
+        <div class="side-bar">
+            <h1>Student Management</h1>
+            <p>By jkeinskie</p>
+        </div>
+        <div class="dashboard">
+            <h2 id="dash">Dashboard</h2>
+            <div class="flow-char">
+                <div class="students">
+                    <h1>Number of Students</h1>
+                    <h1 id="studentX">0</h1>
+                </div>
+                <div class="male">
+                    <h1>Male</h1>
+                    <h1 id="studentM">0</h1>
+                </div>
+                <div class="female">
+                    <h1>Female</h1>
+                    <h1 id="studentF">0</h1>
+                </div>
+            </div>
+            <div class="student-lists">
+                <div class="add">
+                    <h1>Student Lists</h1>
+                    <button id="add-student">+ New</button>
+                </div>
+                <table id="tb">
+                    <tr>
+                        <th>USER-ID</th>
+                        <th>FIRST-NAME</th>
+                        <th>MIDDLE-NAME</th>
+                        <th>LAST-NAME</th>
+                        <th>SEX</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

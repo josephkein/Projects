@@ -1,0 +1,171 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    left: 0;
+    top: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+:root{
+    --color1: white;
+    --color2: rgb(77, 77, 244);
+}
+.side-bar{
+    height: 100vh;
+    background-color: var(--color2);
+    box-shadow: 5px 5px 25px hsla(0, 0%, 0%, 0.2);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.side-bar h1, p{
+    color: white;
+}
+.side-bar h1{
+    font-size: 1.5rem;
+}
+.container{
+    display: flex;;
+    gap: 25px;
+}
+.dashboard{
+    height: 100vh;
+    background-color: var(--color1);
+    flex: 4;
+    display: flex;
+    width: 40%;
+    padding: 30px;
+    flex-direction: column;
+}
+#dash{
+    padding-bottom: 25px;
+    color: #a8aeae;
+    font-size: 2rem;
+}
+.flow-char{
+    flex: 1;
+    display: flex;
+    gap: 40px;
+}
+.flow-char div{
+    height: 90%;
+    width: 50%;
+    border-radius: 15px;
+    box-shadow: 5px 5px 25px hsla(0, 0%, 0%, 0.2);
+}
+.students, .male, .female{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+}
+.students{
+    background-color: green;
+}
+.male{
+    background-color: rgb(77, 77, 244);
+}
+.female{
+    background-color: rgb(214, 141, 153);
+}
+.student-lists{
+    flex: 1.5;
+    background-color: var(--color1);
+    box-shadow: 5px 5px 25px hsla(0, 0%, 0%, 0.2);
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    gap: 30px;
+    overflow-y: scroll;
+}
+.student-lists table{
+    border: 1px solid #dddddd;
+    width: 100%;
+    border-collapse: collapse;
+}
+td, th{
+    padding: 10px;
+    border: 1px solid #dddddd;
+    font-size: 1.2rem;
+}
+.add{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.add button{
+    width: 100px;
+    color:white;
+    background-color: var(--color2);
+    border: none;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    padding: 10px;
+    font-weight: bold;
+    transition: transform 0.5s;
+}
+#add-student:hover{
+    transform: scale(1.05);
+}
+#add-student:active{
+    transform: scale(0.9);
+}
+.add h1{
+    font-size: 1.8rem;
+}
+table button{
+    padding: 10px;
+    color:white;
+    border: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    width: 35%;
+    font-weight: bold;
+    transition: transform 0.5s;
+}
+.delete{
+    background-color: rgb(255, 0, 0);
+}
+.delete:active{
+    transform: scale(0.9);
+}
+.update{
+    background-color: var(--color2);
+}
+.update:active{
+    transform: scale(0.9);
+}
+@media screen and (max-width:800px){
+    .flow-char{
+        flex-direction: column;
+    }
+    .flow-char div{
+        width: auto;
+        height: auto;
+        padding: 20px;
+        gap: 25px;
+    }
+    .flow-char div h1{
+        font-size: 1.5rem;
+    }
+    .side-bar{
+        display: none;
+    }
+    .student-lists{
+        margin-top: 50px;
+    }
+    .add h1{
+        font-size: 1.2rem;
+    }
+    .add button{
+        font-size: 1.2rem;
+    }
+    #tb button{
+        width: auto;
+    }
+}
