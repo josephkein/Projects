@@ -108,6 +108,7 @@ tb.addEventListener('click', function(e){
         const rw = e.target.closest("tr");
         const tds = rw.querySelectorAll("td");
         let tarId = tds[0].textContent;
+        const prevG = tds[4].textContent;
         studentList.forEach((stud) => {
             if (stud.ID == tarId){
                 stud.firstN = prompt("Update first name").toUpperCase();
@@ -125,8 +126,8 @@ tb.addEventListener('click', function(e){
         });
         localStorage.setItem("studentList", JSON.stringify(studentList));
         const sx = tds[4].textContent.trim();
-        if (sx == "M"){ female--; male++;}
-        else if (sx == "F"){ male--; female++;}
+        if (sx == "M" && prevM == "F"){ female++; male--;}
+        else if (sx == "F" && prevM == "M"){ male++; female--;}
         numberM.textContent = male;
         numberF.textContent = female;
     }
