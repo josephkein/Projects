@@ -20,8 +20,6 @@ document.getElementById('add-student').addEventListener('click', function(){
     if (fn == "" || mn == "" || ln == "" || sx == ""){
         return;
     }
-
-    let isT = false;
     let ran;
     
     do{
@@ -38,7 +36,7 @@ document.getElementById('add-student').addEventListener('click', function(){
 });
 
 window.onload = function (){
-    studentList = JSON.parse(localStorage.getItem("studentList"));
+    studentList = JSON.parse(localStorage.getItem("studentList")) || [];
     students = 0, male = 0, female = 0, attempt = 0;;
 
     studentList.forEach((student) => {
