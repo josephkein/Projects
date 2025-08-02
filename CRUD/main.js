@@ -7,7 +7,7 @@ let ra = [];
 
 document.getElementById('add-student').addEventListener('click', function(){
     if (attempt == 100){
-        alert("Limit to 5 only");
+        alert("Limit to 100 only");
         return;
     }
     let fn = prompt("Enter First Name").toUpperCase();
