@@ -2,10 +2,11 @@ let addTask = document.getElementById('task');
 let btnadd = document.getElementById('addBBtn');
 let res = document.getElementById('res');
 const ul = document.getElementById('unorder');
+let edit = document.getElementById("edit");
+let tasks =  [];
 
 function clickNow(){
-    let tasks =  [];
-    tasks.splice(0, 0, addTask.value);
+    tasks.push(addTask.value);
     if (!addTask.value)
     {
         alert("Please input task!");
@@ -20,12 +21,19 @@ function clickNow(){
                 let span = document.createElement('span');
                 span.id = "yes";
                 span.textContent = "×";
-                yes.appendChild(span);
+                yes.appendChild(span);  
+
+                let edt = document.createElement("button");
+                edt.id = "edit";
+                edt.textContent = "Edit";
+                yes.appendChild(edt);
             }
+            
             addTask.value = "";
             saveList();
     }
 }
+
 
 ul.addEventListener('click', function(burak){
     if (burak.target.tagName === "SPAN"){

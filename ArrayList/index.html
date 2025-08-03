@@ -9,16 +9,20 @@
 <body>
     <div class="container">
         <h1>TO-DO LIST</h1>
-        <div class="addInput">
+        <form id="addF" class="addInput">
             <input type="text" placeholder="Task to be done..." id="task">
-            <button id="addBtn" onclick="clickNow()">Add</button>
-        </div>
+            <button type="submit" id="addBtn">Add</button>
+        </form>
         <div class="box">
             <ul id="unorder">
             </ul>
         </div>
     </div>
+            <div id="updateForm" popover>
+            <input type="text" placeholder="Update task.." id="newTask">
+            <button id="newTaskBtn">Update</button>
+        </div>
 
-    <script src="main.js"></script>
+    <script src="xcz.js"></script>
 </body>
 </html>
