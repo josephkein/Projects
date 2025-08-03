@@ -196,6 +196,7 @@ table button{
         margin-top: 80px;
         height: auto;
         background-color: rgb(74, 74, 194);
+        gap:100px;
     }
     .side-bar p{
         font-size: 1.2rem;
@@ -219,9 +220,7 @@ table button{
     .dash{
         padding: 5px;
     }
-    .contents{
-        margin-bottom: 50px;
-    }
+
     #jkein{
         font-size: 1rem;
         color: rgba(255, 255, 255, 0.659);
