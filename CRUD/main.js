@@ -142,3 +142,17 @@ tb.addEventListener('click', function(e){
         numberF.textContent = female;
     }
 });
+
+document.getElementById("burger").addEventListener('click', function(){
+    let sideBar = document.getElementById("side");
+    let burg = document.getElementById("burger");
+    let sideDisplay = window.getComputedStyle(sideBar).display;
+    if (sideBar.style.display != "none"){
+        sideBar.style.display = "none";
+    }
+    else{
+        sideBar.style.display = "flex";
+        burg.style.zIndex = "999";
+        burg.style.color = "white";
+    }
+});

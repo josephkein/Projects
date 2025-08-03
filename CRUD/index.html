@@ -4,16 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <title>Student Management</title>
 </head>
 <body>
+    <div class="nav">
+        <h1>Student Management</h1>
+        <img src="menu-regular-24.png" alt="" id="burger">
+        </div>
     <div class="container">
-        <div class="side-bar">
+        <div class="side-bar" id="side">
             <h1>Student Management</h1>
-            <p>By jkeinskie</p>
+            <div class="contents">
+                <div class="dash">
+                    <img src="Dashboard.png" alt="">
+                    <a href="http://127.0.0.1:5500/CRUD/index.html"><p>Dashboard</p></a>
+                </div>
+                <div class="dash">
+                    <a href="http://127.0.0.1:5500/CRUD/index.html"><p>Undecided</p></a>
+                </div>
+                <div class="dash">
+                    <a href="http://127.0.0.1:5500/CRUD/index.html"><p>Undecided</p></a>
+                </div>
+            </div>
+            <p id="jkein">By jkeinskie</p>
         </div>
         <div class="dashboard">
-            <h2 id="dash">Dashboard by jkein</h2>
+            <div class="tit">
+                <h2 id="dash">Dashboard</h2>
+            </div>
             <div class="flow-char">
                 <div class="students">
                     <h1>Number of Students</h1>
