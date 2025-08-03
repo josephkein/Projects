@@ -194,7 +194,7 @@ table button{
         width: 100%;
         position: absolute;
         margin-top: 80px;
-        height: 40%;
+        height: auto;
         background-color: rgb(74, 74, 194);
     }
     .side-bar p{
