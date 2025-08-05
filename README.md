@@ -1,10 +1,4 @@
-# Project Documentation for Joseph Kein's Projects
-
----
-
-## Overview
-
-This README file provides detailed documentation for the projects hosted in the GitHub repository [josephkein/Projects](https://github.com/josephkein/Projects.git). The projects include a variety of applications showcasing different technologies and functionalities.
+# My simple Projects so far
 
 ---
 
