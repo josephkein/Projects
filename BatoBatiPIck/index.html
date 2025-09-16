@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>BatoBatoPick</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="wins">BATO BATO PICK</h1>
+        <div class="playerVsCom">
+            <div class="rotateP">
+                <img src="bato-removebg-preview.png" alt="" id="player">
+            </div>
+            <h1>VS</h1>
+            <div class="rotateC">
+                <img src="bato-removebg-preview.png" alt="" id="computer">
+            </div>
+        </div>
+        <div id="choices">
+            <img src="papel-removebg-preview.png" alt="" onclick="returnChoice('papel')">
+            <img src="gunting-removebg-preview.png" alt="" onclick="returnChoice('gunting')">
+            <img src="bato-removebg-preview.png" alt="" onclick="returnChoice('bato')">
+        </div>
+        <button id="ag">PLAY AGAIN</button>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
