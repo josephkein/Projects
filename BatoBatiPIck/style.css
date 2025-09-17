@@ -21,7 +21,7 @@ img{
     top:65%;
 }
 #choices img{
-    width: 200px;
+    max-width: 200px;
     background-color: rgb(103, 137, 200);
     padding: 30px;
     border-radius: 10px;
@@ -50,7 +50,7 @@ img{
     font-size: 3rem;
 }
 .playerVsCom img{
-    width: 400px;
+    max-width: 400px;
 }
 .rotateP img{
     transform: rotate(-10deg);
@@ -75,6 +75,25 @@ img{
 }
 #ag:hover{
     background-color: rgba(43, 105, 230, 0.877);
+}
+@media screen and (max-width:1050px){
+    .playerVsCom{
+        gap: 50px;
+    }
+    .playerVsCom img{
+    max-width: 100px;
+    }
+    #ag{
+        top: 55%;
+    }
+    #choices{
+        top: 50%;
+        flex-direction: column;
+    }
+    #choices img{
+        max-width: 120px;
+        padding: 10px;
+    }
 }
 @keyframes batopick{
     0%   { transform: rotate(-10deg); }
