@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/BHSystem/assets/style.css">
+    <link rel="icon" type="image/png" href="/BHSystem/images/bungalow_1594387.png">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>BH Management System</title>
+</head>
+<body>
+    <div class="log">
+        <form id="log-in">
+            <h1>BHMS</h1>
+            <div class="inputs">
+                <label for="username">Username: </label>
+                <input type="text" id="username" required>
+                <label for="password">Password: </label>
+                <input type="password" id="password" required>
+                <div class="showpass">
+                    <input type="checkbox" name="show" id="showpass">Show password
+                </div>
+            </div>
+            <button type="submit">LOG IN</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById("log-in").addEventListener('submit', function(e){
+            e.preventDefault();
+
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+            if (username == "admin123" && password == "1324"){
+                Swal.fire({
+                title: "Login Successful!",
+                text: "Welcome back to Boarding House Maagement System.",
+                icon: "success"
+                }).then((result) => {
+                    if (result.isConfirmed){
+                        window.location.href = "/BHSystem/pages/index.html";
+                    }
+                });
+                
+            }
+            else{
+                Swal.fire({
+                    title: "Invalid Credentials",
+                    text: "Please check your username and password.",
+                    icon: "error",
+                    confirmButtonText: "Try Again"
+                });
+                username = "";
+                password = "";
+            }
+        });
+        let show = document.getElementById("showpass");
+        show.addEventListener('change', function() {
+            if (show.checked){
+                document.getElementById("password").setAttribute("type", "text");
+            }
+            else{
+                document.getElementById("password").setAttribute("type", "password");
+            }
+        });
+
+    </script>
+</body>
+</html>

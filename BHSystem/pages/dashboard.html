@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/BHSystem/assets/style.css">
+    <link rel="icon" type="image/png" href="/BHSystem/images/bungalow_1594387.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>BH Management System</title>
+</head>
+<body id="dashboard">
+    <div class="container">
+        <div class="sidebar">
+            <a href="/BHSystem/pages/index.html">
+            <div class="title">
+                <img src="/BHSystem/images/bungalow_1594387.png" alt="" style="height: 50px;">
+                <h1>BHMS</h1>
+            </div>
+            </a>
+            <div class="links">
+                <a href="/BHSystem/pages/dashboard.html"><div class="dashboard" style="background-color: #3b3b3b;">
+                    <img src="/BHSystem/images/Dashboard.png" alt="">
+                    Dashboard
+                </div></a>
+                <a href="/BHSystem/pages/boarders.html"><div class="boarders">
+                    <img src="/BHSystem/images/people.png" alt="" height="40px">
+                    Boarders
+                </div></a>
+                <a href="/BHSystem/pages/rooms.html"><div class="rooms">
+                    <img src="/BHSystem/images/hotel-bed.png" alt="" height="40px">
+                    Rooms
+                </div></a>
+                <a href="/BHSystem/pages/payments.html"><div class="payments">
+                    <img src="/BHSystem/images/Dollar Coin.png" alt="">
+                    Payments    
+                </div></a>
+                <a><div class="logout" id="log">
+                    <img src="/BHSystem/images/elements.png" alt="" height="35px">
+                    Log out
+                </div></a>
+            </div>
+        </div>
+        <div class="hero">
+            <div class="card-total">
+                <div class="total-boarders">
+                    <img src="" alt="">
+                    <h2>Total Boarders</h2>
+                    <h4 id="total">0</h4>
+                </div>
+                <div class="occupied-rooms">
+                    <img src="" alt="">
+                    <h2>Occupied Rooms</h2>
+                    <h4 id="occupied">0</h4>
+                </div>
+                <div class="available-rooms">
+                    <img src="" alt="">
+                    <h2>Available Rooms</h2>
+                    <h4 id="avail">0</h4>
+                </div>
+                <div class="unpaid-boarders">
+                    <img src="" alt="">
+                    <h2>Unpaid Boarders</h2>
+                    <h4 id="unpaid">0</h4>
+                </div>
+            </div>
+            <div class="tb-contents">
+                <div class="tb-gD">
+                    <canvas id="myGraph" style="width:100%;max-width:500px; height: 450px;"></canvas>
+                </div>
+                <div class="tb-gD">
+                    <canvas id="myChart" style="width:100%;max-width:500px;"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/BHSystem/assets/main.js"></script>
+</body>
+</html>

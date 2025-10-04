@@ -1,0 +1,428 @@
+*{
+    margin: 0;
+    top: 0;
+    left: 0;
+}
+:root{
+    --textcolor1: white;
+    --textcolor2: black;
+    --bgdark: #121212;
+    --bglight: #f2f2f2;
+    --primarycolor: #282828;
+    --primarycolorhover: #3b3b3b;
+    --secondarycolor: #e8e8e8;
+    --secondarycolorhover: #c9c9c9;
+    --trtdborderlight: #c7c7c7;
+    --trtdborderdark: #474747;
+    --popoverbackgroundlight: #ffffff5f;
+    --popoverbackgrounddark: #0000005f;
+    --theadslight: #dedede;
+    --theadsdark: #333; 
+}
+body{
+    background-color: var(--bgdark);
+    caret-color: transparent; 
+}
+.container{
+    display: flex;
+}
+.sidebar{
+    background-color: var(--primarycolor);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    flex: 1;
+}
+.sidebar a{
+    text-decoration: none;
+    color: var(--textcolor1);
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+.title{
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.title h1{
+    font-size:2.5rem;
+}
+.links{
+    width: 100%;
+}
+.links div{
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+}
+.links div:hover{
+    background-color: var(--primarycolorhover);
+}
+.card-total{
+    display: flex;
+    flex: 1;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 40px;
+}
+.card-total div{
+    background-color: var(--primarycolor);
+    min-height: 300px;
+    min-width: 350px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    align-items: center;
+    color: var(--textcolor1);
+    border-left: 4px solid #1ba1ed;
+}
+.total-boarders{
+    animation: slideDown 1s ease;
+}
+.occupied-rooms{
+    animation: slideDown 1s ease 0.1s;
+}
+.available-rooms{
+    animation: slideDown 1s ease 0.2s;
+}
+.unpaid-boarders{
+    animation: slideDown 1s ease 0.3s;
+}
+.card-total h2{
+    font-size: 1.7rem;
+    margin-bottom: 45px;
+}
+.card-total h4{
+    font-size: 2rem;
+}
+.hero{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex: 5;
+}
+.hero-b{
+    flex: 5;
+    display: flex;
+}
+.tb-contents{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    color: var(--textcolor1);
+    flex: 1.5;
+    gap: 40px;
+    width: 95%;
+}
+
+.tb-contentsB{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--textcolor1);
+    width: 100%;
+}
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+thead{
+    text-align: center;
+}
+tr, td{
+    border: 1px solid var(--trtdborderdark);
+    padding: 10px;
+    text-align: center;
+    font-size: 1.2rem;
+}
+.js{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.tb-g{
+    margin-left: 45px;
+    margin-right: 45px;
+    width: 100%;
+    min-height: 80%;
+    height: auto;
+    padding: 35px;
+    background-color: var(--primarycolor);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    animation: slideUp 1s ease;
+}
+.tb-gD{
+    width: 100%;
+    min-height: 80%;
+    height: auto;
+    padding: 35px;
+    background-color: var(--primarycolor);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    animation: slideUp 1s ease;
+}
+.tb-g h1{
+    font-size: 1.5rem;
+}
+.add-gr{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+.add-gr button{
+    font-size: 1.5rem;
+    padding: 10px 20px 10px 20px;
+    color: var(--textcolor1);
+    background-color: rgb(5, 174, 5);
+    border-radius: 5px;
+    border: none;
+}
+.add-gr button:hover{
+    background-color: rgba(5, 174, 5, 0.822);
+}
+#act{
+    display: flex;
+    gap: 10px;
+}
+#act button{
+    font-size: 1.2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px 10px 15px;
+    color: var(--textcolor1);
+}
+[popover]{
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    border: none;
+    border-radius: 5px;
+    gap: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    inset: 0;
+    margin: auto;
+    opacity: 0;
+}
+[popover]:popover-open{
+    animation: bounceZoomIn 0.5s ease;
+    opacity: 1; 
+}
+#op{
+    background-color: var(--popoverbackgrounddark);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: none;
+}
+[popover] input{
+    font-size: 1.1rem;
+    outline: none;
+    padding: 10px;
+}
+[popover] button{
+    font-size: 1.1rem;
+    padding: 8px;
+    border: none;
+    background-color: rgb(5, 174, 5);
+    color: white;
+}
+[popover] select{
+    font-size: 1rem;
+    padding: 5px;
+}
+.delete{
+    background-color: #ed1b38;
+}
+.delete:hover{
+    background-color: #ed1b37bb;
+}
+.update{
+    background-color: #1ba1ed;
+}
+.update:hover{
+    background-color: #1ba0edc4;
+}
+thead{
+    background-color: var(--theadsdark);
+}
+.pagin{
+    display: flex;
+    gap: 40px;
+}
+.pagin h1{
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.pagin h1.active{
+    background-color: var(--theadsdark);
+}
+#lt, #gt{
+    background-color: var(--theadsdark);
+}
+.filtering select{
+    width: 100px;
+    background-color: var(--trtdborderdark);
+    border: none;
+    color: var(--textcolor1);
+    padding: 5px;
+    font-size: 1rem;
+}
+.filtering input{
+    width: 200px;
+    background-color: var(--trtdborderdark);
+    border: none;
+    color: var(--textcolor1);
+    padding: 5px;
+    font-size: 1rem;
+}
+.filtering form button{
+    padding: 5px;
+    background-color: rgb(5, 174, 5);
+    border: none;
+    color: var(--textcolor1);
+    font-size: 1rem;
+    width: 80px;
+}
+.filtering{
+    display: flex;
+    gap: 20px;
+}
+.filter{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.filter h3{
+    font-weight: normal;
+}
+.log{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#log-in{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    padding: 20px;
+    background-color: var(--primarycolor);
+    color: var(--textcolor1);
+    font-family: Arial, Helvetica, sans-serif;
+    gap: 25px;
+    border-radius: 5px;
+}
+.inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.inputs input{
+    font-size: 1.5rem;
+    border: none;
+    padding: 5px;
+    background-color: var(--trtdborderdark);
+    color: var(--textcolor1);
+}
+#log-in h1{
+    text-align: center;
+}
+#log-in button{
+    font-size: 1.2rem;
+    padding: 8px 0px 8px;
+    border: none;
+    background-color: #1ba1ed;
+    color: var(--textcolor1);
+}
+.showpass{
+    display: flex;
+    gap: 10px;
+}
+@media screen and (max-width:800px){
+    .sidebar{
+        display: none;
+    }
+    #act{
+        flex-direction: column;
+    }
+    .hero{
+        gap: 50px;
+    }
+    .tb-g{
+        height: auto;
+    }
+    .card-total{
+        background-color: aqua;
+        width: 100%;
+    }
+    .tb-contents{
+        flex-direction: column;
+        height: 100vh;
+        width: 100%;
+    }
+        .tb-contents div{
+            max-width: 300px;
+            max-height: 350px;
+        }
+    }
+@keyframes slideDown{
+    from{
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes slideUp{
+    from{
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes bounceZoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

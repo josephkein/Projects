@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/BHSystem/assets/style.css">
+    <link rel="icon" type="image/png" href="/BHSystem/images/bungalow_1594387.png">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>BH Management System</title>
+</head>
+<body id="board">
+    <div class="container">
+        <div class="sidebar">
+            <a href="/BHSystem/pages/index.html">
+            <div class="title">
+                <img src="/BHSystem/images/bungalow_1594387.png" alt="" style="height: 50px;">
+                <h1>BHMS</h1>
+            </div>
+            </a>
+            <div class="links">
+                <a href="/BHSystem/pages/dashboard.html"><div class="dashboard">
+                    <img src="/BHSystem/images/Dashboard.png" alt="">
+                    Dashboard
+                </div></a>
+                <a href="/BHSystem/pages/boarders.html"><div class="boarders" style="background-color: #3b3b3b;">
+                    <img src="/BHSystem/images/people.png" alt="" height="40px">
+                    Boarders
+                </div></a>
+                <a href="/BHSystem/pages/rooms.html"><div class="rooms">
+                    <img src="/BHSystem/images/hotel-bed.png" alt="" height="40px">
+                    Rooms
+                </div></a>
+                <a href="/BHSystem/pages/payments.html"><div class="payments">
+                    <img src="/BHSystem/images/Dollar Coin.png" alt="">
+                    Payments    
+                </div></a>
+                <a><div class="logout" id="log">
+                    <img src="/BHSystem/images/elements.png" alt="" height="35px">
+                    Log out
+                </div></a>
+            </div>
+        </div>
+        <div class="hero-b">
+            <div class="tb-contentsB">
+                <div class="tb-g">
+                    <div class="js">    
+                    <div class="add-gr">
+                        <h1>Manage Boarders</h1>
+                        <button id="add" popovertarget="pop" onclick="darkUp()">+  New</button>
+                    </div>
+                    <div class="filtering">
+                        <div class="filter">
+                            <h3>Status:</h3>
+                            <select name="" id="selectStatus">
+                                    <option value="all">All</option>
+                                    <option value="unpaid">Unpaid</option>
+                                    <option value="paid">Paid</option>
+                            </select>
+                        </div>
+                        <div class="filter">
+                            <h3>Room:</h3>
+                            <select name="" id="selectRoom">
+                                    <option value="all">All</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                            </select>
+                        </div>
+                        <form class="filter" id="srch">
+                            <h3>Search:</h3>
+                            <input type="search" name="search" id="search">
+                            <button type="submit" id="searchBtn">Search</button>
+                        </form>
+                    </div>
+                    <div id="op"></div>
+                    <form id="pop" popover>
+                        <input type="text" placeholder="First name" id="fn" required>
+                        <input type="text" placeholder="Last name" id="ln" required>
+                        <input type="number" placeholder="Room number" id="rn" required>
+                        <div class="dt">
+                            <label for="date">Check-in:</label>
+                            <input type="date" id="date" required>
+                        </div>
+                        <select name="select" id="sel" required>
+                            <option value="status" disabled>Status</option>
+                            <option value="paid">Paid</option>
+                            <option value="unpaid">Unpaid</option>
+                        </select>
+                        <button type="submit" id="sub">Submit</button>
+                    </form>
+                    <form id="popUpdate" popover>
+                        <input type="text" placeholder="First name" id="fnU" required>
+                        <input type="text" placeholder="Last name" id="lnU" required>
+                        <input type="number" placeholder="Room number" id="rnU" required>
+                        <div class="dt">
+                            <label for="date">Check-in:</label>
+                            <input type="date" id="dateU" required>
+                        </div>
+                        <select name="select" id="selU" required>
+                            <option value="status" disabled>Status</option>
+                            <option value="paid">Paid</option>
+                            <option value="unpaid">Unpaid</option>
+                        </select>
+                        <button type="submit" id="sub">Submit</button>
+                    </form>
+                    <table id="tb">
+                        <thead>
+                            <tr>
+                                <td>Name</td>
+                                <td>Room</td>
+                                <td>Payment Date</td>
+                                <td>Payment Status</td>
+                                <td>Action</td>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody">
+                            
+                        </tbody>
+                    </table>
+                    </div>
+                    <div class="pagin">
+                        <h1 id="lt" onclick="backT()">&lt;</h1>
+                        <h1 onclick="page(1)" id="p1" class="active">1</h1>
+                        <h1 onclick="page(2)" id="p2">2</h1>
+                        <h1 onclick="page(3)" id="p3">3</h1>
+                        <h1 id="gt" onclick="forwardT()">&gt;</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/BHSystem/assets/main.js"></script>
+</body>
+</html>
