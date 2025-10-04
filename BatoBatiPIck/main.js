@@ -1,10 +1,10 @@
 let player = document.getElementById("player");
 let computer = document.getElementById("computer");
 const playAgain = document.getElementById("ag");
-
-const choices = [{ choice: "papel", src: "papel-removebg-preview.png"},
-                 { choice: "gunting", src: "gunting-removebg-preview.png"},
-                 { choice: "bato", src: "bato-removebg-preview.png"}];
+let p = 0, c = 0;
+const choices = [{ choice: "papel", src: "images/papel-removebg-preview.png"},
+                 { choice: "gunting", src: "images/gunting-removebg-preview.png"},
+                 { choice: "bato", src: "images/bato-removebg-preview.png"}];
 const [papel, gunting, bato] = choices;
 
 function returnChoice(choice){
@@ -14,8 +14,12 @@ function returnChoice(choice){
 
     player.style.animation = "batopick 1.8s ease infinite";
     computer.style.animation = "batopick 1.8s ease infinite";
-    document.getElementById("choices").style.display = "none";
-
+    document.getElementById("chImg").style.display = "none";
+    if (window.innerWidth > 750){
+    document.getElementById("choices").style.top = "65%"; 
+    }else{
+        document.getElementById("choices").style.top = "50%"; 
+    }
     if (choice == papel.choice){
         sr = papel.src;
         playerC = papel.choice;
@@ -47,15 +51,19 @@ function returnChoice(choice){
         player.style.animation = "none";
         computer.style.animation = "none";
         if (winner(playerC, computerC) == "PLAYER WINS"){
-            aud = new Audio('kids-saying-yay-sound-effect_3.mp3');
+            p++;
+            document.getElementById("scoreP").textContent = `YOU: ${p}`;
+            aud = new Audio('audio/kids-saying-yay-sound-effect_3.mp3');
             aud.play();
         }
         else if (winner(playerC, computerC) == "COMPUTER WINS"){
-            aud = new Audio('malupiton-aray-ko.mp3');
+            c++;
+            document.getElementById("scoreC").textContent = `COMPUTER: ${c}`;
+            aud = new Audio('audio/malupiton-aray-ko.mp3');
             aud.play();
         }
         else{
-            aud = new Audio('dry-fart.mp3');
+            aud = new Audio('audio/dry-fart.mp3');
             aud.play();
         }
         document.getElementById("wins").textContent = winner(playerC, computerC);
@@ -69,7 +77,13 @@ playAgain.addEventListener('click', function(){
     computer.src = bato.src;
     player.style.animation = "none";
     computer.style.animation = "none";
-    document.getElementById("choices").style.display = "flex";
+    document.getElementById("chImg").style.display = "flex";
+    if (window.innerWidth > 750){
+    document.getElementById("choices").style.top = "55%"; 
+    }
+    else{
+        document.getElementById("choices").style.top = "45%"; 
+    }
     document.getElementById("ag").style.display = "none";
 });
 

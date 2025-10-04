@@ -11,17 +11,24 @@
         <h1 id="wins">BATO BATO PICK</h1>
         <div class="playerVsCom">
             <div class="rotateP">
-                <img src="bato-removebg-preview.png" alt="" id="player">
+                <img src="images/bato-removebg-preview.png" alt="" id="player">
             </div>
-            <h1>VS</h1>
+            <h1 id="vs">VS</h1>
             <div class="rotateC">
-                <img src="bato-removebg-preview.png" alt="" id="computer">
+                <img src="images/bato-removebg-preview.png" alt="" id="computer">
             </div>
         </div>
+        
         <div id="choices">
-            <img src="papel-removebg-preview.png" alt="" onclick="returnChoice('papel')">
-            <img src="gunting-removebg-preview.png" alt="" onclick="returnChoice('gunting')">
-            <img src="bato-removebg-preview.png" alt="" onclick="returnChoice('bato')">
+            <div class="playerscores">
+                <div id="scoreP">YOU: 0</div>
+                <div id="scoreC">COMPUTER: 0</div>
+            </div>
+            <div id="chImg">
+                <img src="images/papel-removebg-preview.png" alt="g" onclick="returnChoice('papel')">
+                <img src="images/gunting-removebg-preview.png" alt="" onclick="returnChoice('gunting')">
+                <img src="images/bato-removebg-preview.png" alt="" onclick="returnChoice('bato')">
+            </div>
         </div>
         <button id="ag">PLAY AGAIN</button>
     </div>

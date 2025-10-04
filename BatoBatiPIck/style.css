@@ -1,5 +1,9 @@
 body{
-    background-color: rgb(124, 163, 237);
+    background-image: url("images/Gemini_Generated_Image_6x517g6x517g6x51.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
     overflow: hidden;
     caret-color: transparent; 
 }
@@ -14,23 +18,73 @@ img{
     flex-direction: column;
     gap: 400px;
 }
+#vs{
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  font-size: 6em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #4a95e0;
+  text-shadow:
+    -1px -1px 0 #e3e8f2,
+    1px -1px 0 #e3e8f2,
+    -1px 1px 0 #e3e8f2,
+    1px 1px 0 #e3e8f2,
+    0 0 10px rgba(102, 153, 255, 0.7);
+}
+.playerscores{
+    display: flex;
+    gap: 21px;
+}
+.playerscores div{
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: white;
+}
+#scoreP{
+    background-color: #2e86de;
+    border: 3px solid #e3e8f2;
+    box-shadow: 0 0 15px 5px rgba(102, 153, 255, 0.7);
+}
+#scoreC{
+    background-color: #8c959e;
+    border: 3px solid #e3e8f2;
+    box-shadow: 0 0 15px 5px rgba(102, 153, 255, 0.7);
+}
 #choices{
     display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 50px;
+    justify-content: center;
     position: absolute;
-    top:65%;
+    top:55%;
 }
-#choices img{
+#chImg{
+    display: flex;
+    gap: 50px;
+}
+#chImg img{
     max-width: 200px;
-    background-color: rgb(103, 137, 200);
+    background-color: #2e86de;
+    border: 3px solid #e3e8f2;
+    box-shadow: 0 0 15px 5px rgba(102, 153, 255, 0.7);
     padding: 30px;
     border-radius: 10px;
     transition: transform 0.5s;
 }
-#choices img:hover{
+#chImg img:hover{
     transform: scale(1.08);
 }
 #wins{
+    text-shadow:
+    -1px -1px 0 #5e7fc2,
+    1px -1px 0 #5e7fc2,
+    -1px 1px 0 #5e7fc2,
+    1px 1px 0 #5e7fc2,
+    0 0 10px rgba(102, 153, 255, 0.7);
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     position: absolute;
@@ -40,9 +94,9 @@ img{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    gap: 100px;
+    gap: 50px;
     position: absolute;
-    top: 30%;
+    top: 28%;
 }
 .playerVsCom h1{
     color: white;
@@ -64,13 +118,14 @@ img{
 }
 #ag{
     padding: 20px;
-    border: none;
+    border: 3px solid #e3e8f2;
+    box-shadow: 0 0 15px 5px rgba(102, 153, 255, 0.7);
     border-radius: 8px;
-    background-color: rgb(43, 105, 230);
+    background-color: #2e86de;
     color: white;
     font-size: 1.5rem;
     position: absolute;
-    top: 70%;
+    top: 75%;
     display: none;
 }
 #ag:hover{
@@ -84,14 +139,42 @@ img{
     max-width: 100px;
     }
     #ag{
-        top: 55%;
+        top: 68%;
     }
-    #choices{
-        top: 50%;
+    #chImg{
+        top: 45%;
+    }
+    #chImg img{
+        max-width: 120px;
+        padding: 10px;
+    }
+}
+@media screen and (max-width:565px){
+    .playerVsCom{
+        gap: 15px;
+    }
+    #vs{
+        font-size: 3rem;
+    }
+    .playerVsCom img{
+    max-width: 130px;
+    }
+    .playerscores{
         flex-direction: column;
     }
-    #choices img{
-        max-width: 120px;
+    #ag{
+        top: 68%;
+        border-radius: 0;
+        padding: 10px 20px 10px 20px;
+    }
+    #choices{
+        top: 45%;
+    }
+    #chImg{
+        gap: 20px;
+    }
+    #chImg img{
+        max-width: 80px;
         padding: 10px;
     }
 }
