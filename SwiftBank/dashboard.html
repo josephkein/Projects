@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <link rel="icon" href="images/732250.png" type="image/x-icon"/>
+        <title>SwiftBank</title>
+        <style>
+            *{
+                box-sizing: border-box;
+                top: 0;
+                left: 0;
+                margin: 0;
+                bottom: 0;
+            }
+            .dashboard {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+            }
+            .leftNav{
+                height: 100vh;
+                width: 20%;
+                background-color: #1E3A8A;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding: 20px 0px 20px;
+            }
+            .navA h3{
+                font-family: "Poppins", sans-serif;
+                color: white;
+                font-weight: 300;
+                cursor:  pointer;
+            }
+            .navA{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+            }
+            .navCon{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+                height: 100%;
+                width: 100%;
+                padding: 15px;
+            }
+            .navCon:hover{
+                background-color: #4059A1;
+            }
+            .navOut{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+                width: 100%;
+                padding: 15px;
+            }
+            .navOut h3{
+                font-family: "Poppins", sans-serif;
+                color: white;
+                font-weight: 300;
+                cursor:  pointer;
+            }
+            .navOut:hover{
+                background-color: #4059A1;
+            }
+            a{
+                text-decoration: none;
+            }
+            .logo{
+                display: flex;
+                align-items: center;
+                gap: 13px;
+                margin-left: 50px;
+                margin-top: 10px;
+            }
+            .logo h1{
+                font-family: "Montserrat", sans-serif;
+                font-weight: bold;
+                color: white;
+            }
+            .logo a:hover{
+                text-decoration: none;
+            }
+            .logo img{
+                height: 40px;
+            }
+            .navOut{
+                font-family: "Poppins", sans-serif;
+            }
+            .main-content {
+            width: 80%;
+            padding: 20px;
+            background-color: #f4f4f4;
+            font-family: 'Poppins', sans-serif;
+            }
+            .greeting h2 {
+                color: #1E3A8A;
+                font-size: 32px;
+                font-weight: 600;
+            }
+
+            .greeting p {
+                margin-top: 8px;
+                font-size: 16px;
+                color: #1E3A8A; 
+            }
+
+            .balance-transfer-container {
+                display: flex;
+                gap: 25px;
+                margin-top: 5px;
+                margin-bottom: 5px;
+            }
+            .balance-box,
+            .transfer-box {
+                background-color: #1E3A8A;
+                border-radius: 20px;
+                padding: 30px;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+                color: white;
+                flex: 1;
+                position: relative;
+            }
+
+            .balance-box h4 {
+                font-size: 14px;
+                opacity: 0.8;
+            }
+
+            .balance-box h1 {
+                font-size: 40px;
+                margin: 10px 0;
+            }
+
+            .balance-box .account {
+                font-size: 16px;
+                opacity: 0.9;
+            }
+
+            .balance-box .buttons {
+            position: absolute;
+            top: 50px;        
+            right: 40px;          
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: flex-end;
+            }
+
+            .balance-box .withdraw,
+            .balance-box .deposit {
+            display: block;
+            width: 100%;    
+            height: 100%;         
+            max-width: 150px;    
+            max-height: 50px;   
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            }
+            .balance-box{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 20px;
+            }
+            .withdraw {
+                background-color: #647acb;
+                color: white;
+            }
+
+            .deposit {
+                background-color: #F97316;
+                color: white;
+            }
+
+            .transfer-box h4 {
+                font-size: 14px;
+                opacity: 0.8;
+                margin-bottom: 10px;
+            }
+
+            .transfer-box input {
+                color: #ccc;
+                background-color: #1E3A8A;
+                width: 100%;
+                padding: 10px;
+                border-radius: 8px;
+                border: none;
+                margin-bottom: 15px;
+                font-size: 14px;
+                border-bottom: 2px solid #d1d5db;
+            }
+            .transfer-box input:focus {
+            outline: none;
+            border-bottom: 2px solid #F97316;
+            }
+
+            .transfer-box input::placeholder {
+            color: #d1d5db; 
+            opacity: 0.8;
+            }
+
+            .transfer-box .send {
+                width: 100%;
+                padding: 10px;
+                background-color: #F97316;
+                border: none;
+                color: white;
+                border-radius: 8px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            .transaction-box {
+            background-color: #1E3A8A;
+            border-radius: 20px;
+            padding: 20px 0px 20px;
+            color: white;
+            height: 55%;
+            margin-top: 20px;
+            }
+
+            .transaction-box h3 {
+                font-size: 20px;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
+            .transaction-box .today {
+                color: #F97316;
+                font-weight: 600;
+            }
+
+            .transaction-table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            .transaction-table th,
+            .transaction-table td {
+                padding: 15px 10px;
+                text-align: center;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .transaction-table th {
+                background-color: #2540A6;
+            }
+            .t1 {
+                background-color: #4059A1;
+            }
+
+            .transaction-table tr:last-child td {
+                border-bottom: none;
+            }
+
+            .transaction-type {
+                font-weight: bold;
+            }
+
+            .withdraw-text {
+                color: red;
+            }
+
+            .deposit-text {
+                color: limegreen;
+            }
+
+            .transfer-text {
+                color: orange;
+            }
+            .navCon:hover, .navCon.active{
+                background-color: #4059A1;
+            }
+            [popover] {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: white;
+                border: none;
+                border-radius: 10px;
+                padding: 30px;
+                box-shadow: 0 0 0 9999px rgba(0,0,0,0.3); /* dim background */
+                z-index: 1000;
+                width: 300px;
+                }
+
+                .pop-form {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                }
+
+                .pop-form h2 {
+                margin: 0;
+                font-size: 1.5rem;
+                color: #1E3A8A;
+                font-family: "Poppins", sans-serif;
+                }
+
+                .pop-form input {
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 8px;
+                font-size: 16px;
+                }
+
+                .pop-form button {
+                padding: 10px;
+                background-color: #F97316;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                font-weight: bold;
+                cursor: pointer;
+                }
+        </style>
+    </head>
+    <body>
+        <div class = "dashboard">
+        <nav class="leftNav">
+                <div class="logo">
+                    <a href="index.html"><img src="images/732250.png" alt=""></a>
+                    <a href="index.html"><h1>SwiftBank</h1></a>
+                </div>
+                <div class="navA">
+                    <div class="navCon active" id="over">
+                        <img src="images/Dashboard.png" alt="">
+                        <h3>Overview</h3>
+                    </div>
+                    <a href="transaction.html">
+                        <div class="navCon" id="trans">
+                            <img src="images/bar chart.png" alt="">
+                            <h3>Transaction</h3>
+                        </div>
+                    </a>
+                    <a href="pay.html">
+                        <div class="navCon" id="pay">
+                            <img src="images/Dollar Coin.png" alt="">
+                            <h3>Payments</h3>
+                        </div>
+                    </a>
+                </div>
+                <a href="index.html">
+                <div class="navOut" id="out">
+                    <img src="images/elements.png" alt="">
+                    <h3>Log out</h3>
+                </div>
+                </a>
+        </nav>
+        <div class="main-content">
+            <div class="greeting">
+                <h2>Overview</h2>
+                <p>Hi Jkeinskie, welcome back!</p>
+            </div>
+        
+            <div class="balance-transfer-container">
+                <div class="balance-box">
+                    <h4>YOUR BALANCE</h4>
+                    <h1>₱<span id="save">0</span></h1>
+                    <p class="account">Saving A/C: xxxxxxxx1285 <span></span></p>
+                    <div class="buttons">
+                        <button class="withdraw" popovertarget="withdraw-pop" popovertargetaction="show">WITHDRAW</button>
+                        <button class="deposit" popovertarget="deposit-pop" popovertargetaction="show">DEPOSIT</button>
+                    </div>
+                </div>
+                <div class="transfer-box">
+                    <h4>QUICK TRANSFER</h4>
+                    <input type="text" placeholder="+63 |">
+                    <input type="number" placeholder="Amount">
+                    <button class="send">SEND</button>
+                </div>
+            </div>
+            <div id="withdraw-pop" popover>
+                <form method="dialog" class="pop-form" action="dashboard.html">
+                  <h2>Withdraw Funds</h2>
+                  <input type="number" step="0.01" id="amtW" placeholder="Enter amount" required />
+                  <button id="withdraw">Withdraw</button>
+                </form>
+              </div>
+              <div id="deposit-pop" popover>
+                <form method="dialog" class="pop-form" action="dashboard.html">
+                  <h2>Deposit Funds</h2>
+                  <input type="number" id="amt" step="0.01" value="0" placeholder="Enter amount" required />
+                  <button id="dep">Deposit</button>
+                </form>
+              </div>
+            <div class="transaction-box">
+                <h3>Transaction History <span class="today">Today</span></h3>
+                <table class="transaction-table">
+                    <tr class="t1">
+                        <td class="transaction-type withdraw-text">Withdraw</td>
+                        <td>19 May at 15:12</td>
+                        <td class="withdraw-text">-1,150.20</td>
+                    </tr>
+                    <tr>
+                        <td class="transaction-type withdraw-text">Withdraw</td>
+                        <td>19 May at 13:09</td>
+                        <td class="withdraw-text">-1,499.99</td>
+                    </tr>
+                    <tr class="t1">
+                        <td class="transaction-type deposit-text">Deposit</td>
+                        <td>19 May at 12:05</td>
+                        <td class="deposit-text">+5,253.42</td>
+                    </tr>
+                    <tr >
+                        <td class="transaction-type transfer-text">Transfer</td>
+                        <td>19 May at 10:04</td>
+                        <td class="transfer-text">-3,143.12</td>
+                    </tr>
+                    <tr class="t1">
+                        <td class="transaction-type deposit-text">Deposit</td>
+                        <td>19 May at 9:01</td>
+                        <td class="deposit-text">+2,133.52</td>
+                    </tr>
+                    <tr>
+                        <td class="transaction-type deposit-text">Deposit</td>
+                        <td>19 May at 7:25</td>
+                        <td class="deposit-text">+1,000.02</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="assets/main.js"></script>
+    </body>
