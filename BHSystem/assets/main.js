@@ -458,7 +458,7 @@ document.getElementById("log").addEventListener('click', function(){
         cancelButtonText: "Stay logged in"
     }).then((result) =>{
         if (result.isConfirmed){
-            window.location.href = "/BHSystem/login.html";
+            window.location.href = "../login.html";
         }
     });
 });
