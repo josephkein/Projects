@@ -1,9 +1,21 @@
-//Landing Functions
+const animate = document.querySelectorAll("[data-animate]");
 
-var exploreBtn = document.getElementById('explore');
-var gallerySection = document.getElementById('gallery');
-var frontTitle = document.getElementById('frontTitle');
 
-exploreBtn.addEventListener('click', function(){
-    gallerySection.scrollIntoView({ behavior: 'smooth'});
-});
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+
+        const animation = entry.target.dataset.animate;
+
+        if (entry.isIntersecting){
+            entry.target.classList.add(animation);
+        }
+        else{
+            entry.target.classList.remove(animation);
+        }
+    })
+}, {
+    threshold: 0.3
+})
+
+
+animate.forEach(a => observer.observe(a));

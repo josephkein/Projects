@@ -5,19 +5,203 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Permanent+Marker&family=Roboto&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Permanent+Marker&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <title>LandingPage</title>
 </head>
 <body>
-        <div class="container">
-            <h1 id="frontTitle">Explore the beauty of nature.</h1>
-            <p>"Embrace the beauty and tranquility of nature, where every moment connects us to the earth."</p>
-            <button id="explore">View</button>
-        </div>
+        <header>
+            <div class="container">
+                <div class="head">
+                    <div class="title" data-animate="homeAnimate">Naturae.</div>
+                    <nav>
+                        <ul>
+                            <li class="nav-li" data-animate="homeAnimate"><a href="#homeSection">Home</a></li>
+                            <li class="nav-li" data-animate="homeAnimate"><a href="#servicesSection">Services</a></li>
+                            <li class="nav-li" data-animate="homeAnimate"><a href="#aboutSection">About Us</a></li>
+                            <li class="nav-li" data-animate="homeAnimate"><a href="#contactSection">Contact US</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="container">
+                <section id="homeSection">
+                    <div class="intro">
+                        <div class="content">
+                            <div class="catcy" data-animate="homeAnimate">Nourishing Fresh Food for a Healthier Tomorrow</div>
+                            <div class="desc" data-animate="homeAnimate">Simple vegan meals made with fresh ingredients, designed for a healthier and happier you.</div>
+                        </div>
+                        <button class="startBtn" data-animate="homeAnimate">Get started</button>
+                    </div>
+                    <img src="images/fd.png" alt="" class="homeImg" data-animate="homeAnimate">
+                </section>
+            </div>
+            <section id="servicesSection">
+                <div class="container">
+                    <div class="servicesContents">
+                        <div class="works">
+                            <div class="serviceText">
+                                <div class="servicesTitle" data-animate="serviceAnimate">OUR SERVICES</div>
+                            </div>
+                            <div class="servicesWorks" data-animate="serviceAnimate">How Does It  Work?</div>
+                            <div class="workDesc" data-animate="serviceAnimate">We make healthy eating simple and convenient.
+                                                 Choose your favorite plant-based meals, we prepare
+                                                 them fresh using high-quality ingredients, and deliver
+                                                  them straight to your door—fast, easy, and hassle-free.</div>
+                        </div>
+                        <div class="cards">
+                            <div class="card1" data-animate="zoom">
+                                <img src="images/leaves.png" alt="">
+                                <span class="cardTitle">Fresh Ingredients</span>
+                                <span class="cardDesc">We use high-quality, plant-based ingredients prepared fresh every day.
+                                                        Sourced carefully to ensure great taste and nutrition.</span>
+                            </div>
+                            <div class="card2" data-animate="zoom">
+                                <img src="images/salad.png" alt="">
+                                <span class="cardTitle">Healthy Meals</span>
+                                <span class="cardDesc">Balanced vegan dishes designed to keep you energized and satisfied.
+                                                        Perfect for a healthy and active lifestyle.</span>
+                            </div>
+                            <div class="card3" data-animate="zoom">
+                                <img src="images/fast-delivery.png" alt="">
+                                <span class="cardTitle">Fast Delivery</span>
+                                <span class="cardDesc">Get your favorite vegan meals delivered quickly and reliably.
+                                                        Enjoy fresh food right when you need it.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="container">
+                <section id="aboutSection">
+                    <img src="images/bowl.png" alt="" data-animate="leftAnimate">
+                        <div class="about">
+                            <div class="aboutTitle">
+                                <div class="who" data-animate="aboutAnimate">Who we are?</div>
+                                <div class="tit" data-animate="aboutAnimate">Our Journey to Success</div>
+                            </div>
+                            <div class="aboutDesc" data-animate="aboutAnimate">Naturae was created with a simple goal—to make healthy,
+                                 plant-based food accessible to everyone. We believe that eating well should
+                                  be easy, enjoyable, and nourishing for both the body and the planet.</div>
+                            <div class="keyval" data-animate="aboutAnimate">🌱 Plant-Based Focus – 100% vegan and natural ingredients<br>
+                                                ♻️ Sustainability – Eco-friendly sourcing and packaging<br>
+                                                ❤️ Quality & Care – Made fresh with attention to detail
+                            </div>
+                        </div>  
+                </section>
+            </div>
+            <section id="contactSection">
+                <div class="container">
+                    <div class="contactUS">
+                        <div class="contact">
+                            <div class="contactIntro">
+                                <div class="contactTitle" data-animate="contactAnimate">Contact us</div>
+                                <div class="talk" data-animate="contactAnimate">Let's talk</div>
+                                <div class="contactDesc" data-animate="contactAnimate">Have questions or need assistance? Get in touch with us and we’ll be happy to help.</div>
+                            </div>
+                            <form class="contactMessage">
+                                <div class="yourName">
+                                    <label for="name" data-animate="contactAnimate" class="contactLabel">Your Name</label>
+                                    <input type="text" name="" id="name" placeholder="Enter your name" data-animate="contactAnimate" class="contactInput">
+                                </div>
+                                <div class="yourEmail">
+                                    <label for="email" data-animate="contactAnimate" class="contactLabel">Your Email</label>
+                                    <input type="email" name="" id="email" placeholder="Enter your email" data-animate="contactAnimate" class="contactInput">
+                                </div>
+                                <div class="yourMessage">
+                                    <label for="messageUs" data-animate="contactAnimate" class="contactLabel">Your Message</label>
+                                    <textarea name="" id="messageUs" placeholder="Type your message if you want..." data-animate="contactAnimate" class="contactInput"></textarea>
+                                </div>
+                                <button id="contactBtn" type="submit" data-animate="contactAnimate" class="contactBtn">Submit Message</button>
+                            </form>
+                        </div>
+                        <div class="contactInformation">
+                            <div class="imgPosition">
+                                <div class="contactImg">
+                                    <img src="images/cont-removebg-preview.png" alt="" class="contactImage" data-animate="contactAnimate">
+                                </div>
+                            </div>
+                            <div class="informations">
+                                <div class="phone">
+                                    <div class="phoneTitle" data-animate="contactAnimate">Phone</div>
+                                    <div class="phoneNumbers">
+                                        <div class="numbers" data-animate="contactAnimate">
+                                            <img src="images/phone.png" alt="" class="contactIcons">
+                                            <div class="num">+63 951 034 1285</div>
+                                        </div>
+                                        <div class="numbers" data-animate="contactAnimate">
+                                            <img src="images/phone.png" alt="" class="contactIcons">
+                                            <div class="num">+63 938 527 6710</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="onlineInformation">
+                                    <div class="onlineTitle" data-animate="contactAnimate">Online information</div>
+                                    <div class="onlineLink">
+                                        <div class="gmailInfo" data-animate="contactAnimate">
+                                            <img src="images/mail.png" alt="" class="contactIcons">
+                                            <div class="gmail">naturae@gmail.com</div>
+                                        </div>
+                                        <div class="websiteInfo" data-animate="contactAnimate">
+                                            <img src="images/world-wide-web.png" alt="" class="contactIcons">
+                                            <div class="website">www.naturae.com</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="addressInformation">
+                                    <div class="addressTitle" data-animate="contactAnimate">Address</div>
+                                    <div class="addressInfo" data-animate="contactAnimate">
+                                        <img src="images/location-pin.png" alt="" class="contactIcons">
+                                        <div class="address">Brgy. Lunang, Hilongos, Leyte</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <div class="container">
+                <div class="footerCont">
+                    <div class="footerContents">
+                        <div class="titleIntro">
+                            <div class="footerTitle" data-animate="footerAnimate">Naturae</div>
+                            <div class="footerDesc" data-animate="footerAnimate">Fresh, plant-based meals crafted for a healthier and happier lifestyle.
+                                                 Made with natural ingredients and prepared with care every day.</div>
+                        </div>
+                        <div class="links">
+                            <div class="linksTitle" data-animate="footerAnimate">Quick Links</div>
+                            <div class="quickLinks">
+                                <a href="#homeSection" data-animate="footerAnimate" class="footerLink">Home</a>
+                                <a href="#servicesSection" data-animate="footerAnimate" class="footerLink">Services</a>
+                                <a href="#aboutSection" data-animate="footerAnimate" class="footerLink">About Us</a>
+                                <a href="#contactSection" data-animate="footerAnimate" class="footerLink">Contact US</a>
+                            </div>
+                        </div>
+                        <div class="message">
+                            <div class="messageTitle" data-animate="footerAnimate">NewsLetter</div>
+                            <div class="messageDesc" data-animate="footerAnimate">Get healthy tips and exclusive offer.</div>
+                            <form class="inputs">
+                                <input type="email" placeholder="example@gmail.com" data-animate="footerAnimate" class="footerInput">
+                                <button id="emailBtn" type="submit" data-animate="footerAnimate" class="footerInput">Send</button>
+                            </form>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="credits">
+                        <div class="copyright" data-animate="footerAnimate">© 2025 Naturae All rights reserved</div>
+                        <div class="logos">
+                            <img src="images/facebook.png" alt="" data-animate="footerAnimate" class="footerLogos">
+                            <img src="images/instagram.png" alt="" data-animate="footerAnimate" class="footerLogos">
+                            <img src="images/twitter.png" alt="" data-animate="footerAnimate" class="footerLogos">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
     <script src="index.js"></script>
 </body>
 </html>
