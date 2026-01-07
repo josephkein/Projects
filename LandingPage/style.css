@@ -67,7 +67,7 @@ nav ul li a:hover{
     color: var(--maingreen);
     border-bottom: 2px solid var(--maingreen);
 }
-.burger{
+#burger{
     display: none;
 }
 
@@ -668,11 +668,39 @@ hr{
 }
 
 @media screen and (max-width: 1100px) {
-    li{
+    nav ul{
+        position: absolute;
+        flex-direction: column;
+        background-color:#3cde3c;
+        transform: translate(-50%);
+        left: 50%;
+        width: 100%;
+        align-items: center;
+        gap: 0px;
+        top: 99%;
+        text-align: center;
         display: none;
     }
-    .burger{
+    ul li{
+        width: 100%;
+        padding: 20px;
+    }
+    ul li:hover{
+        background-color: #46c446;
+    }
+    nav ul li a{
+        font-size: 1em;
+        color: white;
+    }
+    nav ul li a:hover{
+        color: white;
+        border: none;
+    }
+    #burger{
         display: flex;
+        background-color: transparent;
+        border: none;
+        outline: none;
     }
 }
 

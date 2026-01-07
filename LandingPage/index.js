@@ -19,3 +19,18 @@ const observer = new IntersectionObserver((entries) => {
 
 
 animate.forEach(a => observer.observe(a));
+
+const burgerBtn =document.getElementById("burger");
+let isOpen = false;
+
+burgerBtn.addEventListener('click', () => {
+
+    if (!isOpen){
+        document.getElementById("navUL").style.display = "flex";
+        isOpen = true;
+    }
+    else{
+        document.getElementById("navUL").style.display = "none";
+        isOpen = false;
+    }
+})
