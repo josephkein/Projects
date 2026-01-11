@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Poultry Management System</title>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="title">Poultry</div>
+            <nav>
+                <ul id="navUL">
+                    <li>
+                        <a href="#dashboard" onclick="navigate('dashboard')">
+                            <img src="images/dashboard.png" alt="">
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#production" onclick="navigate('production')">
+                            <img src="images/production.png" alt="">
+                            <span>Production</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#sales" onclick="navigate('sales')">
+                            <img src="images/increase.png" alt="">
+                            <span>Sales</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#expenses" onclick="navigate('expenses')">
+                            <img src="images/capital.png" alt="">
+                            <span>Expenses</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <button id="burger">
+                <img src="images/burger-bar.png" alt="">
+            </button>
+        </aside>
+        <main class="main">
+            <div class="main-container">
+
+                <!-- DASHBOARD -->
+
+                <section id="dashboard">
+                        <div class="dashboard-greetings">
+                            <div class="dashboard-title">Dashboard</div>
+                            <div class="greet">Welcome! Jkeinskie</div>
+                        </div>
+                        <div class="cards">
+                            <div class="card">
+                                <div class="content">
+                                    <div class="content-title">Total Eggs</div>
+                                    <div id="total-eggs" class="value">0</div>
+                                </div>
+                                <div class="icon" id="icon1">
+                                    <img src="images/eggs.png" alt="">
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="content">
+                                    <div class="content-title">Total Revenue</div>
+                                    <div id="total-revenue" class="value">₱0</div>
+                                </div>
+                                <div class="icon" id="icon2">
+                                    <img src="images/dollar.png" alt="">
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="content">
+                                    <div class="content-title">Total Expenses</div>
+                                    <div id="total-expenses" class="value">₱0</div>
+                                </div>
+                                <div class="icon" id="icon3">
+                                    <img src="images/poor.png" alt="">
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="content">
+                                    <div class="content-title">Net Profit</div>
+                                    <div id="total-profit" class="value">₱0</div>
+                                </div>
+                                <div class="icon" id="icon4">
+                                    <img src="images/up.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="charts">
+                            <div class="chart-box">
+                                <div class="chart-title">Production Overview</div>
+                                <div class="chartDesc">Eggs produced every month</div>
+                                <div class="chart">
+                                    <canvas id="myGraph"></canvas>
+                                </div>
+                            </div>
+                            <div class="chart-box">
+                                <div class="chart-title">Expenses Overview</div>
+                                <div class="chartDesc">Expenses every month</div>
+                                <div class="chart">
+                                    <canvas id="myChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="charts">
+                            <div class="chart-box1">
+                                <div class="chart-title">Sales Category</div>
+                                <div class="chartDesc">Sales every month</div>
+                                <div class="chart">
+                                    <canvas id="mySales"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                </section>
+
+                <!-- PRODUCTION -->
+
+                <section id="production">
+                            <div class="production-title">Production</div>
+                            <div class="cards">
+                                <div class="card">
+                                    <div class="content">
+                                        <div class="content-title">Good Eggs</div>
+                                        <div id="good-eggs" class="value">40</div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="content">
+                                        <div class="content-title">Collected Eggs Today</div>
+                                        <div id="total-today" class="value">0</div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="content">
+                                        <div class="content-title">Total Eggs</div>
+                                        <div id="production-eggs" class="value">0</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="production-contents">
+                                <div class="production-bar">
+                                    <div class="table-title">
+                                        <span>Production Table</span>
+                                    </div>
+                                    <div class="production-btn">
+                                        <button id="addEgg">New</button>
+                                    </div>
+                                </div>
+                                <div class="production-table">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <td>Date</td>
+                                                <td>Small</td>
+                                                <td>Medium</td>
+                                                <td>Large</td>
+                                                <td>Extra Large</td>
+                                                <td>Total</td>
+                                                <td>Actions</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="production-tbody">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div id="overlay"></div>
+                            <form id="addEggForm">
+                                <div class="form-title">Production Form</div>
+                                <div class="production-date">
+                                    <label for="date-collected">Date Collected:</label>
+                                    <input type="date" name="" id="date-collected">
+                                </div>
+                                <div class="production-inputs">
+                                    <label for="small">Small:</label>
+                                    <input type="number" id="small">
+                                </div>
+                                <div class="production-inputs">
+                                    <label for="medium">Medium:</label>
+                                    <input type="number" id="medium">
+                                </div>
+                                <div class="production-inputs">
+                                    <label for="large">Large:</label>
+                                    <input type="number" id="large">
+                                </div>
+                                <div class="production-inputs">
+                                    <label for="extra-large">Extra Large:</label>
+                                    <input type="number" id="extra-large">
+                                </div>
+                                <div class="form-buttons">
+                                <button type="submit" id="submitEgg">Submit</button>
+                                <button id="cancelProduction">Cancel</button>
+                                </div>
+                            </form>
+                </section>
+
+                <!-- SALES -->
+
+                <section id="sales">
+                    <div class="sales-title">Sales</div>
+                    <div class="cards">
+                        <div class="card">
+                            <div class="content">
+                                <div class="content-title">Sales Today</div>
+                                <div id="sales-today" class="value">0</div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="content">
+                                <div class="content-title">Total Sales</div>
+                                <div id="sales-total" class="value">0</div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="content">
+                                <div class="content-title">Sold Today</div>
+                                <div id="sold-today" class="value">0</div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="content">
+                                <div class="content-title">Total Sold</div>
+                                <div id="total-sold" class="value">0</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sales-contents">
+                        <div class="sales-bar">
+                            <div class="table-title">
+                                <span>Sales Table</span>
+                            </div>
+                            <div class="sales-btn">
+                                <button id="addSales">New</button>
+                            </div>
+                        </div>
+                        <div class="sales-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td>Date</td>
+                                        <td>Size</td>
+                                        <td>Trays and Pieces</td>
+                                        <td>Price</td>
+                                        <td>Total amount</td>
+                                        <td>Actions</td>
+                                    </tr>
+                                </thead>
+                                <tbody id="sales-tbody">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="overlay2"></div>
+                    <form id="addSalesForm">
+                        <div class="form-title">Sales Form</div>
+                        <div class="sales-date">
+                            <label for="sales-date">Sales Date:</label>
+                            <input type="date" name="" id="sales-date">
+                        </div>
+                        <div class="sizeChoose">
+                            <label for="sizes">Size:</label>
+                            <select name="sizes" id="sizes">
+                                <option value="small">Small</option>
+                                <option value="medium">Medium</option>
+                                <option value="large">Large</option>
+                                <option value="extra-large">Extra Large</option>
+                            </select>
+                        </div>
+                        <div class="buyType">
+                            <label for="sizes">Buy by:</label>
+                            <select name="sizes" id="buy-type">
+                                <option value="trays">Trays</option>
+                                <option value="pieces">Pieces</option>
+                                <option value="trays-pieces">Trays + pieces</option>
+                            </select>
+                        </div>
+                        <div id="trays-inputs">
+                            <label for="sales-trays">Trays:</label>
+                            <input type="number" id="sales-trays">
+                        </div>
+                        <div id="pieces-inputs">
+                            <label for="sales-pieces">Pieces:</label>
+                            <input type="number" id="sales-pieces">
+                        </div>
+                        <div class="sales-inputs">
+                            <label for="sales-price">Price: (By trays)</label>
+                            <input type="number" id="sales-price">
+                        </div>
+                        <div class="form-buttons">
+                            <button type="submit" id="submitSales">Submit</button>
+                            <button id="cancelSales">Cancel</button>
+                        </div>
+                    </form>
+                </section>
+
+                <!-- EXPENSES -->
+
+                <section id="expenses">
+                    <div class="expenses-title">Expenses</div>
+                    <div class="cards">
+                        <div class="card">
+                            <div class="content">
+                                <div class="content-title">Total Expenses</div>
+                                <div id="expenses-total" class="value">0</div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="content">
+                                <div class="content-title">This Month</div>
+                                <div id="expenses-month" class="value">0</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="expenses-contents">
+                        <div class="expenses-bar">
+                            <div class="table-title">
+                                <span>Expenses Table</span>
+                            </div>
+                            <div class="expenses-btn">
+                                <button id="addExpenses">New</button>
+                            </div>
+                        </div>
+                        <div class="expenses-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td>Date</td>
+                                        <td>Category</td>
+                                        <td>Description</td>
+                                        <td>Amount</td>
+                                        <td>Actions</td>
+                                    </tr>
+                                </thead>
+                                <tbody id="expenses-tbody">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="overlay3"></div>
+                    <form id="addExpensesForm">
+                        <div class="form-title">Expenses Form</div>
+                        <div class="expenses-date">
+                            <label for="expenses-date">Sales Date:</label>
+                            <input type="date" name="" id="expenses-date">
+                        </div>
+                        <div class="categoryies">
+                            <label for="category">Category:</label>
+                            <select name="category" id="category">
+                                <option value="feeds">Feeds</option>
+                                <option value="vitamins">Vitamins</option>
+                                <option value="gas">Gas</option>
+                                <option value="foods">Foods</option>
+                                <option value="parcel">Parcel</option>
+                            </select>
+                        </div>
+                        <div class="expenses-inputs">
+                            <label for="expenses-desc">Description:</label>
+                            <input type="text" id="expenses-desc">
+                        </div>
+                        <div class="expenses-inputs">
+                            <label for="expenses-amount">Amount:</label>
+                            <input type="number" id="expenses-amount">
+                        </div>
+                        <div class="form-buttons">
+                            <button type="submit" id="submitExpenses">Submit</button>
+                            <button id="cancelExpenses">Cancel</button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="assets/main.js"></script>
+</body>
+</html>
