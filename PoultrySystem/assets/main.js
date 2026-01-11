@@ -530,7 +530,12 @@ submitExpenses.addEventListener('click', (e) => {
     expensesForm.style.display = "none";
     overlay3.style.display = "none";
     
-    alert("success");
+    Swal.fire({
+        title: "Expenses Added!",
+        text: "The expenses record has been successfully saved.",
+        icon: "success",
+        confirmButtonText: "OK"
+    });
 
     expensesData.push({
         date: dateExpenses,
