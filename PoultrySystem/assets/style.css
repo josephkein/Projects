@@ -518,7 +518,7 @@ li a span{
         justify-content: center;
     }
 }
-
+/* s */
 @media screen and (max-width: 850px) {
     nav ul{
         display: flex;
