@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="../assets/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,43 +14,46 @@
 <body>
     <div class="container">
         <aside class="sidebar">
-            <div class="title">Eggonomics</div>
+            <div class="title">
+                <img src="../images/eggIcon.png" alt="" height="50px">
+                Eggonomics
+            </div>
             <nav>
                 <ul id="navUL">
                     <li>
                         <a href="#dashboard" onclick="navigate('dashboard')">
-                            <img src="images/dashboard.png" alt="">
+                            <img src="../images/dashboard.png" alt="">
                             <span>Dashboard</span>
                         </a>
                     </li>
                     <li>
                         <a href="#production" onclick="navigate('production')">
-                            <img src="images/production.png" alt="">
+                            <img src="../images/production.png" alt="">
                             <span>Production</span>
                         </a>
                     </li>
                     <li>
                         <a href="#sales" onclick="navigate('sales')">
-                            <img src="images/increase.png" alt="">
+                            <img src="../images/increase.png" alt="">
                             <span>Sales</span>
                         </a>
                     </li>
                     <li>
                         <a href="#expenses" onclick="navigate('expenses')">
-                            <img src="images/capital.png" alt="">
+                            <img src="../images/capital.png" alt="">
                             <span>Expenses</span>
                         </a>
                     </li>
                     <li>
                         <a id="logout" onclick="logOut()">
-                            <img src="images/logout.png" alt="">
+                            <img src="../images/logout.png" alt="">
                             <span>Log out</span>
                         </a>
                     </li>
                 </ul>
             </nav>
             <button id="burger">
-                <img src="images/burger-bar.png" alt="">
+                <img src="../images/burger-bar.png" alt="">
             </button>
         </aside>
         <main class="main">
@@ -70,7 +73,7 @@
                                     <div id="total-eggs" class="value">0</div>
                                 </div>
                                 <div class="icon" id="icon1">
-                                    <img src="images/eggs.png" alt="">
+                                    <img src="../images/eggs.png" alt="">
                                 </div>
                             </div>
                             <div class="card">
@@ -79,7 +82,7 @@
                                     <div id="total-revenue" class="value">₱0</div>
                                 </div>
                                 <div class="icon" id="icon2">
-                                    <img src="images/dollar.png" alt="">
+                                    <img src="../images/dollar.png" alt="">
                                 </div>
                             </div>
                             <div class="card">
@@ -88,7 +91,7 @@
                                     <div id="total-expenses" class="value">₱0</div>
                                 </div>
                                 <div class="icon" id="icon3">
-                                    <img src="images/poor.png" alt="">
+                                    <img src="../images/poor.png" alt="">
                                 </div>
                             </div>
                             <div class="card">
@@ -97,7 +100,7 @@
                                     <div id="total-profit" class="value">₱0</div>
                                 </div>
                                 <div class="icon" id="icon4">
-                                    <img src="images/up.png" alt="">
+                                    <img src="../images/up.png" alt="">
                                 </div>
                             </div>
                         </div>
@@ -165,6 +168,7 @@
                                     <table>
                                         <thead>
                                             <tr>
+                                                <td>ID</td>
                                                 <td>Date</td>
                                                 <td>Small</td>
                                                 <td>Medium</td>
@@ -181,8 +185,8 @@
                             </div>
                             <div id="overlay"></div>
                             <form id="addEggForm">
-                                <div class="form-title">Production Form</div>
-                                <div class="production-date">
+                                <div class="form-title" id="forUpdate">Production Form</div>
+                                <div class="production-date" id="dateUpdate">
                                     <label for="date-collected">Date Collected:</label>
                                     <input type="date" name="" id="date-collected">
                                 </div>
@@ -204,6 +208,7 @@
                                 </div>
                                 <div class="form-buttons">
                                 <button type="submit" id="submitEgg">Submit</button>
+                                <button type="submit" id="updateEgg">Update</button>
                                 <button id="cancelProduction">Cancel</button>
                                 </div>
                             </form>
@@ -252,6 +257,7 @@
                             <table>
                                 <thead>
                                     <tr>
+                                        <td>ID</td>
                                         <td>Date</td>
                                         <td>Size</td>
                                         <td>Trays and Pieces</td>
@@ -339,6 +345,7 @@
                             <table>
                                 <thead>
                                     <tr>
+                                        <td>ID</td>
                                         <td>Date</td>
                                         <td>Category</td>
                                         <td>Description</td>
@@ -385,6 +392,6 @@
             </div>
         </main>
     </div>
-    <script src="assets/main.js"></script>
+    <script src="../assets/main.js"></script>
 </body>
 </html>

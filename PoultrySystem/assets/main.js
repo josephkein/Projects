@@ -1,8 +1,8 @@
 
 function logOut(){
     Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
+            title: "Log out",
+            text: "Are you sure you want to log out?",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
@@ -10,7 +10,14 @@ function logOut(){
             confirmButtonText: "Log out"
     }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = "./admin.html";
+                Swal.fire({
+                    title: "Success!",
+                    text: "Log out successfully",
+                    icon: "success",
+                    confirmButtonText: "OK"
+                }).then((result) => {
+                    window.location.href = "../admin.html";
+                })
             }
     })
 }
@@ -48,16 +55,22 @@ const addEgg = document.getElementById("addEgg");
 const productionForm = document.getElementById("addEggForm");
 const overlay = document.getElementById("overlay");   
 const tbody = document.getElementById("production-tbody");
+const update = document.getElementById("updateEgg");
 
 
 addEgg.addEventListener('click', () => {
 
     productionForm.style.display = "flex"
     overlay.style.display = "flex"
+    document.getElementById("forUpdate").textContent = "Production Form";
+    document.getElementById("dateUpdate").style.display = "flex";
+    submitBtn.style.display = "flex";
+    update.style.display = "none";
 
 });
 
 let productionData = JSON.parse(localStorage.getItem("productionData")) || [];
+let idData = JSON.parse(localStorage.getItem("id")) || Array(1).fill(0);
 
 submitBtn.addEventListener('click', (e) => {
 
@@ -99,8 +112,9 @@ submitBtn.addEventListener('click', (e) => {
         icon: "success",
         confirmButtonText: "OK"
     });
-
+    idData[0] += 1;
     productionData.push({
+        id: `P${idData[0]}`,
         date: dateCollected,
         small: parseInt(smallSize),
         medium: parseInt(mediumSize),
@@ -110,7 +124,7 @@ submitBtn.addEventListener('click', (e) => {
     });
 
     checkMonthly();
-
+    localStorage.setItem("id", JSON.stringify(idData));
     localStorage.setItem("productionData", JSON.stringify(productionData));
 
     productionChart();
@@ -154,7 +168,7 @@ function displayProduction(){
 
     productionData.forEach((item) => {
 
-        addProduction(item.date, item.small, item.medium, item.large, item.extraLarge, item.total);
+        addProduction(item.id, item.date, item.small, item.medium, item.large, item.extraLarge, item.total);
 
         small += item.small;
         medium += item.medium;
@@ -176,8 +190,9 @@ function displayProduction(){
     
 }
 
-function addProduction(date, small, medium, large, cracked, total){
+function addProduction(id, date, small, medium, large, cracked, total){
     const tr = document.createElement("tr");
+    const idT = document.createElement("td");
     const td1 = document.createElement("td");
     const td2 = document.createElement("td");
     const td3 = document.createElement("td");
@@ -189,6 +204,7 @@ function addProduction(date, small, medium, large, cracked, total){
     const deleteBtn = document.createElement("button");
     const updateBtn = document.createElement("button");
 
+    idT.textContent = id;
     td1.textContent = date;
     td2.textContent = small;
     td3.textContent = medium;
@@ -204,7 +220,7 @@ function addProduction(date, small, medium, large, cracked, total){
 
     td7.append(updateBtn, deleteBtn);
 
-    tr.append(td1, td2, td3, td4, td5, td6, td7);
+    tr.append(idT, td1, td2, td3, td4, td5, td6, td7);
     tbody.appendChild(tr);
 }
 
@@ -212,6 +228,7 @@ displayProduction();
 
 const deleteBtn = document.getElementById("delete");
 const updateBtn = document.getElementById("update");
+let idUp;
 
 tbody.addEventListener('click', (e) => {
     if (e.target.classList.contains("delete")){
@@ -231,7 +248,7 @@ tbody.addEventListener('click', (e) => {
                 const tds = tr.querySelectorAll("td");
                 tbody.removeChild(tr);
 
-                productionData = productionData.filter(b => b.date != tds[0].textContent);
+                productionData = productionData.filter(b => b.date != tds[1].textContent);
                 localStorage.setItem("productionData", JSON.stringify(productionData));
 
                 displayProduction();
@@ -245,10 +262,84 @@ tbody.addEventListener('click', (e) => {
         });
 
     }
+    else if (e.target.classList.contains("update")){
+        let smallSize = document.getElementById("small");
+        let mediumSize = document.getElementById("medium");
+        let largeSize = document.getElementById("large");
+        let extraL = document.getElementById("extra-large");
+
+        const td = e.target.parentElement;
+        const tr = td.parentElement;
+        const tds = tr.querySelectorAll("td");
+        idUp = tds[0].textContent;
+        smallSize.value = tds[2].textContent;
+        mediumSize.value = tds[3].textContent;
+        largeSize.value = tds[4].textContent;
+        extraL.value = tds[5].textContent;
+        
+        document.getElementById("addEggForm").style.display = "flex";
+        document.getElementById("forUpdate").textContent = "Update Form";
+        document.getElementById("overlay").style.display = "flex";
+        document.getElementById("dateUpdate").style.display = "none";
+
+        submitBtn.style.display = "none";
+        update.style.display = "flex";
+
+    }
 })
 
+    update.addEventListener('click', (e) => {
 
+            e.preventDefault();
 
+            let smallSize = document.getElementById("small");
+            let mediumSize = document.getElementById("medium");
+            let largeSize = document.getElementById("large");
+            let extraL = document.getElementById("extra-large");
+
+            if (!smallSize.value || !mediumSize.value || !largeSize.value || !extraL.value){
+                Swal.fire({
+                    icon: "error",
+                    title: "Invalid!",
+                    text: "Please input something.",
+                });
+                return;
+            }
+            let total = parseInt(smallSize.value) + parseInt(mediumSize.value) + parseInt(largeSize.value) + parseInt(extraL.value);
+
+            productionForm.style.display = "none";
+            overlay.style.display = "none";
+            
+            Swal.fire({
+                title: "Updated successfully!",
+                text: "The egg production record has been successfully updated.",
+                icon: "success",
+                confirmButtonText: "OK"
+            });
+            
+            // mao ni problema
+
+            // productionData = productionData.map((item) => {
+            //     if (item.id == idUp){
+            //         item.small = smallSize.value;
+            //         item.medium = mediumSize.value;
+            //         item.large = largeSize.value;
+            //         item.extraLarge = extraL.value;
+            //         item.total = total;
+            //     }
+            //     console.log(item.small);
+            // })
+
+            checkMonthly();
+
+            localStorage.setItem("productionData", JSON.stringify(productionData));
+
+            productionChart();
+
+            displayProduction();
+            productionForm.reset();  
+
+    });
 
 // SALES JS
 
