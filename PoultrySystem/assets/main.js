@@ -22,7 +22,6 @@ function navigate(where){
     }
 }
 
-
 // PRODUCTION JS
 
 
@@ -93,12 +92,30 @@ submitBtn.addEventListener('click', (e) => {
         total: parseInt(total)
     });
 
+    checkMonthly();
+
     localStorage.setItem("productionData", JSON.stringify(productionData));
 
     displayProduction();
     productionForm.reset();  
 
 });
+
+let mp = JSON.parse(localStorage.getItem("monthlyProduced")) || Array(12).fill(0);
+
+function checkMonthly(){
+    let date = new Date();
+    let tots = 0;
+    productionData.forEach((item) => {
+        if (item.date.split("-")[1] == String(date.getMonth() + 1).padStart(2, '0')){
+            tots += item.total;
+        }
+    })
+    mp[date.getMonth()] = tots;
+    localStorage.setItem("monthlyProduced", JSON.stringify(mp));
+}
+
+checkMonthly();
 
 cancelBtn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -349,12 +366,55 @@ submitSales.addEventListener('click', (e) => {
         total: parseInt(total)
     });
 
+    checkSales();       
+
     localStorage.setItem("salesData", JSON.stringify(salesData));
 
     salesForm.reset();
     displaySales();
     showProfit();
 })
+
+
+let salesCat = JSON.parse(localStorage.getItem("salesCat")) || Array(4).fill(0);
+let sm = JSON.parse(localStorage.getItem("salesMonth")) || Array(12).fill(0);
+
+function checkSales(){
+
+    let date = new Date();
+    let small = 0, medium = 0, large = 0, exL = 0;
+
+    salesData.forEach((item) => {
+        if (item.date.split("-")[1] == String(date.getMonth() + 1).padStart(2, '0')){
+            switch(item.size){
+                case "small":
+                    small += (item.trays * 30) + item.pieces;
+                    break;
+                case "medium":
+                    medium += (item.trays * 30) + item.pieces;
+                    break;
+                case "large":
+                    large += (item.trays * 30) + item.pieces;
+                    break;
+                case "extra-large":
+                    exL += (item.trays * 30) + item.pieces;
+                    break;
+            }
+        }
+    })
+    salesCat[0] = small;
+    salesCat[1] = medium;
+    salesCat[2] = large;
+    salesCat[3] = exL;
+
+    localStorage.setItem("salesCat", JSON.stringify(salesCat));
+
+    sm[date.getMonth()] = [...salesCat];
+    localStorage.setItem("salesMonth", JSON.stringify(sm));
+}
+
+checkSales();
+
 
 cancelSales.addEventListener('click', (e) => {
 
@@ -544,6 +604,8 @@ submitExpenses.addEventListener('click', (e) => {
         amount: parseInt(expensesAmount)
     });
 
+    expensesBar();
+
     localStorage.setItem("expensesData", JSON.stringify(expensesData));
 
     expensesForm.reset();
@@ -560,6 +622,40 @@ cancelExpenses.addEventListener('click', (e) => {
 
     expensesForm.reset();
 })
+
+let barExpensesData = JSON.parse(localStorage.getItem("expensesBar")) || Array(5).fill(0);
+
+function expensesBar(){
+
+    barExpensesData.fill(0);
+
+    expensesData.forEach((item) => {
+
+        switch (item.category){
+            case "feeds":
+                barExpensesData[0] += item.amount;
+                break;
+            case "vitamins":
+                barExpensesData[1] += item.amount;
+                break;
+            case "gas":
+                barExpensesData[2] += item.amount;
+                break;
+            case "foods":
+                barExpensesData[3] += item.amount;
+                break;
+            case "parcel":
+                barExpensesData[4] += item.amount;
+                break;  
+        }
+
+    })
+
+    localStorage.setItem("expensesBar", JSON.stringify(barExpensesData));
+}
+
+expensesBar();
+
 // let dateNow = new Date();
 // console.log(expensesData[0].date);
 // console.log(String(dateNow.getMonth() + 1).padStart(2, '0'));
@@ -646,9 +742,9 @@ expensesTbody.addEventListener('click', (e) => {
                 showProfit();
 
                 Swal.fire({
-                title: "Deleted!",
-                text: "Your file has been deleted.",
-                icon: "success"
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
                 });
             }
         });
@@ -680,15 +776,17 @@ showProfit();
 
 // CHARTS AND GRAPHS
 
+
+
 var ctx1 = document.getElementById("myGraph").getContext("2d");
 
     new Chart(ctx1, {
         type: "line",
         data: {
-            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
             datasets: [{
                 label: "Egg Production",
-                data: [120, 0, 0, 0, 0, 0],
+                data: [mp[0], mp[1], mp[2], mp[3], mp[4], mp[5], mp[6], mp[7], mp[8], mp[9], mp[10], mp[11]],
                 backgroundColor: "rgba(137, 43, 226, 0.2)",
                 borderColor: "blueviolet",
                 borderWidth: 2,
@@ -718,10 +816,10 @@ var ctx1 = document.getElementById("myGraph").getContext("2d");
     new Chart(ctx2, {
         type: "bar",
         data: {
-            labels: ["Feeds", "Medicine", "Labor", "Utilities", "Misc"],
+            labels: ["Feeds", "Vitamins", "Gas", "Foods", "Parcel"],
             datasets: [{
-                label: "Monthly Expenses",
-                data: [8000, 2500, 5000, 3200, 1500],
+                label: "Expenses bar each category",
+                data: [barExpensesData[0], barExpensesData[1], barExpensesData[2], barExpensesData[3], barExpensesData[4]],
                 backgroundColor: [
                     "rgba(137, 43, 226, 0.6)",
                     "rgba(54, 162, 235, 0.6)",
@@ -753,22 +851,27 @@ var ctx3 = document.getElementById("mySales").getContext("2d");
 new Chart(ctx3, {
   type: "bar",
   data: {
-    labels: ["Jan", "Feb", "Mar", "Apr"],
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
     datasets: [
       {
         label: "Small Eggs",
-        data: [30, 40, 35, 50],
+        data: sm.map((item) => item[0]),
         backgroundColor: "rgba(137, 43, 226, 0.7)"
       },
       {
         label: "Medium Eggs",
-        data: [20, 25, 30, 40],
+        data: sm.map((item) => item[1]),
         backgroundColor: "rgba(54, 162, 235, 0.7)"
       },
       {
         label: "Large Eggs",
-        data: [10, 15, 20, 25],
+        data: sm.map((item) => item[2]),
         backgroundColor: "rgba(255, 159, 64, 0.7)"
+      },
+      {
+        label: "Extra-large Eggs",
+        data: sm.map((item) => item[3]),
+        backgroundColor: "rgba(255, 64, 169, 0.84)"
       }
     ]
   },
