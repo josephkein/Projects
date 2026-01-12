@@ -7,6 +7,91 @@
 body{
     overflow: hidden;
 }
+
+
+/* LOG IN */
+
+.titleLog{
+    font-size: 2.8em;
+    font-weight: bold;
+    color: blueviolet;
+    position: absolute;
+    left: 50%;
+    top: 18%;
+    transform: translate(-50%);
+    display: flex;
+    gap: 20px;
+}
+
+#loginForm{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px 20px;
+    box-shadow: 0px 5px 16px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    width: min(400px, 90%);
+    gap: 30px;
+}
+
+.intro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.intro span{
+    color: gray;
+}
+
+.introTitle{
+    font-size: 2em;
+    font-weight: 600;
+    color: blueviolet;
+}
+
+.inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.inputs input{
+    font-size: 1.3em;
+    border-radius: 5px;
+    padding: 5px 8px;
+    border: 1px solid gray;
+}
+.inputs input:focus{
+    outline: 1px solid blueviolet;
+
+}
+
+.check{
+    display: flex;
+    gap: 10px;
+}
+#log{
+    font-size: 1.3em;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background-color: blueviolet;
+    padding: 5px 10px;
+    color: white;
+}
+
+#log:hover{
+    background-color: rgba(137, 43, 226, 0.875);
+}
+#log:active{
+    background-color: rgba(137, 43, 226, 0.814);
+}
+
+/* HERE */
+
 .container{
     display: flex;
     flex-wrap: wrap;

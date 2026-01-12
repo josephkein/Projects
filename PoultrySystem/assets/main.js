@@ -1,3 +1,20 @@
+
+function logOut(){
+    Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Log out"
+    }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "./admin.html";
+            }
+    })
+}
+
 // DASHBOARD JS
 
 const dashboard = document.getElementById("dashboard");
@@ -95,6 +112,8 @@ submitBtn.addEventListener('click', (e) => {
     checkMonthly();
 
     localStorage.setItem("productionData", JSON.stringify(productionData));
+
+    productionChart();
 
     displayProduction();
     productionForm.reset();  
@@ -370,6 +389,8 @@ submitSales.addEventListener('click', (e) => {
 
     localStorage.setItem("salesData", JSON.stringify(salesData));
 
+    salesChart();
+
     salesForm.reset();
     displaySales();
     showProfit();
@@ -608,6 +629,8 @@ submitExpenses.addEventListener('click', (e) => {
 
     localStorage.setItem("expensesData", JSON.stringify(expensesData));
 
+    expensesChart();
+
     expensesForm.reset();
     displayExpenses();
     showProfit();
@@ -778,7 +801,10 @@ showProfit();
 
 
 
-var ctx1 = document.getElementById("myGraph").getContext("2d");
+productionChart();
+
+function productionChart() { 
+    var ctx1 = document.getElementById("myGraph").getContext("2d");
 
     new Chart(ctx1, {
         type: "line",
@@ -810,7 +836,11 @@ var ctx1 = document.getElementById("myGraph").getContext("2d");
             }
         }
     });
+}
 
+expensesChart();
+
+function expensesChart() { 
     var ctx2 = document.getElementById("myChart").getContext("2d");
 
     new Chart(ctx2, {
@@ -845,52 +875,58 @@ var ctx1 = document.getElementById("myGraph").getContext("2d");
             }
         }
     });
+}
 
-var ctx3 = document.getElementById("mySales").getContext("2d");
+salesChart();
 
-new Chart(ctx3, {
-  type: "bar",
-  data: {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    datasets: [
-      {
-        label: "Small Eggs",
-        data: sm.map((item) => item[0]),
-        backgroundColor: "rgba(137, 43, 226, 0.7)"
-      },
-      {
-        label: "Medium Eggs",
-        data: sm.map((item) => item[1]),
-        backgroundColor: "rgba(54, 162, 235, 0.7)"
-      },
-      {
-        label: "Large Eggs",
-        data: sm.map((item) => item[2]),
-        backgroundColor: "rgba(255, 159, 64, 0.7)"
-      },
-      {
-        label: "Extra-large Eggs",
-        data: sm.map((item) => item[3]),
-        backgroundColor: "rgba(255, 64, 169, 0.84)"
-      }
-    ]
-  },
-  options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {
-      xAxes: [{
-        stacked: true
-      }],
-      yAxes: [{
-        stacked: true,
-        ticks: {
-          beginAtZero: true
+function salesChart() { 
+
+    var ctx3 = document.getElementById("mySales").getContext("2d");
+
+    new Chart(ctx3, {
+    type: "bar",
+    data: {
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        datasets: [
+        {
+            label: "Small Eggs",
+            data: sm.map((item) => item[0]),
+            backgroundColor: "rgba(137, 43, 226, 0.7)"
+        },
+        {
+            label: "Medium Eggs",
+            data: sm.map((item) => item[1]),
+            backgroundColor: "rgba(54, 162, 235, 0.7)"
+        },
+        {
+            label: "Large Eggs",
+            data: sm.map((item) => item[2]),
+            backgroundColor: "rgba(255, 159, 64, 0.7)"
+        },
+        {
+            label: "Extra-large Eggs",
+            data: sm.map((item) => item[3]),
+            backgroundColor: "rgba(255, 64, 169, 0.84)"
         }
-      }]
+        ]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+        xAxes: [{
+            stacked: true
+        }],
+        yAxes: [{
+            stacked: true,
+            ticks: {
+            beginAtZero: true
+            }
+        }]
+        }
     }
-  }
-});
+    });
+}
 
 
 const burgerBtn =document.getElementById("burger");
