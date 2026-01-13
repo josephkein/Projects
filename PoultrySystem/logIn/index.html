@@ -207,8 +207,8 @@
                                     <input type="number" id="extra-large">
                                 </div>
                                 <div class="form-buttons">
-                                <button type="submit" id="submitEgg">Submit</button>
-                                <button type="submit" id="updateEgg">Update</button>
+                                <button id="submitEgg">Submit</button>
+                                <button id="updateEgg">Update</button>
                                 <button id="cancelProduction">Cancel</button>
                                 </div>
                             </form>
@@ -310,7 +310,7 @@
                         </div>
                         <div class="form-buttons">
                             <button type="submit" id="submitSales">Submit</button>
-                            <button type="submit" id="updateSales">Update</button>
+                            <button id="updateSales">Update</button>
                             <button id="cancelSales">Cancel</button>
                         </div>
                     </form>
@@ -362,7 +362,7 @@
                     </div>
                     <div id="overlay3"></div>
                     <form id="addExpensesForm">
-                        <div class="form-title">Expenses Form</div>
+                        <div class="form-title" id="forExpenses">Expenses Form</div>
                         <div class="expenses-date">
                             <label for="expenses-date">Sales Date:</label>
                             <input type="date" name="" id="expenses-date">
@@ -387,6 +387,7 @@
                         </div>
                         <div class="form-buttons">
                             <button type="submit" id="submitExpenses">Submit</button>
+                            <button id="updateExpenses">Update</button>
                             <button id="cancelExpenses">Cancel</button>
                         </div>
                     </form>

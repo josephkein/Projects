@@ -472,6 +472,7 @@ submitSales.addEventListener('click', (e) => {
     });
 
     localStorage.setItem("salesData", JSON.stringify(salesData));
+    localStorage.setItem("id", JSON.stringify(idSales));
 
     salesChart();
     checkSales();       
@@ -607,6 +608,7 @@ function addSales(id, date, size, trays, piece, price, total){
 displaySales();
 let idS;
 
+
 salesTbody.addEventListener('click', (e) => {
     if (e.target.classList.contains("delete")){
         
@@ -664,7 +666,7 @@ salesTbody.addEventListener('click', (e) => {
         sizeSold.value = tds[2].textContent;
         quantityTrays.value = tds[3].textContent;
         quantityPieces.value = tds[4].textContent;
-        salesPrice.value = tds[5].textContent;
+        salesPrice.value = parseInt(tds[5].textContent.slice(1, tds[5].length));
 
         salesForm.style.display = "flex";
         overlay2.style.display = "flex";
@@ -774,10 +776,14 @@ const cancelExpenses = document.getElementById("cancelExpenses");
 const overlay3 = document.getElementById("overlay3");
 const submitExpenses = document.getElementById("submitExpenses");
 const expensesTbody = document.getElementById("expenses-tbody");
+const updateExpenses = document.getElementById("updateExpenses");
 
 expensesAdd.addEventListener('click', () => {
     expensesForm.style.display = "flex";
     overlay3.style.display = "flex";
+    updateExpenses.style.display = "none";
+    submitExpenses.style.display = "flex";
+
 })
 
 let expensesData = JSON.parse(localStorage.getItem("expensesData")) || [];
@@ -838,6 +844,7 @@ submitExpenses.addEventListener('click', (e) => {
     });
 
     localStorage.setItem("expensesData", JSON.stringify(expensesData));
+    localStorage.setItem("id", JSON.stringify(idExpenses));
 
     expensesChart();
     expensesBar();
@@ -857,6 +864,7 @@ cancelExpenses.addEventListener('click', (e) => {
 })
 
 let barExpensesData = JSON.parse(localStorage.getItem("expensesBar")) || Array(5).fill(0);
+
 
 function expensesBar(){
 
@@ -902,12 +910,12 @@ function displayExpenses(){
     expensesData.forEach((item) => {
         addExpenses(item.id, item.date, item.category, item.description, item.amount);
 
-        totalExpenses += item.amount;
+        totalExpenses += parseInt(item.amount);
 
         let month = item.date.split('-')[1];
 
         if (month == dateToday){
-            thisMonth += item.amount;
+            thisMonth += parseInt(item.amount);
         }
 
     })
@@ -950,6 +958,7 @@ function addExpenses(id, date, category, desc, amount){
 
 displayExpenses();
 
+let idEx;
 
 expensesTbody.addEventListener('click', (e) => {
     if (e.target.classList.contains("delete")){
@@ -986,9 +995,84 @@ expensesTbody.addEventListener('click', (e) => {
             }
         });
     }
+    else if (e.target.classList.contains("update")){
+        let dateExpenses = document.getElementById("expenses-date");
+        let categoryExpenses = document.getElementById("category");
+        let expensesDesc = document.getElementById("expenses-desc");
+        let expensesAmount = document.getElementById("expenses-amount");
+
+        const td = e.target.parentElement;
+        const tr = td.parentElement;
+        const tds = tr.querySelectorAll("td");
+
+        idEx = tds[0].textContent;
+
+        dateExpenses.value = tds[1].textContent;
+        categoryExpenses.value = tds[2].textContent;
+        expensesDesc.value = tds[3].textContent;
+        expensesAmount.value = parseInt(tds[4].textContent.slice(1, tds[4].textContent.length));
+
+        document.getElementById("forExpenses").textContent = "Update Form";
+
+        expensesForm.style.display = "flex";
+        overlay3.style.display = "flex";
+        updateExpenses.style.display = "flex";
+        submitExpenses.style.display = "none";
+    }
 })
 
+    updateExpenses.addEventListener('click', (e) => {
+        e.preventDefault();
 
+        let dateExpenses = document.getElementById("expenses-date").value;
+        let categoryExpenses = document.getElementById("category").value;
+        let expensesDesc = document.getElementById("expenses-desc").value;
+        let expensesAmount = document.getElementById("expenses-amount").value;
+
+        // let isExist = expensesData.some((item) => item.date == dateExpenses);
+
+        if (parseInt(expensesAmount) <= 0){
+            Swal.fire({
+                icon: "error",
+                title: "Invalid!",
+                text: "Please input only natural numbers.",
+            });
+            return;
+        }
+        if (!dateExpenses || !expensesDesc || !expensesAmount){
+            Swal.fire({
+                icon: "error",
+                title: "Invalid!",
+                text: "Please input something.",
+            });
+            return;
+        }
+
+        Swal.fire({
+            title: "Updated successfully!",
+            text: "The expenses record has been successfully updated.",
+            icon: "success",
+            confirmButtonText: "OK"
+        });
+
+        expensesData.forEach((item) => {
+            if (item.id == idEx){
+                item.date = dateExpenses,
+                item.category = categoryExpenses,
+                item.description = expensesDesc,
+                item.amount = expensesAmount
+            }
+        })
+
+        localStorage.setItem("expensesData", JSON.stringify(expensesData));
+
+        expensesChart();
+        expensesBar();
+        displayExpenses();
+        showProfit();
+        expensesForm.style.display = "none";
+        overlay3.style.display = "none";
+    })
 
 // PROFIT
 

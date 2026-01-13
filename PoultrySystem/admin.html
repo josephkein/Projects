@@ -11,25 +11,29 @@
     <title>Eggonomics</title>
 </head>
 <body style="background-color: #F8F8F8;">
-    <div class="titleLog">
-        <img src="images/eggIcon.png" alt="">
-        Eggonomics
-    </div>
-    <form id="loginForm">
-        <div class="intro">
-            <div class="introTitle">Welcome back!</div>
-            <span>Log in to continue</span>
+    <div class="admin">
+        <div class="titleLog">
+            <img src="images/eggIcon.png" alt="">
+            Eggonomics
         </div>
-        <div class="inputs">
-            <input type="text" name="" id="username" placeholder="Username" required>
-            <input type="password" name="" id="password" placeholder="Password" required>
-            <div class="check">
-                <input type="checkbox" name="showpass" id="showpass">Show password
+        <form id="loginForm">
+            <div class="intro">
+                <div class="introTitle">Welcome back!</div>
+                <span>Log in to continue</span>
             </div>
-        </div>
+            <div class="inputs">
+                <input type="text" name="" id="username" placeholder="Username" required>
+                <input type="password" name="" id="password" placeholder="Password" required>
+                <div class="check">
+                    <input type="checkbox" name="showpass" id="showpass">Show password
+                </div>
+            </div>
 
-        <button type="submit" id="log">Log in</button>
-    </form>
+            <button type="submit" id="log">Log in</button>
+        </form>
+    </div>
+
+
     <script>
         // LOG IN
     const logIn = document.getElementById("loginForm");
