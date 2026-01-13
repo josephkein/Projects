@@ -115,6 +115,7 @@ body{
     display: flex;
     align-items: center;
     gap: 10px;
+    background-color: aqua;
 }
 nav{
     width: 100%;
@@ -205,7 +206,6 @@ li a span{
     flex: 1;
     border-radius: 8px;
     border-top: 3px solid blueviolet;
-    min-width: 250px;
     width: 100%;
 }
 .content{
@@ -652,7 +652,11 @@ li a span{
 }
 
 @media screen and (max-width: 500px) {
-    .cards{
-        flex-direction: column;
+
+    .sidebar{
+        gap: 0px;
+    }
+    .title{
+        font-size: 1.5em;
     }
 }
