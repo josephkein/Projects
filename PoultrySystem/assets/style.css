@@ -17,7 +17,7 @@ body{
     color: blueviolet;
     position: absolute;
     left: 50%;
-    top: 18%;
+    top: 15%;
     transform: translate(-50%);
     display: flex;
     gap: 20px;
@@ -204,6 +204,7 @@ li a span{
     flex: 1;
     border-radius: 8px;
     border-top: 3px solid blueviolet;
+    min-width: 250px;
 }
 .content{
     display: flex;
@@ -247,7 +248,7 @@ li a span{
 }
 .chart-box{
     flex: 1;
-    min-width: 300px;
+    width: min(300px, 100%);
     height: 450px;
     border: 1px solid rgba(128, 128, 128, 0.296);
     background-color: white;
@@ -259,7 +260,7 @@ li a span{
 }
 .chart-box1{
     flex: 1;
-    min-width: 300px;
+    width: min(300px, 100%);
     height: 450px;
     border: 1px solid rgba(128, 128, 128, 0.296);
     background-color: white;
@@ -395,17 +396,17 @@ li a span{
     text-align: center;
     margin-bottom: 25px;
 }
-#updateEgg{
+#updateEgg, #updateSales{
     display: flex;
     align-items: center;
     justify-content: center;
 }
-#submitEgg{
+#submitEgg, #submitSales{
     display: flex;
     align-items: center;
     justify-content: center;
 }
-#submitEgg, #submitSales, #submitExpenses, #updateEgg{
+#submitEgg, #submitSales, #submitExpenses, #updateEgg, #updateSales{
     background-color: blueviolet;
 }
 #cancelProduction, #cancelSales, #cancelExpenses{
@@ -483,7 +484,7 @@ li a span{
 }
 .sales-table table{
     width: 100%;
-    min-width: 500px;
+    min-width: 600px;
     border-collapse: collapse;
     table-layout: fixed;
 }

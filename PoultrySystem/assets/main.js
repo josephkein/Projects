@@ -46,6 +46,7 @@ function navigate(where){
     }
 }
 
+
 // PRODUCTION JS
 
 
@@ -112,7 +113,9 @@ submitBtn.addEventListener('click', (e) => {
         icon: "success",
         confirmButtonText: "OK"
     });
+
     idData[0] += 1;
+
     productionData.push({
         id: `P${idData[0]}`,
         date: dateCollected,
@@ -163,8 +166,9 @@ function displayProduction(){
 
     tbody.innerHTML = "";
     let dateNow = new Date();
+    let dateMonth = String(dateNow.getMonth() + 1).padStart(2, '0');
     let dateToday = `${dateNow.getFullYear()}-${String(dateNow.getMonth() + 1).padStart(2, '0')}-${String(dateNow.getDate()).padStart(2, '0')}`;
-    let small = 0, medium = 0, large = 0, extraLarge = 0, totalEggs = 0, eggsToday = 0;
+    let small = 0, medium = 0, large = 0, extraLarge = 0, totalEggs = 0, eggsToday = 0, thisMonth = 0;
 
     productionData.forEach((item) => {
 
@@ -180,9 +184,15 @@ function displayProduction(){
             eggsToday = item.total;
         }
 
+        let month = item.date.split('-')[1];
+
+        if (month == dateMonth){
+            thisMonth += item.total;
+        }
+
     });
 
-    document.getElementById("good-eggs").textContent = parseInt(small) + parseInt(medium) + parseInt(large) + parseInt(extraLarge);
+    document.getElementById("good-eggs").textContent = thisMonth;
     document.getElementById("total-today").textContent = eggsToday;
     document.getElementById("total-eggs").textContent = totalEggs;
     document.getElementById("production-eggs").textContent = totalEggs;
@@ -248,11 +258,13 @@ tbody.addEventListener('click', (e) => {
                 const tds = tr.querySelectorAll("td");
                 tbody.removeChild(tr);
 
-                productionData = productionData.filter(b => b.date != tds[1].textContent);
+                productionData = productionData.filter(b => b.id != tds[0].textContent);
                 localStorage.setItem("productionData", JSON.stringify(productionData));
 
                 displayProduction();
-                
+                checkMonthly();
+                productionChart();
+
                 Swal.fire({
                 title: "Deleted!",
                 text: "Your file has been deleted.",
@@ -319,23 +331,20 @@ tbody.addEventListener('click', (e) => {
             
             // mao ni problema
 
-            // productionData = productionData.map((item) => {
-            //     if (item.id == idUp){
-            //         item.small = smallSize.value;
-            //         item.medium = mediumSize.value;
-            //         item.large = largeSize.value;
-            //         item.extraLarge = extraL.value;
-            //         item.total = total;
-            //     }
-            //     console.log(item.small);
-            // })
-
-            checkMonthly();
+            productionData.forEach((item) => {
+                if (item.id == idUp){
+                    item.small = smallSize.value;
+                    item.medium = mediumSize.value;
+                    item.large = largeSize.value;
+                    item.extraLarge = extraL.value;
+                    item.total = total;
+                }
+            })
 
             localStorage.setItem("productionData", JSON.stringify(productionData));
 
             productionChart();
-
+            checkMonthly();
             displayProduction();
             productionForm.reset();  
 
@@ -352,6 +361,7 @@ const salesTbody = document.getElementById("sales-tbody");
 const selectBuy = document.getElementById("buy-type");
 const trays = document.getElementById("trays-inputs");
 const pieces = document.getElementById("pieces-inputs");
+const updateSales = document.getElementById("updateSales");
 
 salesAdd.addEventListener('click', () => {
     salesForm.style.display = "flex";
@@ -359,6 +369,9 @@ salesAdd.addEventListener('click', () => {
 
     trays.style.display = "flex";
     pieces.style.display = "none";
+
+    submitSales.style.display = "flex";
+    updateSales.style.display = "none";
 })
 
 let salesData = JSON.parse(localStorage.getItem("salesData")) || [];
@@ -378,6 +391,8 @@ selectBuy.addEventListener('change', () => {
         }
 })
 
+let idSales = JSON.parse(localStorage.getItem("id")) || Array(1).fill(0);
+
 submitSales.addEventListener('click', (e) => {
     
     e.preventDefault();
@@ -387,29 +402,6 @@ submitSales.addEventListener('click', (e) => {
     let quantityTrays = document.getElementById("sales-trays").value;
     let quantityPieces = document.getElementById("sales-pieces").value;
     let salesPrice = document.getElementById("sales-price").value;
-
-    // let isExist = salesData.some((item) => item.date == dateSold);
-    // let insuficientSmall = productionData.some((item) => item.small < (quantity * 30));
-    // let insuficientMedium = productionData.some((item) => item.medium < (quantity * 30));
-    // let insuficientLarge = productionData.some((item) => item.large < (quantity * 30));
-
-    // if (sizeSold == "small" && insuficientSmall){
-    //     alert("insuficient stock for small");
-    //     return;
-    // }
-    // if (sizeSold == "medium" && insuficientMedium){
-    //     alert("insuficient stock for medium");
-    //     return;
-    // }
-    // if (sizeSold == "large" && insuficientLarge){
-    //     alert("insuficient stock for large");
-    //     return;
-    // }
-
-    // if (isExist){
-    //     alert("cannot be duplicate date");
-    //     return;
-    // }
 
     if (trays.style.display == "flex" && pieces.style.display == "flex"){
         if (!quantityTrays || !quantityPieces){
@@ -467,7 +459,10 @@ submitSales.addEventListener('click', (e) => {
         confirmButtonText: "OK"
     });
 
+    idSales[0] += 1;
+
     salesData.push({
+        id: `S${idSales}`,
         date: dateSold,
         size: sizeSold,
         trays: parseInt(quantityTrays),
@@ -476,15 +471,14 @@ submitSales.addEventListener('click', (e) => {
         total: parseInt(total)
     });
 
-    checkSales();       
-
     localStorage.setItem("salesData", JSON.stringify(salesData));
 
     salesChart();
-
-    salesForm.reset();
+    checkSales();       
     displaySales();
     showProfit();
+
+    salesForm.reset();
 })
 
 
@@ -546,28 +540,25 @@ function displaySales(){
     let soldToday = 0, salesToday = 0, totalSales = 0, totalSold = 0, traysSold = 0, piecesSold = 0, piecesToday = 0, piecesTotal = 0;
 
     salesData.forEach((item) => {
-        addSales(item.date, item.size, `${item.trays} Trays and ${item.pieces} Pieces`, item.price, item.total);
+        addSales(item.id, item.date, item.size, item.trays, item.pieces, item.price, item.total);
 
-        totalSales += item.total;
-        traysSold = item.trays;
-        piecesSold += item.pieces;
+        totalSales += parseInt(item.total);
+        traysSold = parseInt(item.trays);
+        piecesSold += parseInt(item.pieces);
 
         totalSold += traysSold + Math.floor(piecesSold / 30);
         piecesSold = piecesSold - (Math.floor(piecesSold / 30) * 30);
 
-        console.log(traysSold);
         if (item.date == dateToday){
-            salesToday += item.total;
-            soldToday += item.trays;
-            piecesTotal += item.pieces;
+            salesToday += parseInt(item.total);
+            soldToday += parseInt(item.trays);
+            piecesTotal += parseInt(item.pieces);
 
             piecesToday += soldToday + Math.floor(piecesTotal / 30);
             piecesTotal = piecesTotal - (Math.floor(piecesTotal / 30) * 30);
         }
 
     })
-            console.log(totalSold);
-
 
     document.getElementById("sales-today").textContent = `₱${salesToday}`;
     document.getElementById("sold-today").textContent = `${piecesToday} Trays and ${piecesTotal} Pieces`;
@@ -577,37 +568,44 @@ function displaySales(){
 
 }
 
-function addSales(date, size, quantity, price, total){
+
+function addSales(id, date, size, trays, piece, price, total){
     const tr = document.createElement("tr");
+    const idS = document.createElement("td");
     const td1 = document.createElement("td");
     const td2 = document.createElement("td");
     const td3 = document.createElement("td");
     const td4 = document.createElement("td");
     const td5 = document.createElement("td");
     const td6 = document.createElement("td");
+    const td7 = document.createElement("td");
+
 
     const deleteBtn = document.createElement("button");
     const updateBtn = document.createElement("button");
 
+    idS.textContent = id;
     td1.textContent = date;
     td2.textContent = size;
-    td3.textContent = quantity;
-    td4.textContent = `₱${price}`;
-    td5.textContent = `₱${total}`;
-    td6.id = "actions";
+    td3.textContent = trays;
+    td4.textContent = piece;
+    td5.textContent = `₱${price}`;
+    td6.textContent = `₱${total}`;
+    td7.id = "actions";
 
     updateBtn.className = "update";
     updateBtn.textContent = "Update";
     deleteBtn.className = "delete";
     deleteBtn.textContent = "Delete";
 
-    td6.append(updateBtn, deleteBtn);
+    td7.append(updateBtn, deleteBtn);
 
-    tr.append(td1, td2, td3, td4, td5, td6);
+    tr.append(idS, td1, td2, td3, td4, td5, td6, td7);
     salesTbody.appendChild(tr);
 }
 
 displaySales();
+let idS;
 
 salesTbody.addEventListener('click', (e) => {
     if (e.target.classList.contains("delete")){
@@ -629,11 +627,13 @@ salesTbody.addEventListener('click', (e) => {
 
                 salesTbody.removeChild(tr);
 
-                salesData = salesData.filter((item) => item.date != tds[0].textContent);
+                salesData = salesData.filter((item) => item.id != tds[0].textContent);
                 localStorage.setItem("salesData", JSON.stringify(salesData));
 
                 displaySales();
                 showProfit();
+                salesChart();
+                checkSales();       
                 
                 Swal.fire({
                 title: "Deleted!",
@@ -644,8 +644,125 @@ salesTbody.addEventListener('click', (e) => {
         });
         
     }
+    else if (e.target.classList.contains("update")){
+        let dateSold = document.getElementById("sales-date");
+        let sizeSold = document.getElementById("sizes");
+        let quantityTrays = document.getElementById("sales-trays");
+        let quantityPieces = document.getElementById("sales-pieces");
+        let salesPrice = document.getElementById("sales-price");
+
+        // let totalTrays = parseInt(quantityTrays) * parseInt(salesPrice);
+        // let totalPieces = parseInt(quantityPieces) * (parseInt(salesPrice) / 30);
+        // let total = totalTrays + totalPieces;
+
+        const td = e.target.parentElement;
+        const tr = td.parentElement;
+        const tds = tr.querySelectorAll("td");
+        idS = tds[0].textContent;
+
+        dateSold.value = tds[1].textContent;
+        sizeSold.value = tds[2].textContent;
+        quantityTrays.value = tds[3].textContent;
+        quantityPieces.value = tds[4].textContent;
+        salesPrice.value = tds[5].textContent;
+
+        salesForm.style.display = "flex";
+        overlay2.style.display = "flex";
+        document.getElementById("forSales").textContent = "Update Form";
+
+        submitSales.style.display = "none";
+        updateSales.style.display = "flex";
+
+    }
 })
 
+updateSales.addEventListener('click', (e) => {
+
+    e.preventDefault();
+
+            
+    let dateSold = document.getElementById("sales-date");
+    let sizeSold = document.getElementById("sizes");
+    let quantityTrays = document.getElementById("sales-trays");
+    let quantityPieces = document.getElementById("sales-pieces");
+    let salesPrice = document.getElementById("sales-price");
+
+    if (trays.style.display == "flex" && pieces.style.display == "flex"){
+        if (!quantityTrays || !quantityPieces){
+            Swal.fire({
+                icon: "error",
+                title: "Invalid!",
+                text: "Please input something.",
+            });
+            return;
+        }
+    }
+    if (trays.style.display == "flex" && pieces.style.display != "flex"){
+        quantityPieces = 0;
+        if (!quantityTrays){
+            Swal.fire({
+                icon: "error",
+                title: "Invalid!",
+                text: "Please input something.",
+            });
+            return;
+        }
+
+    }
+    if (trays.style.display != "flex" && pieces.style.display == "flex"){
+        quantityTrays = 0;
+        if (!quantityPieces){
+            Swal.fire({
+                icon: "error",
+                title: "Invalid!",
+                text: "Please input something.",
+            });
+            return;
+        }
+    }
+
+    if (!dateSold || !salesPrice){
+        Swal.fire({
+            icon: "error",
+            title: "Invalid!",
+            text: "Please input something.",
+        });
+        return;
+    }
+    let totalTrays = parseInt(quantityTrays.value) * parseInt(salesPrice.value);
+    let totalPieces = parseInt(quantityPieces.value) * (parseInt(salesPrice.value) / 30);
+    let total = totalTrays + totalPieces;
+
+    salesForm.style.display = "none";
+    overlay2.style.display = "none";
+
+    Swal.fire({
+        title: "Updated successfully!",
+        text: "The sales record has been successfully updated.",
+        icon: "success",
+        confirmButtonText: "OK"
+    });
+            
+    salesData.forEach((item) => {
+        if (item.id == idS){
+            item.date = dateSold.value;
+            item.size = sizeSold.value;
+            item.trays = quantityTrays.value;
+            item.pieces = quantityPieces.value;
+            item.price = salesPrice.value;
+            item.total = total
+        }
+    })
+
+    localStorage.setItem("salesData", JSON.stringify(salesData));
+
+    displaySales();
+    showProfit();
+    salesChart();
+    checkSales();  
+    salesForm.reset(); 
+
+});
 
 
 // EXPENSES JS
@@ -664,6 +781,7 @@ expensesAdd.addEventListener('click', () => {
 })
 
 let expensesData = JSON.parse(localStorage.getItem("expensesData")) || [];
+let idExpenses = JSON.parse(localStorage.getItem("id")) || Array(1).fill(0);
 
 submitExpenses.addEventListener('click', (e) => {
     
@@ -709,22 +827,23 @@ submitExpenses.addEventListener('click', (e) => {
         confirmButtonText: "OK"
     });
 
+    idExpenses[0] += 1
+
     expensesData.push({
+        id: `E${idExpenses}`,
         date: dateExpenses,
         category: categoryExpenses,
         description: expensesDesc,
         amount: parseInt(expensesAmount)
     });
 
-    expensesBar();
-
     localStorage.setItem("expensesData", JSON.stringify(expensesData));
 
     expensesChart();
-
-    expensesForm.reset();
+    expensesBar();
     displayExpenses();
     showProfit();
+    expensesForm.reset();
 })
 
 cancelExpenses.addEventListener('click', (e) => {
@@ -781,7 +900,7 @@ function displayExpenses(){
     let totalExpenses = 0, thisMonth = 0;
 
     expensesData.forEach((item) => {
-        addExpenses(item.date, item.category, item.description, item.amount);
+        addExpenses(item.id, item.date, item.category, item.description, item.amount);
 
         totalExpenses += item.amount;
 
@@ -799,8 +918,9 @@ function displayExpenses(){
 
 }
 
-function addExpenses(date, category, desc, amount){
+function addExpenses(id, date, category, desc, amount){
     const tr = document.createElement("tr");
+    const idE = document.createElement("td");
     const td1 = document.createElement("td");
     const td2 = document.createElement("td");
     const td3 = document.createElement("td");
@@ -810,6 +930,7 @@ function addExpenses(date, category, desc, amount){
     const deleteBtn = document.createElement("button");
     const updateBtn = document.createElement("button");
 
+    idE.textContent = id;
     td1.textContent = date;
     td2.textContent = category;
     td3.textContent = desc;
@@ -823,7 +944,7 @@ function addExpenses(date, category, desc, amount){
 
     td5.append(updateBtn, deleteBtn);
 
-    tr.append(td1, td2, td3, td4, td5);
+    tr.append(idE, td1, td2, td3, td4, td5);
     expensesTbody.appendChild(tr);
 }
 
@@ -849,9 +970,11 @@ expensesTbody.addEventListener('click', (e) => {
 
                 expensesTbody.removeChild(tr);
 
-                expensesData = expensesData.filter((item) => item.date != tds[0].textContent);
+                expensesData = expensesData.filter((item) => item.id != tds[0].textContent);
                 localStorage.setItem("expensesData", JSON.stringify(expensesData));
-
+     
+                expensesChart();
+                expensesBar();
                 displayExpenses();
                 showProfit();
 
@@ -881,7 +1004,7 @@ function showProfit(){
 
     profit =  totalS - totalE;
     document.getElementById("total-profit").textContent = `₱${profit}`;
-    
+
 }
 
 showProfit();

@@ -138,8 +138,8 @@
                             <div class="cards">
                                 <div class="card">
                                     <div class="content">
-                                        <div class="content-title">Good Eggs</div>
-                                        <div id="good-eggs" class="value">40</div>
+                                        <div class="content-title">Eggs this month</div>
+                                        <div id="good-eggs" class="value">0</div>
                                     </div>
                                 </div>
                                 <div class="card">
@@ -260,7 +260,8 @@
                                         <td>ID</td>
                                         <td>Date</td>
                                         <td>Size</td>
-                                        <td>Trays and Pieces</td>
+                                        <td>Trays</td>
+                                        <td>Pieces</td>
                                         <td>Price</td>
                                         <td>Total amount</td>
                                         <td>Actions</td>
@@ -273,8 +274,8 @@
                     </div>
                     <div id="overlay2"></div>
                     <form id="addSalesForm">
-                        <div class="form-title">Sales Form</div>
-                        <div class="sales-date">
+                        <div class="form-title" id="forSales">Sales Form</div>
+                        <div class="sales-date" id="dateUpdate">
                             <label for="sales-date">Sales Date:</label>
                             <input type="date" name="" id="sales-date">
                         </div>
@@ -309,6 +310,7 @@
                         </div>
                         <div class="form-buttons">
                             <button type="submit" id="submitSales">Submit</button>
+                            <button type="submit" id="updateSales">Update</button>
                             <button id="cancelSales">Cancel</button>
                         </div>
                     </form>
