@@ -5,7 +5,7 @@
     font-family: 'Poppins', sans-serif;
 }
 body{
-    overflow: hidden;
+    overflow: auto;
 }
 
 
@@ -164,10 +164,14 @@ li a span{
     display: flex;
     justify-content: center;
     padding: 20px 0px;
-    overflow-y: auto;
+    overflow: auto;
+    min-width: 0;
+    max-width: 100%;
 }
 .main-container{
     width: 95%;
+    min-width: 0;
+    max-width: 100%;
 }
 
 #dashboard{
@@ -288,9 +292,12 @@ li a span{
 /* PRODUCTION */
 
 #production{
+    width: 100%;
     display: none;
     flex-direction: column;
     gap: 20px;
+    min-width: 0;
+    max-width: 100%;
 }
 .production-title, .sales-title, .expenses-title{
     font-size: 1.5em;
@@ -306,6 +313,8 @@ li a span{
     padding: 10px;
     border-radius: 8px;
     gap: 10px;
+    min-width: 0;
+    max-width: 100%;
 }
 .production-bar, .sales-bar, .expenses-bar{
     display: flex;
@@ -342,17 +351,17 @@ li a span{
 }
 .production-table table{
     width: 100%;
-    min-width: 500px;
     border-collapse: collapse;
 }
 .production-table thead{
     background-color: blueviolet;
     color: white;
 }
-.production-table tr, td{
+.production-table th,
+.production-table td{
     border: 1px solid gray;
     padding: 10px;
-    
+    white-space: nowrap;
 }
 #addEggForm, #addSalesForm, #addExpensesForm{
     position: fixed;
@@ -463,9 +472,13 @@ li a span{
 /* SALES */
 
 #sales{
+    width: 100%;
     display: none;
     flex-direction: column;
     gap: 20px;
+    min-width: 0;
+    max-width: 100%;
+
 }
 .sales-btn button{
     font-size: 1.5em;
@@ -485,17 +498,17 @@ li a span{
 }
 .sales-table table{
     width: 100%;
-    min-width: 600px;
     border-collapse: collapse;
-    table-layout: fixed;
 }
 .sales-table thead{
     background-color: blueviolet;
     color: white;
 }
-.sales-table tr, td{
+.sales-table tr, 
+.sales-table td{
     border: 1px solid gray;
     padding: 10px;
+    white-space: nowrap;
 }
 #addSalesForm{
     gap:15px;
@@ -537,9 +550,13 @@ li a span{
 /* EXPENSES */
 
 #expenses{
+    width: 100%;
     display: none;
     flex-direction: column;
     gap: 20px;
+    min-width: 0;
+    max-width: 100%;
+
 }
 .expenses-btn button{
     font-size: 1.5em;
@@ -559,17 +576,17 @@ li a span{
 }
 .expenses-table table{
     width: 100%;
-    min-width: 500px;
     border-collapse: collapse;
-    table-layout: fixed;
 }
 .expenses-table thead{
     background-color: blueviolet;
     color: white;
 }
-.expenses-table tr, td{
+.expenses-table tr, 
+.expenses-table td{
     border: 1px solid gray;
     padding: 10px;
+    white-space: nowrap;
 }
 #addExpensesForm{
     gap:15px;
