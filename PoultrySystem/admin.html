@@ -25,7 +25,7 @@
                 <input type="text" name="" id="username" placeholder="Username" required>
                 <input type="password" name="" id="password" placeholder="Password" required>
                 <div class="check">
-                    <input type="checkbox" name="showpass" id="showpass">Show password
+                    <input type="checkbox" name="showpass" id="showpass" onclick="showPass()">Show password
                 </div>
             </div>
 
@@ -71,6 +71,17 @@
             });
         }
     })
+
+    function showPass(){
+        let checkBox = document.getElementById("showpass");
+
+        if (checkBox.checked){
+            document.getElementById("password").type = "text";
+        }
+        else{
+            document.getElementById("password").type = "password";
+        }
+    }
     </script>
 </body>
 </html>

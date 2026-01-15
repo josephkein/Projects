@@ -450,7 +450,6 @@ li a span{
     display: flex;
     border: none;
     gap: 10px;
-    flex-wrap: wrap;
 }
 #actions button{
     flex: 1;
