@@ -76,65 +76,91 @@ let idData = JSON.parse(localStorage.getItem("id")) || Array(1).fill(0);
 submitBtn.addEventListener('click', (e) => {
 
     e.preventDefault();
+    try{
+        let dateCollected = document.getElementById("date-collected").value;
+        let smallSize = parseInt(document.getElementById("small").value);
+        let mediumSize = parseInt(document.getElementById("medium").value);
+        let largeSize = parseInt(document.getElementById("large").value);
+        let extraL = parseInt(document.getElementById("extra-large").value);
 
-    let dateCollected = document.getElementById("date-collected").value;
-    let smallSize = document.getElementById("small").value;
-    let mediumSize = document.getElementById("medium").value;
-    let largeSize = document.getElementById("large").value;
-    let extraL = document.getElementById("extra-large").value;
+        let isExist = productionData.some((item) => item.date == dateCollected);
 
-    let isExist = productionData.some((item) => item.date == dateCollected);
+        if (isExist){
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Date already exist!",
+            });
+            return;
+        }
 
-    if (isExist){
+        if (smallSize == "-0" || mediumSize == "-0" || largeSize == "-0" || extraL == "-0"){
+            Swal.fire({
+                icon: "error",  
+                title: "Invalid!",
+                text: "Please input natural numbers",
+            });
+            return;
+        }
+
+        if (parseInt(smallSize) < 0 || parseInt(mediumSize) < 0 || parseInt(largeSize) < 0 || parseInt(extraL) < 0){
+            Swal.fire({
+                icon: "error",  
+                title: "Invalid!",
+                text: "Please input natural numbers",
+            });
+            return;
+        }
+
+        if (!dateCollected || !smallSize || !mediumSize || !largeSize || !extraL){
+            Swal.fire({
+                icon: "error",
+                title: "Invalid!",
+                text: "Please input something.",
+            });
+            return;
+        }
+        let total = parseInt(smallSize) + parseInt(mediumSize) + parseInt(largeSize) + parseInt(extraL);
+
+        productionForm.style.display = "none";
+        overlay.style.display = "none";
+        
         Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Date already exist!",
+            title: "Production Added!",
+            text: "The egg production record has been successfully saved.",
+            icon: "success",
+            confirmButtonText: "OK"
+        });
+
+        idData[0] += 1;
+
+        productionData.push({
+            id: `P${idData[0]}`,
+            date: dateCollected,
+            small: parseInt(smallSize),
+            medium: parseInt(mediumSize),
+            large: parseInt(largeSize),
+            extraLarge: parseInt(extraL),
+            total: parseInt(total)
+        });
+
+        checkMonthly();
+        localStorage.setItem("id", JSON.stringify(idData));
+        localStorage.setItem("productionData", JSON.stringify(productionData));
+
+        productionChart();
+
+        displayProduction();
+        productionForm.reset();  
+    }
+    catch (error){
+        Swal.fire({
+                icon: "error",  
+                title: "Invalid!",
+                text: "Please input natural numbers",
         });
         return;
     }
-
-    if (!dateCollected || !smallSize || !mediumSize || !largeSize || !extraL){
-        Swal.fire({
-            icon: "error",
-            title: "Invalid!",
-            text: "Please input something.",
-        });
-        return;
-    }
-    let total = parseInt(smallSize) + parseInt(mediumSize) + parseInt(largeSize) + parseInt(extraL);
-
-    productionForm.style.display = "none";
-    overlay.style.display = "none";
-    
-    Swal.fire({
-        title: "Production Added!",
-        text: "The egg production record has been successfully saved.",
-        icon: "success",
-        confirmButtonText: "OK"
-    });
-
-    idData[0] += 1;
-
-    productionData.push({
-        id: `P${idData[0]}`,
-        date: dateCollected,
-        small: parseInt(smallSize),
-        medium: parseInt(mediumSize),
-        large: parseInt(largeSize),
-        extraLarge: parseInt(extraL),
-        total: parseInt(total)
-    });
-
-    checkMonthly();
-    localStorage.setItem("id", JSON.stringify(idData));
-    localStorage.setItem("productionData", JSON.stringify(productionData));
-
-    productionChart();
-
-    displayProduction();
-    productionForm.reset();  
-
 });
 
 let mp = JSON.parse(localStorage.getItem("monthlyProduced")) || Array(12).fill(0);
@@ -404,6 +430,14 @@ submitSales.addEventListener('click', (e) => {
     let salesPrice = document.getElementById("sales-price").value;
 
     if (trays.style.display == "flex" && pieces.style.display == "flex"){
+        if (parseInt(quantityTrays) < 0 || parseInt(quantityPieces) < 0 || quantityTrays == "-0" || quantityPieces == "-0"){
+            Swal.fire({
+                icon: "error",
+                title: "Invalid!",
+                text: "Please input natural numbers.",
+            });
+            return;
+        }
         if (!quantityTrays || !quantityPieces){
             Swal.fire({
                 icon: "error",
@@ -415,6 +449,14 @@ submitSales.addEventListener('click', (e) => {
     }
     if (trays.style.display == "flex" && pieces.style.display != "flex"){
         quantityPieces = 0;
+        if (parseInt(quantityTrays) < 0 || quantityTrays == "-0"){
+            Swal.fire({
+                icon: "error",
+                title: "Invalid!",
+                text: "Please input natural numbers.",
+            });
+            return;
+        }
         if (!quantityTrays){
             Swal.fire({
                 icon: "error",
@@ -427,6 +469,14 @@ submitSales.addEventListener('click', (e) => {
     }
     if (trays.style.display != "flex" && pieces.style.display == "flex"){
         quantityTrays = 0;
+        if (parseInt(quantityPieces) < 0 || quantityPieces == "-0"){
+            Swal.fire({
+                icon: "error",
+                title: "Invalid!",
+                text: "Please input natural numbers.",
+            });
+            return;
+        }
         if (!quantityPieces){
             Swal.fire({
                 icon: "error",
@@ -435,6 +485,15 @@ submitSales.addEventListener('click', (e) => {
             });
             return;
         }
+    }
+
+    if (parseInt(salesPrice) <= 0 || salesPrice == "-0"){
+        Swal.fire({
+            icon: "error",
+            title: "Invalid!",
+            text: "Please input natural numbers.",
+        });
+        return;
     }
 
     if (!dateSold || !salesPrice){
