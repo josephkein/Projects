@@ -16,7 +16,7 @@ function logOut(){
                     icon: "success",
                     confirmButtonText: "OK"
                 }).then((result) => {
-                    window.location.href = "../admin.html";
+                    window.location.href = "../index.html";
                 })
             }
     })
