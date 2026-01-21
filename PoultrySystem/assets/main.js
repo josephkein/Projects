@@ -614,7 +614,7 @@ function displaySales(){
             soldToday += parseInt(item.trays);
             piecesTotal += parseInt(item.pieces);
 
-            piecesToday += soldToday + Math.floor(piecesTotal / 30);
+            piecesToday = soldToday + Math.floor(piecesTotal / 30);
             piecesTotal = piecesTotal - (Math.floor(piecesTotal / 30) * 30);
         }
 
@@ -836,13 +836,25 @@ const overlay3 = document.getElementById("overlay3");
 const submitExpenses = document.getElementById("submitExpenses");
 const expensesTbody = document.getElementById("expenses-tbody");
 const updateExpenses = document.getElementById("updateExpenses");
+const selectExp = document.getElementById("category");
+const others = document.getElementById("other");
 
 expensesAdd.addEventListener('click', () => {
     expensesForm.style.display = "flex";
     overlay3.style.display = "flex";
     updateExpenses.style.display = "none";
     submitExpenses.style.display = "flex";
+    others.style.display = "none";
 
+})
+
+selectExp.addEventListener('change', () => {
+    if (selectExp.value == 'others'){
+        others.style.display = "flex";
+    }
+    else{
+        others.style.display = "none";
+    }
 })
 
 let expensesData = JSON.parse(localStorage.getItem("expensesData")) || [];
@@ -856,7 +868,8 @@ submitExpenses.addEventListener('click', (e) => {
     let categoryExpenses = document.getElementById("category").value;
     let expensesDesc = document.getElementById("expenses-desc").value;
     let expensesAmount = document.getElementById("expenses-amount").value;
-
+    let expenseOther = document.getElementById("expenses-expense").value;
+    let categ = "";
     // let isExist = expensesData.some((item) => item.date == dateExpenses);
 
     if (parseInt(expensesAmount) <= 0){
@@ -866,6 +879,23 @@ submitExpenses.addEventListener('click', (e) => {
             text: "Please input only natural numbers.",
         });
         return;
+    }
+
+    if (others.style.display == "flex"){
+        if (!expenseOther){
+            Swal.fire({
+                icon: "error",
+                title: "Invalid!",
+                text: "Please input something.",
+            });
+            return;
+        }
+        else{
+            categ = expenseOther;
+        }
+    }
+    else{
+        categ = categoryExpenses;
     }
 
     // if (isExist){
@@ -897,7 +927,7 @@ submitExpenses.addEventListener('click', (e) => {
     expensesData.push({
         id: `E${idExpenses}`,
         date: dateExpenses,
-        category: categoryExpenses,
+        category: categ,
         description: expensesDesc,
         amount: parseInt(expensesAmount)
     });
@@ -1059,6 +1089,9 @@ expensesTbody.addEventListener('click', (e) => {
         let categoryExpenses = document.getElementById("category");
         let expensesDesc = document.getElementById("expenses-desc");
         let expensesAmount = document.getElementById("expenses-amount");
+        let expenseOther = document.getElementById("expenses-expense");
+
+        others.style.display = "none";
 
         const td = e.target.parentElement;
         const tr = td.parentElement;
@@ -1067,7 +1100,18 @@ expensesTbody.addEventListener('click', (e) => {
         idEx = tds[0].textContent;
 
         dateExpenses.value = tds[1].textContent;
-        categoryExpenses.value = tds[2].textContent;
+        if (tds[2].textContent == "feeds" ||
+            tds[2].textContent == "vitamins" ||
+            tds[2].textContent == "gas" ||
+            tds[2].textContent == "foods"
+        ){
+            categoryExpenses.value = tds[2].textContent;
+        }
+        else{
+            others.style.display = "flex";
+            categoryExpenses.value = "others";
+            expenseOther.value = tds[2].textContent;
+        }
         expensesDesc.value = tds[3].textContent;
         expensesAmount.value = parseInt(tds[4].textContent.slice(1, tds[4].textContent.length));
 
@@ -1087,8 +1131,27 @@ expensesTbody.addEventListener('click', (e) => {
         let categoryExpenses = document.getElementById("category").value;
         let expensesDesc = document.getElementById("expenses-desc").value;
         let expensesAmount = document.getElementById("expenses-amount").value;
+        let expenseOther = document.getElementById("expenses-expense");
+        let categ = "";
 
         // let isExist = expensesData.some((item) => item.date == dateExpenses);
+
+        if (others.style.display == "flex"){
+            if (!expenseOther.value){
+                    Swal.fire({
+                    icon: "error",
+                    title: "Invalid!",
+                    text: "Please input only natural numbers.",
+                });
+                return;
+            }
+            else{
+                categ = expenseOther.value;
+            }
+        }
+        else{
+            categ = categoryExpenses;
+        }
 
         if (parseInt(expensesAmount) <= 0){
             Swal.fire({
@@ -1117,7 +1180,7 @@ expensesTbody.addEventListener('click', (e) => {
         expensesData.forEach((item) => {
             if (item.id == idEx){
                 item.date = dateExpenses,
-                item.category = categoryExpenses,
+                item.category = categ,
                 item.description = expensesDesc,
                 item.amount = expensesAmount
             }

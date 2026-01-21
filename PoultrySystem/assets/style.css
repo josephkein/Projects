@@ -594,12 +594,17 @@ li a span{
 #addExpensesForm{
     gap:15px;
 }
+.expenses-exp{
+    display: none;
+    flex-direction: column;
+    gap: 10px;  
+}
 .expenses-inputs{
     display: flex;
     flex-direction: column;
     gap: 10px;     
 }
-.expenses-inputs input{
+.expenses-inputs input, .expenses-exp input{
     font-size: 1em;
     padding: 5px;
     background-color: rgba(128, 128, 128, 0.169);
