@@ -808,10 +808,10 @@ updateSales.addEventListener('click', (e) => {
         if (item.id == idS){
             item.date = dateSold.value;
             item.size = sizeSold.value;
-            item.trays = quantityTrays.value;
-            item.pieces = quantityPieces.value;
-            item.price = salesPrice.value;
-            item.total = total
+            item.trays = parseInt(quantityTrays.value);
+            item.pieces = parseInt(quantityPieces.value);
+            item.price = parseInt(salesPrice.value);
+            item.total = parseInt(total)
         }
     })
 

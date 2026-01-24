@@ -530,7 +530,7 @@ li a span{
     flex-direction: column;
     gap: 10px;   
 }
-.sales-inputs input{
+.sales-inputs input, #trays-inputs input, #pieces-inputs input{
     font-size: 1em;
     padding: 5px;
     background-color: rgba(128, 128, 128, 0.169);
