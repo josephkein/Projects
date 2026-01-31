@@ -1200,16 +1200,29 @@ expensesTbody.addEventListener('click', (e) => {
 
 function showProfit(){
     let totalE = 0, totalS = 0, profit = 0;
+    netprof = document.getElementById("total-profit");
+    profitImg = document.getElementById("profitImg");
 
     expensesData.forEach((item) => {
         totalE += item.amount;
     })
     salesData.forEach((item) => {
-        totalS += item.total;
+        totalS += item.total;       
     })
 
     profit =  totalS - totalE;
-    document.getElementById("total-profit").textContent = `₱${profit}`;
+    if (profit > 0){
+         netprof.style.color = "green";
+         profitImg.style.backgroundColor = "#0ce60c29";
+         profitImg.src = "../images/up.png"
+    }
+    else if (profit < 0){
+         netprof.style.color = "red";
+         profitImg.style.backgroundColor = "#e60c0c29";
+         profitImg.src = "../images/loss.png"
+         
+    }
+    netprof.textContent = `₱${profit}`;
 
 }
 
