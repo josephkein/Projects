@@ -78,10 +78,11 @@ submitBtn.addEventListener('click', (e) => {
     e.preventDefault();
     try{
         let dateCollected = document.getElementById("date-collected").value;
-        let smallSize = parseInt(document.getElementById("small").value);
-        let mediumSize = parseInt(document.getElementById("medium").value);
-        let largeSize = parseInt(document.getElementById("large").value);
-        let extraL = parseInt(document.getElementById("extra-large").value);
+        let smallSize = document.getElementById("small").value;
+        let mediumSize = document.getElementById("medium").value;
+        let largeSize = document.getElementById("large").value;
+        let extraL = document.getElementById("extra-large").value;
+        let jumbo = document.getElementById("jumbo").value;
 
         let isExist = productionData.some((item) => item.date == dateCollected);
 
@@ -94,7 +95,7 @@ submitBtn.addEventListener('click', (e) => {
             return;
         }
 
-        if (smallSize == "-0" || mediumSize == "-0" || largeSize == "-0" || extraL == "-0"){
+        if (smallSize == "-0" || mediumSize == "-0" || largeSize == "-0" || extraL == "-0" || jumbo == "-0"){
             Swal.fire({
                 icon: "error",  
                 title: "Invalid!",
@@ -103,7 +104,7 @@ submitBtn.addEventListener('click', (e) => {
             return;
         }
 
-        if (parseInt(smallSize) < 0 || parseInt(mediumSize) < 0 || parseInt(largeSize) < 0 || parseInt(extraL) < 0){
+        if (parseInt(smallSize) < 0 || parseInt(mediumSize) < 0 || parseInt(largeSize) < 0 || parseInt(extraL) < 0 || parseInt(jumbo) < 0 ){
             Swal.fire({
                 icon: "error",  
                 title: "Invalid!",
@@ -112,7 +113,7 @@ submitBtn.addEventListener('click', (e) => {
             return;
         }
 
-        if (!dateCollected || !smallSize || !mediumSize || !largeSize || !extraL){
+        if (!dateCollected || isNaN(smallSize) || isNaN(mediumSize) || isNaN(largeSize) || isNaN(extraL) || isNaN(jumbo)){
             Swal.fire({
                 icon: "error",
                 title: "Invalid!",
@@ -120,7 +121,7 @@ submitBtn.addEventListener('click', (e) => {
             });
             return;
         }
-        let total = parseInt(smallSize) + parseInt(mediumSize) + parseInt(largeSize) + parseInt(extraL);
+        let total = parseInt(smallSize) + parseInt(mediumSize) + parseInt(largeSize) + parseInt(extraL) + parseInt(jumbo);
 
         productionForm.style.display = "none";
         overlay.style.display = "none";
@@ -141,6 +142,7 @@ submitBtn.addEventListener('click', (e) => {
             medium: parseInt(mediumSize),
             large: parseInt(largeSize),
             extraLarge: parseInt(extraL),
+            jumbo: parseInt(jumbo),
             total: parseInt(total)
         });
 
@@ -194,16 +196,17 @@ function displayProduction(){
     let dateNow = new Date();
     let dateMonth = String(dateNow.getMonth() + 1).padStart(2, '0');
     let dateToday = `${dateNow.getFullYear()}-${String(dateNow.getMonth() + 1).padStart(2, '0')}-${String(dateNow.getDate()).padStart(2, '0')}`;
-    let small = 0, medium = 0, large = 0, extraLarge = 0, totalEggs = 0, eggsToday = 0, thisMonth = 0;
+    let small = 0, medium = 0, large = 0, extraLarge = 0, jumbo = 0, totalEggs = 0, eggsToday = 0, thisMonth = 0;
 
     productionData.forEach((item) => {
 
-        addProduction(item.id, item.date, item.small, item.medium, item.large, item.extraLarge, item.total);
+        addProduction(item.id, item.date, item.small, item.medium, item.large, item.extraLarge, item.jumbo, item.total);
 
         small += item.small;
         medium += item.medium;
         large += item.large;
         extraLarge += item.extraLarge;
+        jumbo += item.jumbo;
         totalEggs += item.total;
 
         if (item.date == dateToday){
@@ -218,15 +221,18 @@ function displayProduction(){
 
     });
 
-    document.getElementById("good-eggs").textContent = thisMonth;
-    document.getElementById("total-today").textContent = eggsToday;
-    document.getElementById("total-eggs").textContent = totalEggs;
-    document.getElementById("production-eggs").textContent = totalEggs;
-    
+    document.getElementById("good-eggs").textContent = thisMonth * 30;
+    document.getElementById("goodTrays").textContent = thisMonth;
+    document.getElementById("total-today").textContent = eggsToday * 30;
+    document.getElementById("goodToday").textContent = eggsToday;
+    document.getElementById("total-eggs").textContent = totalEggs * 30;
+    document.getElementById("goodTotal").textContent = totalEggs;
+    document.getElementById("production-eggs").textContent = totalEggs * 30;
+     
     
 }
 
-function addProduction(id, date, small, medium, large, cracked, total){
+function addProduction(id, date, small, medium, large, exl, jumbo, total){
     const tr = document.createElement("tr");
     const idT = document.createElement("td");
     const td1 = document.createElement("td");
@@ -236,6 +242,8 @@ function addProduction(id, date, small, medium, large, cracked, total){
     const td5 = document.createElement("td");
     const td6 = document.createElement("td");
     const td7 = document.createElement("td");
+    const td8 = document.createElement("td");
+
 
     const deleteBtn = document.createElement("button");
     const updateBtn = document.createElement("button");
@@ -245,18 +253,19 @@ function addProduction(id, date, small, medium, large, cracked, total){
     td2.textContent = small;
     td3.textContent = medium;
     td4.textContent = large;
-    td5.textContent = cracked;
-    td6.textContent = total;
-    td7.id = "actions";
+    td5.textContent = exl;
+    td6.textContent = jumbo;
+    td7.textContent = total;
+    td8.id = "actions";
 
     updateBtn.className = "update";
     updateBtn.textContent = "Update";
     deleteBtn.className = "delete";
     deleteBtn.textContent = "Delete";
 
-    td7.append(updateBtn, deleteBtn);
+    td8.append(updateBtn, deleteBtn);
 
-    tr.append(idT, td1, td2, td3, td4, td5, td6, td7);
+    tr.append(idT, td1, td2, td3, td4, td5, td6, td7, td8);
     tbody.appendChild(tr);
 }
 
@@ -305,6 +314,7 @@ tbody.addEventListener('click', (e) => {
         let mediumSize = document.getElementById("medium");
         let largeSize = document.getElementById("large");
         let extraL = document.getElementById("extra-large");
+        let jumbo = document.getElementById("jumbo");
 
         const td = e.target.parentElement;
         const tr = td.parentElement;
@@ -314,6 +324,7 @@ tbody.addEventListener('click', (e) => {
         mediumSize.value = tds[3].textContent;
         largeSize.value = tds[4].textContent;
         extraL.value = tds[5].textContent;
+        jumbo.value = tds[6].textContent;
         
         document.getElementById("addEggForm").style.display = "flex";
         document.getElementById("forUpdate").textContent = "Update Form";
@@ -334,8 +345,9 @@ tbody.addEventListener('click', (e) => {
             let mediumSize = document.getElementById("medium");
             let largeSize = document.getElementById("large");
             let extraL = document.getElementById("extra-large");
+            let jumbo = document.getElementById("jumbo");
 
-            if (!smallSize.value || !mediumSize.value || !largeSize.value || !extraL.value){
+            if (!smallSize.value || !mediumSize.value || !largeSize.value || !extraL.value || !jumbo.value){
                 Swal.fire({
                     icon: "error",
                     title: "Invalid!",
@@ -343,7 +355,7 @@ tbody.addEventListener('click', (e) => {
                 });
                 return;
             }
-            let total = parseInt(smallSize.value) + parseInt(mediumSize.value) + parseInt(largeSize.value) + parseInt(extraL.value);
+            let total = parseInt(smallSize.value) + parseInt(mediumSize.value) + parseInt(largeSize.value) + parseInt(extraL.value) + parseInt(jumbo.value);
 
             productionForm.style.display = "none";
             overlay.style.display = "none";
@@ -363,6 +375,7 @@ tbody.addEventListener('click', (e) => {
                     item.medium = mediumSize.value;
                     item.large = largeSize.value;
                     item.extraLarge = extraL.value;
+                    item.jumbo = jumbo.value;
                     item.total = total;
                 }
             })
@@ -548,7 +561,7 @@ let sm = JSON.parse(localStorage.getItem("salesMonth")) || Array(12).fill(0);
 function checkSales(){
 
     let date = new Date();
-    let small = 0, medium = 0, large = 0, exL = 0;
+    let small = 0, medium = 0, large = 0, exL = 0, jumbo = 0;
 
     salesData.forEach((item) => {
         if (item.date.split("-")[1] == String(date.getMonth() + 1).padStart(2, '0')){
@@ -565,6 +578,9 @@ function checkSales(){
                 case "extra-large":
                     exL += (item.trays * 30) + item.pieces;
                     break;
+                case "jumbo":
+                    jumbo += (item.trays * 30) + item.pieces;
+                    break;
             }
         }
     })
@@ -572,6 +588,7 @@ function checkSales(){
     salesCat[1] = medium;
     salesCat[2] = large;
     salesCat[3] = exL;
+    salesCat[4] = jumbo;
 
     localStorage.setItem("salesCat", JSON.stringify(salesCat));
 

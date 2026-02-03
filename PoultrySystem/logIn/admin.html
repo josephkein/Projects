@@ -141,18 +141,21 @@
                                     <div class="content">
                                         <div class="content-title">Eggs this month</div>
                                         <div id="good-eggs" class="value">0</div>
+                                        <span class="content-title"><span>or </span><span id="goodTrays">0</span><span> (Trays)</span></span>
                                     </div>
                                 </div>
                                 <div class="card">
                                     <div class="content">
                                         <div class="content-title">Collected Eggs Today</div>
                                         <div id="total-today" class="value">0</div>
+                                        <span class="content-title"><span>or </span><span id="goodToday">0</span><span> (Trays)</span></span>
                                     </div>
                                 </div>
                                 <div class="card">
                                     <div class="content">
                                         <div class="content-title">Total Eggs</div>
                                         <div id="production-eggs" class="value">0</div>
+                                        <span class="content-title"><span>or </span><span id="goodTotal">0</span><span> (Trays)</span></span>
                                     </div>
                                 </div>
                             </div>
@@ -175,6 +178,7 @@
                                                 <th>Medium</th>
                                                 <th>Large</th>
                                                 <th>Extra Large</th>
+                                                <th>Jumbo</th>
                                                 <th>Total</th>
                                                 <th>Actions</th>
                                             </tr>
@@ -192,20 +196,24 @@
                                     <input type="date" name="" id="date-collected">
                                 </div>
                                 <div class="production-inputs">
-                                    <label for="small">Small:</label>
+                                    <label for="small">Small: (by Trays)</label>
                                     <input type="number" id="small">
                                 </div>
                                 <div class="production-inputs">
-                                    <label for="medium">Medium:</label>
+                                    <label for="medium">Medium: (by Trays)</label>
                                     <input type="number" id="medium">
                                 </div>
                                 <div class="production-inputs">
-                                    <label for="large">Large:</label>
+                                    <label for="large">Large: (by Trays)</label>
                                     <input type="number" id="large">
                                 </div>
                                 <div class="production-inputs">
-                                    <label for="extra-large">Extra Large:</label>
+                                    <label for="extra-large">Extra Large: (by Trays)</label>
                                     <input type="number" id="extra-large">
+                                </div>
+                                <div class="production-inputs">
+                                    <label for="jumbo">Jumbo: (by Trays)</label>
+                                    <input type="number" id="jumbo">
                                 </div>
                                 <div class="form-buttons">
                                 <button id="submitEgg">Submit</button>
