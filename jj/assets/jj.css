@@ -1,0 +1,280 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Alegreya", serif;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    background-color: rgb(255, 247, 228);
+    margin: 0;
+    
+}
+.container{
+    width: 90%;
+    margin: auto;
+}
+header{
+    position: sticky;
+    top: 0;
+    z-index: 800;
+    backdrop-filter: blur(30px);
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+}
+#burger{
+    border: none;
+    background-color: transparent;
+    display: none;
+}
+.logo{
+    font-size: 2em;
+    font-weight: bold;
+    color: #ff4a36e2;
+}
+ul{
+    display: flex;
+}
+li{
+    list-style: none;
+}
+ul li a{
+    text-decoration: none;
+    font-size: 1.2em;
+    color: black;
+}
+#home{
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 100px;
+}
+.intro{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+}
+.greet{
+    font-size: 3em;
+    font-weight: bold;
+    opacity: 0;
+    transform: translate(0, -3em);
+    transition: transform 1s ease, opacity 0.8s ease;
+    color: #ff4a36e2;
+}
+
+.heart{
+    position: absolute;
+    top: 250%;
+    animation: up 15s linear infinite;
+    z-index: -1;
+}
+
+#gallery{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 30px 0px;
+}
+.title{
+    font-size: 2em;
+    text-align: center;
+    opacity: 0;
+    transform: translate(0, -3em);
+    transition: transform 1s ease, opacity 0.8s ease;
+    
+}
+.infinite{
+    display: flex;
+    animation: left 20s linear infinite;
+    gap: 5px;
+    padding-right: 5px;
+}
+.carousel{
+    display: flex;
+    overflow-x: auto;
+    opacity: 0;
+    transform: translate(0, -3em);
+    transition: transform 1s ease, opacity 0.8s ease;
+}
+.carousel::-webkit-scrollbar{
+    display: none;
+}
+
+.img-card img{
+    height: 200px;
+}
+
+#music{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    padding: 50px 0px;
+}
+.musicPlayer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.3);
+    gap: 30px;
+    width:90%;
+    padding: 20px 0px;
+    opacity: 0;
+    transform: translate(0, -3em);
+    transition: transform 1s ease, opacity 0.8s ease;
+    
+}
+.img img{
+    height: 250px;
+}
+.musicDetails{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+}
+.musicTitle{
+    font-size: 1.8em;
+}
+.author{
+    font-family: Arial, Helvetica, sans-serif;
+    color: gray;
+}
+#play{
+    border: none;
+    background-color: transparent;
+}
+
+#letter{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 80px 0px;
+    gap: 70px;
+
+}
+#env{
+    position: relative;
+    width: min(300px, 90%);
+    height: 120px;
+}
+.flap{
+    position: absolute;
+    z-index: 1;
+    top: -25%;
+
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-top: 100px solid #ff4a36e2;
+}
+.envelop{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 150px;
+    background-color: #ffb3a7;
+    border-radius: 5px;
+}
+.unbox{
+    position: absolute;
+    z-index: 1000;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: wheat;
+    top: 35%;
+    left: 42%;
+}
+footer{
+    display: flex;
+    background-color: #ff4a36a9;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+.copyright{
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(238, 233, 233);
+}
+/* #overlay{
+    position: absolute;
+    top: 0%;
+    background-color: rgba(0, 0, 0, 0.336);
+    width: 100%;
+    height: 264vh;
+    z-index: 999;
+    display: none;
+} */
+#jennycakes{
+    display: none;
+    position: absolute;
+    background-color: rgb(246, 227, 227);
+    width: min(370px, 90%);
+    height: 450px;
+    z-index: 1000;
+    border-radius: 10px;
+    padding: 10px;
+}
+.upAnimate{
+    transform: translate(0, 0);
+    opacity: 1;
+}
+@media screen and (max-width: 600px){
+    #burger{
+        display: flex;
+    }
+    ul{
+        display: none;
+        position: absolute;
+        flex-direction: column;
+        top: 100%;
+        width: 0%;
+        left: 0%;
+        background-color: #ff4a36e2;
+        height: 300px;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    
+    }
+    li{
+        width: 100%;
+        text-align: center;
+        padding: 20px;
+    }
+    li:hover{
+        background-color: #ff4a36a9;
+    }
+    ul li a{
+        color: white;
+    }
+}
+
+@keyframes up {
+    to{
+        top: 0%;
+    }
+}
+@keyframes left {
+    to{
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes slide {
+    to{
+        width: 100%;
+    }
+}
