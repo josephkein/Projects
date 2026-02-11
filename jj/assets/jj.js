@@ -59,6 +59,13 @@ env.addEventListener('click', (e) => {
     letter.style.display = "flex";
 })
 
+over.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    over.style.display = "none";
+    letter.style.display = "none";
+})
+
 const animate = document.querySelectorAll("[data-animate]");
 
 

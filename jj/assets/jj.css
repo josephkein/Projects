@@ -208,24 +208,25 @@ footer{
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(238, 233, 233);
 }
-/* #overlay{
-    position: absolute;
-    top: 0%;
-    background-color: rgba(0, 0, 0, 0.336);
+#overlay{
     width: 100%;
-    height: 264vh;
-    z-index: 999;
+    height: 100%;
+    top: 0%;
+    position: fixed;
     display: none;
-} */
-#jennycakes{
-    display: none;
-    position: absolute;
-    background-color: rgb(246, 227, 227);
-    width: min(370px, 90%);
-    height: 450px;
-    z-index: 1000;
-    border-radius: 10px;
-    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+[popover]{
+    margin: auto;
+    width: 90%;
+    flex-direction: column;
+    gap: 25px;
+    padding: 20px 15px;
+    border: 1px solid #ff4a36a9;
+animation: fade 1s linear;
+}
+#jennycakes span{
+    font-style: italic;
 }
 .upAnimate{
     transform: translate(0, 0);
@@ -276,5 +277,16 @@ footer{
 @keyframes slide {
     to{
         width: 100%;
+    }
+}
+
+@keyframes fade {
+    0%{
+        opacity: 0;
+        height: 1px;
+    }
+    100%{
+        opacity: 1;
+        height: 400px;
     }
 }
