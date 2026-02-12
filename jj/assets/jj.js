@@ -48,6 +48,23 @@ function playMusic(){
     }
 }
 
+// setInterval(setDay, 1000);
+
+// function setDay(){
+//     let an = new Date("2023-06-19");
+//     let date = new Date();
+//     let diff = date.getTime() - an.getTime();
+//     let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+//     let hours = Math.floor(diff / (1000 * 3600));
+//     let minutes = Math.floor(diff / (1000 * 60));
+//     let seconds = Math.floor(diff / 1000);
+
+//     document.getElementById("day").textContent = days;
+//     document.getElementById("hour").textContent = hours;
+//     document.getElementById("min").textContent = minutes;
+//     document.getElementById("sec").textContent = seconds;
+// }
+
 let over = document.getElementById("overlay");
 let letter = document.getElementById("jennycakes");
 let env = document.getElementById("env");

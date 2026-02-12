@@ -232,6 +232,29 @@ animation: fade 1s linear;
     transform: translate(0, 0);
     opacity: 1;
 }
+/* .count{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:#ff4a36a9;
+    padding: 10px;
+}
+.days{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.group-day{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+.group-day div{
+    background-color: white;
+    text-align: center;
+    font-size: 1.5em;
+} */
 @media screen and (max-width: 600px){
     #burger{
         display: flex;
