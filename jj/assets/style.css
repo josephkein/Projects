@@ -89,7 +89,7 @@ form{
     gap: 20px;
     border-radius: 5px;
     animation: bounce2 0.5s;
-    z-index: 1000;
+    z-index: 999;
 }
 #alert span{
     font-size: 2em;
@@ -101,6 +101,7 @@ form{
     color: white;
     border: none;
     border-radius: 5px;
+    z-index: 1000;
 }
 #ok:hover{
     background-color: #ff4a36c0;
@@ -114,6 +115,9 @@ form{
     height: 100vh;
     position: fixed;
     display: none;
+}
+#overlay:hover{
+    background-color: aqua;
 }
 .tenor-gif-embed{
     height: 200px;
