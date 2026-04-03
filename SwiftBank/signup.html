@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/732250.png" type="image/x-icon"/>
+    <title>SwiftBank</title>
+    <style>
+    *{
+        box-sizing: border-box;
+        top: 0;
+        left: 0;
+        margin: 0;
+        bottom: 0;
+    }
+    .logo{
+        display: flex;
+        align-items: center;
+        justify-content: center ;
+        gap: 10px;
+        font-family: "Montserrat", sans-serif;
+        margin-left: 25px;
+    }
+    nav{
+        background-color: #1E3A8A;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        width: 100%;
+        position: sticky;
+    }
+    .logo h1{
+        font-family: "Montserrat", sans-serif;
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+    }
+    .logo a{
+        text-decoration: none;
+    }
+    .logo a:hover{
+        text-decoration: none;
+    }
+    .logo img{
+        height: 40px;
+    }
+    .secS{
+        height: 91vh;
+        display: flex;   
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background-color: #0000000b;
+    }
+    .signup-container {
+      width: 300px;
+      margin: 80px auto;
+      background-color: #fff;
+      padding: 30px 25px;
+      border-radius: 8px;
+      box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    .logo img {
+      width: 40px;
+      vertical-align: middle;
+    }
+
+    .logo h2 {
+      display: inline-block;
+      margin-left: 8px;
+      color: #003087;
+      font-weight: bold;
+      font-family: "Montserrat", sans-serif;
+    }
+
+    form input,
+    form select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    form select {
+      background-color: #f4f4f4;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: orange;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .login-text {
+      margin-top: 15px;
+      font-size: 12px;
+    }
+
+    .login-text a {
+      color: orange;
+      text-decoration: none;
+    }
+    .SignBtn{
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    background-color: #F97316;
+    color: white;
+    border: none;
+    border-radius: 0px;
+    padding: 10px;
+    cursor: pointer;
+    width: 80px;
+    font-size: 1.1rem;
+    }
+    .secS{
+      height:88vh;
+    }
+    </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">
+        <a href="index.html"><img src="images/732250.png" alt=""></a>
+        <a href="index.html"><h1>SwiftBank</h1></a>
+    </div>
+    <div class="dropdown">
+      <a href="index.html"><button class="SignBtn">Back</button></a>
+    </div>
+  </nav>
+  <div class="secS">
+    <div class="signup-container">
+        <div class="logo">
+          <img src="images/732250.png" alt="SwiftBank Logo">
+          <h2>SwiftBank</h2>
+        </div>
+        <form>
+          <input type="email" placeholder="Email" required>
+          <input type="text" placeholder="Username" required>
+          <select required>
+            <option value="" disabled selected>Age</option>
+            <option value="under18">Under 18</option>
+            <option value="18-24">18-24</option>
+            <option value="25-34">25-34</option>
+            <option value="35+">35+</option>
+          </select>
+          <input type="date" required>
+          <input type="password" placeholder="Password" required>
+          <input type="password" placeholder="Confirm Password" required>
+          <button type="submit">SIGN UP</button>
+        </form>
+        <p class="login-text">Already have an account? <a href="login.html">Log in.</a></p>
+    </div>
+  </div>
+</body>
+</html>

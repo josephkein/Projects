@@ -1,0 +1,108 @@
+body{
+    background-image: url('images&audio/4824751.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+.container{
+    display: flex;
+    height: 90vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: auto;
+}
+.guess-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+}
+#guessNum{
+    text-align: center;
+    font-family: "Bangers", system-ui;
+    font-style: normal;
+    font-size: 3rem;
+    border-radius: 10px;
+    padding: 13px;
+    border: 5px solid black;
+    width: auto;
+    outline: none;
+}
+#guessBtn{
+    font-family: "Bangers", system-ui;
+    font-style: normal;
+    border-radius: 50px;
+    font-size: 2.5rem;
+    padding: 10px;
+    width: 250px;
+    height: 60px 60px;
+    background-color: yellow;
+    border: 5px solid black;
+    box-shadow: 9px 7px 0px 2px rgba(0,0,0,1);
+    -webkit-box-shadow: 9px 7px 0px 2px rgba(0,0,0,1);
+    -moz-box-shadow: 9px 7px 0px 2px rgba(0,0,0,1);
+    transition: opacity .5s transform 0.5s;
+    cursor: pointer;
+}
+#guessBtn:hover{
+    opacity: .8;
+}
+#guessBtn:active{
+    box-shadow: none;
+    transform: scale(0.9);
+}
+#titleGuess{
+    font-family: "Bangers", system-ui;
+    font-style: normal;
+    text-align: center;
+    color: yellow;
+    font-size: 5rem;
+    -webkit-text-stroke: 3px black;
+}
+#jkein{
+    font-family: "Bangers", system-ui;
+    font-style: normal;
+    text-align: center;
+    color: yellow;
+    font-size: 3rem;
+    -webkit-text-stroke: 1.5px black;
+}
+#result{
+    font-family: "Bangers", system-ui;
+    font-style: normal;
+    text-align: center;
+    font-size: 4rem;
+    -webkit-text-stroke: 2.5px black;
+}
+#attempt{
+    font-family: "Bangers", system-ui;
+    font-style: normal;
+    text-align: center;
+    color: yellow;
+    font-size: 3rem;
+    -webkit-text-stroke: 2.5px black;
+}
+@media screen and (max-width:500px){
+    
+    #guessNum{
+        left: 30px;
+        font-size: 2rem;
+        width: auto;
+    }
+    #guessBtn{
+        font-size: 2rem;
+        width: 200px;
+    }
+    #titleGuess{
+        font-size: 4rem;
+    }
+    #jkein{
+        font-size: 2.5rem;
+    }
+    #result{
+        font-size: 3rem;
+    }
+}

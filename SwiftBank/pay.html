@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <link rel="icon" href="images/732250.png" type="image/x-icon"/>
+        <title>SwiftBank</title>
+        <style>
+            *{
+                box-sizing: border-box;
+                top: 0;
+                left: 0;
+                margin: 0;
+                bottom: 0;
+                font-family: 'Segoe UI', sans-serif;
+            }
+            body{
+                display: flex;
+                height: 100vh;
+                background-color: #000;
+            }
+            .leftNav{
+                height: 100vh;
+                width: 20%;
+                background-color: #1E3A8A;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding: 20px 0px 20px;
+            }
+            a{
+              text-decoration: none;
+            }
+            .navA h3{
+                font-family: "Poppins", sans-serif;
+                color: white;
+                font-weight: 300;
+                cursor:  pointer;
+            }
+            .navA{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+            }
+            .navCon{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+                height: 100%;
+                width: 100%;
+                padding: 15px;
+            }
+            .navCon:hover, .navCon.active{
+                background-color: #4059A1;
+            }
+            .navOut{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+                width: 100%;
+                padding: 15px;
+            }
+            .navOut h3{
+                font-family: "Poppins", sans-serif;
+                color: white;
+                font-weight: 300;
+                cursor:  pointer;
+                text-decoration: none;
+            }
+            .navOut:hover{
+                background-color: #4059A1;
+            }
+            .logo{
+                display: flex;
+                align-items: center;
+                gap: 13px;
+                margin-left: 50px;
+                margin-top: 10px;
+            }
+            .logo h1{
+                font-family: "Montserrat", sans-serif;
+                font-weight: bold;
+                color: white;
+            }
+            .logo a:hover{
+                text-decoration: none;
+            }
+            .logo img{
+                height: 40px;
+            }
+            .navOut{
+                font-family: "Poppins", sans-serif;
+            }
+
+
+              /* dirag main content style*/
+            .main {
+            flex: 1;
+            background-color: #ffffffd8;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            }
+
+            .table-container {
+            background-color: #1a3088;
+            border-radius: 20px;
+            width: 80%;
+            overflow: hidden;
+            box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.2);
+            height: 100%;
+            animation: slideUp 1.2s linear;
+          }
+
+            .table-header {
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 22px;
+            }
+
+            .table-header span {
+            color: orange;
+            }
+
+            table {
+            width: 100%;
+            color: white;
+            border-collapse: collapse;
+            }
+
+            th, td {
+            text-align: center;
+            }
+            tr{
+                height: 85px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0px 100px 0px 70px;
+            }
+            tr:nth-child(odd) {
+            background-color: #324c9e;
+            }
+
+            tr:nth-child(even) {
+            background-color: #1a3088;
+            }
+            .rents {
+            color: orange;
+            }
+            @keyframes slideUp{
+              from{
+                  opacity: 0;
+                  transform: translateY(25px);
+              }
+              to{
+                  opacity: 1;
+                  transform: translateX(0);
+              }
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="leftNav">
+                <div class="logo">
+                    <a href="index.html"><img src="images/732250.png" alt=""></a>
+                    <a href="index.html"><h1>SwiftBank</h1></a>
+                </div>
+                <div class="navA">
+                    <a href="dashboard.html">
+                    <div class="navCon" id="over">
+                        <img src="images/Dashboard.png" alt="">
+                        <h3>Overview</h3>
+                    </div>
+                    </a>
+                    <a href="transaction.html">
+                        <div class="navCon" id="trans">
+                            <img src="images/bar chart.png" alt="">
+                            <h3>Transaction</h3>
+                        </div>
+                    </a>
+                    <div class="navCon active" id="pay">
+                        <img src="images/Dollar Coin.png" alt="">
+                        <h3>Payments</h3>
+                    </div>
+                </div>
+                <a href="index.html">
+                  <div class="navOut" id="out">
+                      <img src="images/elements.png" alt="">
+                      <h3>Log out</h3>
+                  </div>
+                </a>
+        </nav>
+        <nav class="main">
+            <div class="table-container">
+              <div class="table-header">
+                Payments <span>History</span>
+              </div>
+              <table>
+                <tr>
+                  <td class="rents">Boarding House</td>
+                  <td>19 May at 15:12</td>
+                  <td class="rents">-1,150.20</td>
+                </tr>
+                <tr>
+                    <td class="rents">Boarding House</td>
+                    <td>19 May at 15:12</td>
+                    <td class="rents">-1,150.20</td>
+                </tr>
+                <tr>
+                    <td class="rents">Boarding House</td>
+                    <td>19 May at 15:12</td>
+                    <td class="rents">-1,150.20</td>
+                </tr>
+                <tr>
+                    <td class="rents">Boarding House</td>
+                    <td>19 May at 15:12</td>
+                    <td class="rents">-1,150.20</td>
+                </tr>
+                <tr>
+                    <td class="rents">Boarding House</td>
+                    <td>19 May at 15:12</td>
+                    <td class="rents">-1,150.20</td>
+                </tr>
+                <tr>
+                    <td class="rents">Boarding House</td>
+                    <td>19 May at 15:12</td>
+                    <td class="rents">-1,150.20</td>
+                </tr>
+                <tr>
+                    <td class="rents">Boarding House</td>
+                    <td>19 May at 15:12</td>
+                    <td class="rents">-1,150.20</td>
+                </tr>
+              </table>
+            </div>
+        </nav>
+
+    </body>
+</html>
